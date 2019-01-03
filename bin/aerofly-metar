@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+'use strict';
+
+if (!process.argv && process.argv.length < 3) {
+  console.log('Usage: aerofly-metar "<METAR>" [FILE]');
+  console.log('');
+  console.log('Copy METAR information string into Aerofly FS2 configuration file.');
+  console.log('For more information on METAR see https://aviationweather.gov/metar.');
+  process.exit(0);
+}
+
+
+const args = {
+  metar: process.argv[2],
+  destination: process.argv[3] || 'config.msc'
+};
+
+const metarObject   = require('../lib/metar-object')(args.metar);
+const aeroflyObject = require('../lib/metar-aerofly')(metarObject);
+const aeroflyWriter = require('../lib/metar-writer')(aeroflyObject);
+
+console.log(aeroflyWriter.output());

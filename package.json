@@ -1,0 +1,52 @@
+{
+  "name": "aerofly-weather",
+  "version": "0.0.1",
+  "description": "Copy METAR information into Aerofly FS2.",
+  "main": "bin/aerofly-metar",
+  "directories": {
+    "bin": "bin",
+    "test": "test",
+    "lib": "lib"
+  },
+  "scripts": {
+    "precommit": "npm test",
+    "test": "eslint *.js bin/* lib/**/*.js test/**/*.js && mocha && npm outdated"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fboes/aerofly-weather.git"
+  },
+  "keywords": [
+    "Aerofly",
+    "FS2",
+    "METAR",
+    "weather",
+    "API",
+    "NodeJs"
+  ],
+  "author": "Frank Boës <info@3960.org> (https://3960.org/)",
+  "preferGlobal": true,
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fboes/aerofly-weather/issues",
+    "email": "info@3960.org"
+  },
+  "homepage": "https://github.com/fboes/aerofly-weather#readme",
+  "devDependencies": {
+    "beeper": "^1.1.1",
+    "gulp": "^4.0.0",
+    "gulp-eslint": "^5.0.0",
+    "gulp-mocha": "^6.0.0",
+    "gulp-plumber": "^1.2.1",
+    "husky": "^1.3.1",
+    "mocha": "^5.2.0"
+  },
+  "engine": {
+    "node": ">=6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
+  }
+}

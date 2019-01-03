@@ -1,0 +1,23 @@
+        <[tm_time_utc][time_utc][]
+            <[int32][time_year][2016]>
+            <[int32][time_month][5]>
+            <[int32][time_day][20]>
+            <[float64][time_hours][0.67923247388904]>
+        >
+        <[float64][visibility][0.8125119805336]>
+        <[tmsettings_wind][wind][]
+            <[float64][strength][0.231446579098701]>
+            <[float64][direction_in_degree][30.5921816825867]>
+            <[float64][turbulence][0.123584933578968]>
+            <[float64][thermal_activity][0.034067090600729]>
+        >
+        <[tmsettings_clouds][clouds][]
+            <[float64][cumulus_density][0.314493238925934]>
+            <[float64][cumulus_height][0.382295936346054]>
+            <[float64][cumulus_mediocris_density][0.15]>
+            <[float64][cumulus_mediocris_height][0.6]>
+            <[float64][cirrus_height][0.672727227210999]>
+            <[float64][cirrus_density][0.8]>
+        >
+
+

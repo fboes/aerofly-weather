@@ -1,7 +1,7 @@
-✈️ Aerofly METAR weather importer
-=================================
+✈️ METAR weather importer for Aerofly FS2
+==========================================
 
-Copy METAR information into Aerofly FS2. This will copy the following METAR information to configuration file:
+Copy METAR information into IPCAS' Aerofly FS2. This will copy the following METAR information to configuration file:
 
 * Time and day (will set the year and month to current year and month because they are not present in METAR information)
 * Wind

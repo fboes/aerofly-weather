@@ -2,7 +2,7 @@
 
 'use strict';
 
-if (!process.argv && process.argv.length < 3) {
+if (!process.argv || process.argv.length < 3) {
   console.log('Usage: aerofly-metar "<METAR>" [FILE]');
   console.log('');
   console.log('Copy METAR information string into Aerofly FS2 configuration file.');
@@ -13,11 +13,11 @@ if (!process.argv && process.argv.length < 3) {
 
 const args = {
   metar: process.argv[2],
-  destination: process.argv[3] || 'config.msc'
+  destination: process.argv[3] || 'main.mcf'
 };
 
 const metarObject   = require('../lib/metar-object')(args.metar);
 const aeroflyObject = require('../lib/metar-aerofly')(metarObject);
-const aeroflyWriter = require('../lib/metar-writer')(aeroflyObject);
+const aeroflyWriter = require('../lib/aerofly-writer')(args.destination, aeroflyObject);
 
 console.log(aeroflyWriter.output());

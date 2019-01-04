@@ -12,10 +12,7 @@ Installation
 ------------
 
 1. Make sure you have [Node.js](https://nodejs.org/) with at least version 6 installed. Call `node -v` to see your current version.
-1. Download this repository.
-1. Run `npm install` to install all required dependencies.
-1. Run `npm link` to have this package available globally.
-1. ~~Run `npm install -g aerofly-weather` to install Aerofly-Weather.~~
+1. Run `npm install -g aerofly-weather` to install Aerofly-Weather.
 
 Usage
 -----
@@ -28,8 +25,13 @@ Usage
 Update
 ------
 
-1. ~~To find out if your Aerofly-Weather needs updating, run `npm outdated -g aerofly-weather`.~~
-2. ~~Run `npm update -g aerofly-weather` to update your local Aerofly-Weather installation to the latest stable release.~~
+1. To find out if your Aerofly-Weather needs updating, run `npm outdated -g aerofly-weather`.
+2. Run `npm update -g aerofly-weather` to update your local Aerofly-Weather installation to the latest stable release.
+
+Status
+-------
+
+[![npm version](https://badge.fury.io/js/aerofly-weather.svg)](https://badge.fury.io/js/aerofly-weather) [![devDependency Status](https://david-dm.org/fboes/aerofly-weather/dev-status.svg)](https://david-dm.org/fboes/aerofly-weather?type=dev)
 
 Legal stuff
 -----------

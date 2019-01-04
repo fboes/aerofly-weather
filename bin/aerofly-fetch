@@ -16,7 +16,7 @@ const args = {
   destination: process.argv[3] || 'main.mcf'
 };
 
-const metarObject   = require('../lib/metar-object')(args.metar);
+const metarObject   = require('../lib/metar-parser')(args.metar);
 const aeroflyObject = require('../lib/metar-aerofly')(metarObject);
 const aeroflyWriter = require('../lib/aerofly-writer')(args.destination, aeroflyObject);
 

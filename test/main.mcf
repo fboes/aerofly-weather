@@ -1,23 +1,217 @@
+<[file][][]
+    <[tmsettings_sim][][]
+        <[bool][window_fullscreen][true]>
+        <[int32][window_fullscreen_width][1920]>
+        <[int32][window_fullscreen_height][1080]>
+        <[array_int32][window_frame][0 0 0 0 ]>
+        <[list_tmsettings_separate_3d_view][separate_3d_view_list][]
+        >
+        <[tmsettings_aircraft][aircraft][]
+            <[string8][name][b58]>
+            <[string8][paintscheme][]>
+            <[bool][profi][false]>
+        >
+        <[tmsettings_flight][flight_setting][]
+            <[vector3_float64][position][950304.440184474 -5694779.92386254 2694520.34942842]>
+            <[vector3_float64][velocity][-66.3455836897453 -7.38080947157768 24.1265760594757]>
+            <[matrix3_float64][orientation][-0.917136293803135 -0.132247787695036 0.375994070749551 -0.366832735874862 -0.0888354643696518 -0.926035638709867 0.155867772421412 -0.987227827261771 0.0329614107766946]>
+            <[float64][gear][4.94065645841247e-324]>
+            <[float64][throttle][1]>
+            <[float64][flaps][0]>
+            <[flight_configuration][configuration][Keep]>
+        >
+        <[string8][controls_control_type][TM_CONTROLS_TYPE_JOYSTICK]>
+        <[float64][controls_sensitivity_touch][0.5]>
+        <[float64][controls_sensitivity_tilt][0.35]>
+        <[bool][controls_touch_auto_centering][false]>
+        <[float64][controls_gui_transparency][0.5]>
+        <[bool][controls_use_rudder][false]>
+        <[bool][controls_use_rudder_assist][false]>
+        <[bool][controls_use_auto_trim][false]>
+        <[bool][controls_use_auto_gear][false]>
+        <[bool][show_overlay][false]>
+        <[bool][show_flight_info][true]>
+        <[bool][show_flight_hud][false]>
+        <[bool][show_flight_hud_horizon][false]>
+        <[float64][hud_scaling][0.435797125101089]>
+        <[tmsettings_moving_map][moving_map][]
+            <[vector4_float32][position][0 0 0.200000002980232 0.200000002980232]>
+            <[float32][scale][1]>
+            <[bool][show][true]>
+        >
+        <[bool][fade_controls][false]>
+        <[bool][invert_view_controls][false]>
+        <[string8][view_name][view_model_01]>
+        <[list_tmsettings_view][view_list][]
+            <[tmsettings_view][element][0]
+                <[string8][name][view_model_01]>
+                <[float64][fov][1.18468992840016]>
+                <[vector3_float64][position][0 0 0]>
+                <[matrix3_float64][direction][1 0 0 0 1 0 0 0 1]>
+            >
+        >
+        <[list_tmsettings_aircraft][aircraft_list][]
+            <[tmsettings_aircraft][element][0]
+                <[string8][name][r22]>
+                <[string8][paintscheme][green]>
+                <[bool][profi][true]>
+            >
+            <[tmsettings_aircraft][element][1]
+                <[string8][name][c172]>
+                <[string8][paintscheme][classic]>
+                <[bool][profi][false]>
+            >
+            <[tmsettings_aircraft][element][2]
+                <[string8][name][c90gtx]>
+                <[string8][paintscheme][]>
+                <[bool][profi][false]>
+            >
+            <[tmsettings_aircraft][element][3]
+                <[string8][name][extra330]>
+                <[string8][paintscheme][]>
+                <[bool][profi][false]>
+            >
+            <[tmsettings_aircraft][element][4]
+                <[string8][name][jungmeister]>
+                <[string8][paintscheme][beige]>
+                <[bool][profi][false]>
+            >
+            <[tmsettings_aircraft][element][5]
+                <[string8][name][mb339]>
+                <[string8][paintscheme][]>
+                <[bool][profi][false]>
+            >
+            <[tmsettings_aircraft][element][6]
+                <[string8][name][p38]>
+                <[string8][paintscheme][]>
+                <[bool][profi][false]>
+            >
+            <[tmsettings_aircraft][element][7]
+                <[string8][name][pitts]>
+                <[string8][paintscheme][]>
+                <[bool][profi][false]>
+            >
+        >
         <[tm_time_utc][time_utc][]
             <[int32][time_year][2016]>
             <[int32][time_month][5]>
             <[int32][time_day][20]>
-            <[float64][time_hours][0.67923247388904]>
+            <[float64][time_hours][12.0125699043274]>
         >
-        <[float64][visibility][0.8125119805336]>
+        <[float64][visibility][0.816562294960022]>
         <[tmsettings_wind][wind][]
-            <[float64][strength][0.231446579098701]>
-            <[float64][direction_in_degree][30.5921816825867]>
-            <[float64][turbulence][0.123584933578968]>
-            <[float64][thermal_activity][0.034067090600729]>
+            <[float64][strength][1]>
+            <[float64][direction_in_degree][179.64]>
+            <[float64][turbulence][1]>
+            <[float64][thermal_activity][1]>
         >
         <[tmsettings_clouds][clouds][]
-            <[float64][cumulus_density][0.314493238925934]>
-            <[float64][cumulus_height][0.382295936346054]>
+            <[float64][cumulus_density][0.525681257247925]>
+            <[float64][cumulus_height][0.295073479413986]>
             <[float64][cumulus_mediocris_density][0.15]>
             <[float64][cumulus_mediocris_height][0.6]>
-            <[float64][cirrus_height][0.672727227210999]>
-            <[float64][cirrus_density][0.8]>
+            <[float64][cirrus_height][0.862421333789825]>
+            <[float64][cirrus_density][0.551886737346649]>
         >
-
-
+        <[bool][graphics_use_vulkan][true]>
+        <[bool][graphics_high_quality_msaa][true]>
+        <[int32][graphics_frame_rate][120]>
+        <[int32][graphics_quality][3]>
+        <[bool][graphics_use_custom_settings][true]>
+        <[int32][graphics_quality_texture][2]>
+        <[int32][graphics_quality_terrain_mesh][2]>
+        <[int32][graphics_quality_terrain_images][2]>
+        <[int32][graphics_quality_shadow][1]>
+        <[int32][graphics_quality_map_resolution][1]>
+        <[int32][graphics_quality_obj_density][2]>
+        <[bool][graphics_trees_enabled][true]>
+        <[int32][graphics_quality_tree][2]>
+        <[vector2_float64][graphics_glass_transparency][0.1 0.75]>
+        <[float64][graphics_content_scale_factor][1]>
+        <[int32][show_approach_guides_mode][0]>
+        <[bool][show_landmarks][false]>
+        <[bool][show_info][true]>
+        <[bool][sound_on][true]>
+        <[float64][sound_volume][0.4]>
+        <[float64][simulation_speed][1]>
+        <[float64][crash_restart_delay][9.78249528612753]>
+        <[string8][extra_user_folder][]>
+        <[float64][vr_scale_factor][0]>
+        <[float64][vr_size_factor][1]>
+        <[float64][vr_render_scale_factor][2]>
+        <[bool][vr_show_lens_flare][true]>
+        <[float64][vr_hands_alpha][0.5]>
+        <[bool][vr_render_native_view_on_screen][true]>
+        <[bool][vr_use_openvr][false]>
+        <[bool][vr_force_interleaved_reprojection][false]>
+        <[bool][vr_do_post_anti_aliasing][false]>
+        <[bool][vr_dev_screenshot_with_button_a][false]>
+        <[tmsettings_tobii_eye][tobii_eye][]
+            <[bool][use_head_view][true]>
+            <[bool][use_head_position][false]>
+            <[float64][head_view_responsiveness][0.5]>
+            <[float64][head_position_responsiveness][0.5]>
+            <[float64][max_view_angle][90]>
+            <[float64][dead_zone][0]>
+        >
+        <[tmnavigation_config][navigation][]
+            <[tmnav_route][Route][]
+                <[tmnav_route_airport][Origin][]
+                    <[string8][Identifier][KMTH]>
+                    <[vector2_float64][Location][0 0]>
+                    <[uint64][Uid][5070221478083166289]>
+                >
+                <[tmnav_route_airport][Destination][]
+                    <[string8][Identifier][FA81]>
+                    <[vector2_float64][Location][0 0]>
+                    <[uint64][Uid][5096788978491326545]>
+                >
+                <[pointer_list_tmnav_route_way][Ways][]
+                    <[tmnav_route_departure][07][0]
+                        <[string8][Identifier][07]>
+                        <[vector2_float64][Location][18011.7788182231 37429.1708139238]>
+                        <[uint64][Uid][5069865236306853986]>
+                        <[vector2_float64][Direction][0.922854433024818 0.385148926321288]>
+                        <[float64][Elevation][1.524]>
+                    >
+                    <[tmnav_route_approach][08][1]
+                        <[string8][Identifier][08]>
+                        <[vector2_float64][Location][18106.8978440002 37486.0053236607]>
+                        <[uint64][Uid][5096639444908310626]>
+                        <[vector2_float64][Direction][0.984558923132937 0.175053497192465]>
+                        <[float64][Elevation][2]>
+                        <[float64][NavaidFrequency][0]>
+                        <[uint64][NavaidUid][0]>
+                    >
+                >
+            >
+        >
+        <[connection][network_position_broadcast][]
+            <[bool][Active][false]>
+            <[string8][Type][default]>
+            <[string8][IPAddress][192.168.1.255]>
+            <[uint32][Port][49002]>
+        >
+        <[connection][network_fswidgets_apps][]
+            <[bool][Active][false]>
+            <[string8][Type][default]>
+            <[string8][IPAddress][127.0.0.1]>
+            <[uint32][Port][58585]>
+        >
+        <[configuration][external][]
+            <[list_connection][Connections][]
+            >
+        >
+        <[bool][debug_show_log][false]>
+        <[bool][debug_show_fps][false]>
+        <[settings_developer][developer_settings][]
+            <[bool][Enabled][false]>
+            <[string8][DeepDeveloperMode][]>
+            <[string8][SpecialDeveloperMode][]>
+            <[float64][TimeLapse][1]>
+            <[float64][IntegrationDeltaTime][0.001]>
+            <[bool][ShowMonitoring][false]>
+            <[vector4_float32][MonitoringPosition][0.0020000000949949 0.0020000000949949 0.400000005960464 0.300000011920929]>
+        >
+    >
+>

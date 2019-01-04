@@ -15,6 +15,7 @@ Installation
 1. Download this repository.
 1. Run `npm install` to install all required dependencies.
 1. Run `npm link` to have this package available globally.
+1. ~~Run `npm install -g aerofly-weather` to install Aerofly-Weather.~~
 
 Usage
 -----
@@ -23,6 +24,12 @@ Usage
 1. Make a backup of your `main.mcf`.
 1. Call `aerofly-metar [METAR]` to insert the METAR information into your configuration file.
 1. Start Aerofly FS2 like normal.
+
+Update
+------
+
+1. ~~To find out if your Aerofly-Weather needs updating, run `npm outdated -g aerofly-weather`.~~
+2. ~~Run `npm update -g aerofly-weather` to update your local Aerofly-Weather installation to the latest stable release.~~
 
 Legal stuff
 -----------

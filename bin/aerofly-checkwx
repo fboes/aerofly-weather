@@ -4,10 +4,11 @@
 
 const args = require('../lib/argumentor')(process.argv);
 
-if (args._.length < 1 || args.help) {
-  console.log('Usage: aerofly-fetch <URL> [FILE]');
+if (args._.length < 2 || args.help) {
+  console.log('Usage: aerofly-checkwx <APIKEY> <ICAO> [FILE]');
   console.log('');
-  console.log('Copy raw METAR information from URL into Aerofly FS2 configuration file.');
+  console.log('Copy raw METAR information from https://api.checkwx.com into Aerofly FS2 configuration file.');
+  console.log('You will need an API key to fetch information.');
   console.log('');
   console.log('Options:');
   console.log('      --hours=<X>            Offset time by X hours');
@@ -17,9 +18,10 @@ if (args._.length < 1 || args.help) {
 }
 
 require('../lib/main')(args['verbose'])
-  .fromUrl(
+  .fromCheckwx(
     args._[0],
-    args._[1]  || 'main.mcf',
+    args._[1],
+    args._[2]  || 'main.mcf',
     args.hours || 0
   )
 ;

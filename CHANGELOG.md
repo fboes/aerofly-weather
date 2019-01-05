@@ -3,6 +3,7 @@ Change log
 
 For detailed information check [Aerofly Weather's releases on Github](https://github.com/fboes/aerofly-weather/releases).
 
+* :gift: Add `aerofly-checkwx` to directly get responses from https://api.checkwx.com
 * :gift: Add CLI parameters like `--hours`, `--verbose` and `--help`
 * :pill: Add support for `VRB` wind direction
 

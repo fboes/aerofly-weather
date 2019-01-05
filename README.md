@@ -46,6 +46,12 @@ The URL method may be used with a METAR API which supplies _raw_ METAR informati
 
 In case your configuration got corrupted, copy your `main.bak` back to `main.mcf`.
 
+### Common CLI parameters
+
+* `--hours=X`: Change time copied from METAR information to Aerofly FS 2 by `X` hours. This may be helpful if you want to set a specific time right away.
+* `--verbose`: Output extra information about found and parsed data.
+* `--help`: Show help information about tool.
+
 ### Sources for METAR information
 
 * https://en.allmetsat.com/metar-taf/

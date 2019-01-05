@@ -2,19 +2,25 @@
 
 'use strict';
 
-if (!process.argv || process.argv.length < 3) {
+const args = require('../lib/argumentor')(process.argv);
+
+if (args._.length < 1 || args.help) {
   console.log('Usage: aerofly-metar "<METAR>" [FILE]');
   console.log('');
   console.log('Copy METAR information string into Aerofly FS2 configuration file.');
   console.log('For more information on METAR see https://aviationweather.gov/metar.');
+  console.log('');
+  console.log('Options:');
+  console.log('      --hours=<X>            Offset time by X hours');
+  console.log('      --help                 Display this help and exit');
+  console.log('      --verbose              Show debug output');
   process.exit(0);
 }
 
-const args = {
-  metar: process.argv[2],
-  destination: process.argv[3] || 'main.mcf'
-};
-
-require('../lib/main')(true)
-  .fromString(args.metar, args.destination)
+require('../lib/main')(args['verbose'])
+  .fromString(
+    args._[0],
+    args._[1]  || 'main.mcf',
+    args.hours || 0
+  )
 ;

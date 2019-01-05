@@ -40,6 +40,8 @@ In Windows this can be done by using the Command prompt `cmd`:
 cd "%userprofile%\Documents\Aerofly FS 2"
 copy main.mcf main.bak
 aerofly-metar "KEYW 050653Z AUTO 19006KT FEW024 BKN039 26/23 A3000 RMK AO2 LTG DSNT W SLP159 T02610228"
+# aerofly-metar-url https://3960.org/metar/KEYW.txt
+# aerofly-checkwx xxxxxx KEYW
 start steam://rungameid/434030
 ```
 

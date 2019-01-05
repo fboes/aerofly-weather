@@ -136,6 +136,19 @@ describe('metarParser', function() {
         ['barometer_hpa', 3052 / 2.9529988]
       ],
       output: false
+    },
+    {
+      source: 'https://aviationweather.gov/metar/#3',
+      metarCode: "KEYW 050653Z AUTO 19006KT FEW024 BKN039 26/23 A3000 RMK AO2 LTG DSNT W SLP159 T02610228",
+      expectedValues: [
+        ['icao', 'KEYW'],
+        ['wind', {degrees: 190, speed_kt: 6, gust_kt: 6}],
+        ['visibility_m', 9999],
+        ['clouds', [{baseAgl_ft: 2400, minDensity: 1, maxDensity: 2}, {baseAgl_ft: 3900, minDensity: 5, maxDensity: 7}]],
+        ['temperature_c', 26],
+        ['barometer_hpa', 3000 / 2.9529988]
+      ],
+      output: false
     }
   ];
 

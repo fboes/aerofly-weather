@@ -1,12 +1,14 @@
-✈️ METAR weather importer for Aerofly FS2
-==========================================
+✈️ METAR weather importer for Aerofly FS 2
+===========================================
 
-Copy METAR information into IPCAS' Aerofly FS2. This will copy the following METAR information to configuration file:
+Copy METAR information into IPCAS' Aerofly FS 2. This will copy the following METAR information to your configuration file:
 
 * Time and day (will set the year and month to current year and month because they are not present in METAR information)
-* Wind
-* Clouds
+* Wind & turbulences
 * Thermal activity
+* Clouds (height & density)
+
+The METAR information can be supplied manually, or can be fetched from an URL.
 
 Installation
 ------------
@@ -17,10 +19,34 @@ Installation
 Usage
 -----
 
-1. Go to your Aerofly FS2 save data directory in `~\Documents\Aerofly FS 2`.
+⚠️ This tool alters your Aerofly FS 2 configuration file. It is thoroughly tested, but may nevertheless damage your files. Please proceed with caution.
+
+1. Go to your Aerofly FS 2 save data directory where your main configuration file `main.mcf` is located.
 1. Make a backup of your `main.mcf`.
-1. Call `aerofly-metar [METAR]` to insert the METAR information into your configuration file.
-1. Start Aerofly FS2 like normal.
+1. Call `aerofly-metar [METAR]` to insert the METAR information into your configuration file, with `[METAR]` being a valid METAR forecast string enclosed in quotes _OR_ call `aerofly-metar-url [URL]` to insert METAR information supplied from an URL. 
+1. Start Aerofly FS 2.
+
+In Windows this can be done by using the Command prompt `cmd`:
+
+```bash
+cd "%userprofile%\Documents\Aerofly FS 2"
+copy main.mcf main.bak
+aerofly-metar "KEYW 050653Z AUTO 19006KT FEW024 BKN039 26/23 A3000 RMK AO2 LTG DSNT W SLP159 T02610228"
+start steam://rungameid/434030
+```
+
+or…
+
+```bash
+cd "%userprofile%\Documents\Aerofly FS 2"
+copy main.mcf main.bak
+aerofly-metar-url https://3960.org/metar/KEYW.txt
+start steam://rungameid/434030
+```
+
+The URL method may be used with a METAR API. This is a service which supplies the current METAR information without you having to change the URL. This allows for automatically pulling the latest weather data into Aerofly FS 2.
+
+In case your configuration got corrupted, copy your `main.bak` back to `main.mcf`.
 
 Update
 ------
@@ -31,7 +57,9 @@ Update
 Status
 -------
 
-[![npm version](https://badge.fury.io/js/aerofly-weather.svg)](https://badge.fury.io/js/aerofly-weather) [![devDependency Status](https://david-dm.org/fboes/aerofly-weather/dev-status.svg)](https://david-dm.org/fboes/aerofly-weather?type=dev)
+[![npm version](https://badge.fury.io/js/aerofly-weather.svg)](https://badge.fury.io/js/aerofly-weather)
+[![Build Status](https://travis-ci.org/fboes/aerofly-weather.svg?branch=master)](https://travis-ci.org/fboes/aerofly-weather)
+[![devDependency Status](https://david-dm.org/fboes/aerofly-weather/dev-status.svg)](https://david-dm.org/fboes/aerofly-weather?type=dev)
 
 Legal stuff
 -----------
@@ -40,4 +68,4 @@ Author: [Frank Boës](http://3960.org)
 
 Copyright & license: See [LICENSE.txt](LICENSE.txt)
 
-These instructions are NOT affiliated with, endorsed, or sponsored by IPACS.
+This tool is NOT affiliated with, endorsed, or sponsored by IPACS. As stated in the [LICENSE.txt](LICENSE.txt), this tool comes with no warranty and might damage your files.

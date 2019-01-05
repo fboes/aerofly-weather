@@ -5,7 +5,7 @@
 if (!process.argv || process.argv.length < 3) {
   console.log('Usage: aerofly-fetch <URL> [FILE]');
   console.log('');
-  console.log('Copy METAR information from URL into Aerofly FS2 configuration file.');
+  console.log('Copy raw METAR information from URL into Aerofly FS2 configuration file.');
   console.log('For more information on METAR APIs see https://api.checkwx.com/metar/kpie/decoded.');
   process.exit(0);
 }

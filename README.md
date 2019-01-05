@@ -19,8 +19,6 @@ Installation
 Usage
 -----
 
-⚠️ This tool alters your Aerofly FS 2 configuration file. It is thoroughly tested, but may nevertheless damage your files. Please proceed with caution.
-
 1. Go to your Aerofly FS 2 save data directory where your main configuration file `main.mcf` is located.
 1. Make a backup of your `main.mcf`.
 1. Call `aerofly-metar [METAR]` to insert the METAR information into your configuration file, with `[METAR]` being a valid METAR forecast string enclosed in quotes _OR_ call `aerofly-metar-url [URL]` to insert METAR information supplied from an URL. 
@@ -44,7 +42,7 @@ aerofly-metar-url https://3960.org/metar/KEYW.txt
 start steam://rungameid/434030
 ```
 
-The URL method may be used with a METAR API. This is a service which supplies the current METAR information without you having to change the URL. This allows for automatically pulling the latest weather data into Aerofly FS 2.
+The URL method may be used with a METAR API which supplies _raw_ METAR information. This is a service which supplies the current METAR information for a given location without you having to change the URL. This allows for automatically pulling the latest weather data into Aerofly FS 2. Please note that as of now `aerofly-metar-url` is limited to _raw_ METAR responses.
 
 In case your configuration got corrupted, copy your `main.bak` back to `main.mcf`.
 

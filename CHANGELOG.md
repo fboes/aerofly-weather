@@ -3,7 +3,8 @@ Change log
 
 For detailed information check [Aerofly Weather's releases on Github](https://github.com/fboes/aerofly-weather/releases).
 
-* :pill: Add CLI parameters `--time=<X>` and `--date=<X>`
+* :gift: Add CLI parameters `--time=<X>` and `--date=<X>`
+* :wrench: Improve internal documentation and structure
 
 0.2.0
 -----

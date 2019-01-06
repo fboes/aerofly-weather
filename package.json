@@ -1,6 +1,6 @@
 {
   "name": "aerofly-weather",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Copy METAR information into Aerofly FS2.",
   "main": "bin/aerofly-metar",
   "directories": {

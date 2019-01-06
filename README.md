@@ -1,7 +1,9 @@
 ✈️ METAR weather importer for Aerofly FS 2
 ===========================================
 
-Copy METAR information into IPCAS' Aerofly FS 2. This will copy the following METAR information to your configuration file:
+Copy METAR information into IPCAS' Aerofly FS 2. 
+
+This tool will copy the following METAR information to your configuration file while Aerofly FS 2 is not running:
 
 * Time and day (will set the year and month to current year and month because they are not present in METAR information)
 * Wind & turbulences
@@ -13,8 +15,11 @@ The METAR information can be supplied manually, or can be fetched from an URL.
 Installation
 ------------
 
-1. Make sure you have [Node.js](https://nodejs.org/) with at least version 6 installed. Call `node -v` to see your current version.
+1. This tool requires Windows, Mac OSX or Linux.
+1. Make sure you have [Node.js](https://nodejs.org/) with at least version 10 installed. Call `node -v` to see your current version.
 1. Run `npm install -g aerofly-weather` to install Aerofly-Weather.
+
+After having installed `aerofly-weather`, there are new command line (CLI) commands available on your local PC.
 
 Usage
 -----
@@ -44,46 +49,18 @@ aerofly-metar "KEYW 050653Z AUTO 19006KT FEW024 BKN039 26/23 A3000 RMK AO2 LTG D
 # aerofly-checkwx xxxxxx KEYW
 start steam://rungameid/434030
 ```
-
 In case your configuration got corrupted, copy your `main.bak` back to `main.mcf`.
 
 ### Common CLI parameters
 
+* `[FILE]`: Every command accepts a last parameter for the file to change. By default this will be `main.mcf` in the current directory. You may want to supply `"%userprofile%\Documents\Aerofly FS 2\main.mcf"` to change your `main.mcf` regardless of your current directory.
 * `--hours=X`: Change time copied from METAR information to Aerofly FS 2 by `X` hours. This may be helpful if you want to set a specific time right away.
 * `--verbose`: Output extra information about found and parsed data.
 * `--help`: Show help information about tool.
 
-### Sources for METAR information
+### Where and how to get METAR information
 
-* https://en.allmetsat.com/metar-taf/
-* https://aviationweather.gov/metar
-* https://metars.com/
-
-### Some METAR examples
-
-Some clouds over San Francisco (USA):
-
-```
-KSFO 050756Z 11007KT 10SM SCT035 BKN200 10/06 A2983 RMK AO2 SLP099 T01000061 401720039
-```
-
-Rainy in New York (USA) with limited visibility:
-
-```
-KLGA 050808Z 04007KT 1SM R04/P6000FT -RA BR BKN006 OVC014 06/04 A2967 RMK AO2 P0001 T00560044
-```
-
-A fine night night in Miami (USA):
-
-```
-KMIA 050753Z 18007KT 5SM BR FEW005 23/23 A2997 RMK AO2 SLP149 T02280228 
-```
-
-No wind in Geneva (Switzerland):
-
-```
-LSGG 050820Z VRB01KT 9999 FEW070 BKN110 M03/M04 Q1033 NOSIG
-```
+There is a [small guide on how to get METAR information](docs/README.md).
 
 Update
 ------

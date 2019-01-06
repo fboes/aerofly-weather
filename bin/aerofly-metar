@@ -5,15 +5,17 @@
 const args = require('../lib/argumentor')(process.argv);
 
 if (args._.length < 1 || args.help) {
-  console.log('Usage: aerofly-metar "<METAR>" [FILE]');
-  console.log('');
-  console.log('Copy METAR information string into Aerofly FS2 configuration file.');
-  console.log('For more information on METAR see https://aviationweather.gov/metar.');
-  console.log('');
-  console.log('Options:');
-  console.log('      --hours=<X>            Offset time by X hours');
-  console.log('      --help                 Display this help and exit');
-  console.log('      --verbose              Show debug output');
+  console.log(`Usage: aerofly-metar "<METAR>" [FILE]
+
+Copy METAR information string into Aerofly FS2 configuration file.
+For more information on METAR see https://aviationweather.gov/metar.
+
+Options:
+      --hours=<X>            Offset time by X hours, e.g. '-8'
+      --time=<X>             Set time to HH:MM+ZZ:ZZ, e.g. '12:30-08:00'
+      --date=<X>             Set date to YYYY-MM-DD, e.g. '2018-12-31'
+      --help                 Display this help and exit
+      --verbose              Show debug output`);
   process.exit(0);
 }
 
@@ -21,6 +23,8 @@ require('../lib/main')(args['verbose'])
   .fromString(
     args._[0],
     args._[1]  || 'main.mcf',
-    args.hours || 0
+    args.hours || 0,
+    args.time  || null,
+    args.date  || null
   )
 ;

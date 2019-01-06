@@ -51,10 +51,14 @@ start steam://rungameid/434030
 ```
 In case your configuration got corrupted, copy your `main.bak` back to `main.mcf`.
 
-### Common CLI parameters
+### General CLI parameters
+
+These parameters will work with each CLI command:
 
 * `[FILE]`: Every command accepts a last parameter for the file to change. By default this will be `main.mcf` in the current directory. You may want to supply `"%userprofile%\Documents\Aerofly FS 2\main.mcf"` to change your `main.mcf` regardless of your current directory.
-* `--hours=X`: Change time copied from METAR information to Aerofly FS 2 by `X` hours. This may be helpful if you want to set a specific time right away.
+* `--hours=X`: Change time copied from METAR information to Aerofly FS 2 by `X` hours.
+* `--time=<X>`: Set time to HH:MM+ZZ:ZZ in Aerofly FS 2, e.g. `12:30-08:00`. Remember to include the time zone, else the time will be interpreted as UTC time.
+* `--date=<X>`: Set date to YYYY-MM-DD in Aerofly FS 2, e.g. `2018-12-31`.
 * `--verbose`: Output extra information about found and parsed data.
 * `--help`: Show help information about tool.
 

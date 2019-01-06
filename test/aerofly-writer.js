@@ -6,8 +6,9 @@ const aeroflyWriter  = require('../lib/aerofly-writer');
 
 describe('metarToAerofly', function() {
   it('should convert static objects', function() {
-    const aeroflyWriterDing = aeroflyWriter('./test/main-2.mcf', {
-      time_year: 2015,
+    const aeroflyWriterDing = aeroflyWriter('./test/main-2.mcf');
+    aeroflyWriterDing.setFromAeroflyObject({
+      time_year: 2020,
       time_month: 5,
       time_day: 5,
       time_hours: 0.5,

@@ -5,6 +5,7 @@ For detailed information check [Aerofly Weather's releases on Github](https://gi
 
 * :gift: Add CLI parameters `--time=<X>` and `--date=<X>`
 * :wrench: Improve internal documentation and structure
+* :bomb: Changed internal METAR object structure to match https://api.checkwx.com/#31-single
 
 0.2.0
 -----

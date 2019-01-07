@@ -87,3 +87,5 @@ Author: [Frank Boës](http://3960.org)
 Copyright & license: See [LICENSE.txt](LICENSE.txt)
 
 This tool is NOT affiliated with, endorsed, or sponsored by IPACS. As stated in the [LICENSE.txt](LICENSE.txt), this tool comes with no warranty and might damage your files.
+
+This software complies with the General Data Protection Regulation (GDPR) as it does not collect nor transmits any personal data but for data your submit by using the CLI commands using URLs. For GDPR compliance of these services refer to the legal statements of these services.

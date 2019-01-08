@@ -1,9 +1,10 @@
 More information on METAR
--------------------------
+=========================
 
 Wikipedia has an [article on METAR information](https://en.wikipedia.org/wiki/METAR) explaining the very basics.
 
-## Sources for METAR information
+Sources for METAR information
+-----------------------------
 
 These sites make METAR information publicly available:
 
@@ -11,7 +12,8 @@ These sites make METAR information publicly available:
 * https://aviationweather.gov/metar
 * https://metars.com/
 
-## Some METAR examples
+Some METAR examples
+-------------------
 
 Some clouds over San Francisco (USA):
 

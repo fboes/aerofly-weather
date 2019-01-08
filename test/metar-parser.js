@@ -14,9 +14,8 @@ describe('metarParser', function() {
         ['icao', 'KEYW'],
         ['wind', {degrees: 130, speed_kts: 5, gust_kts: 5}],
         ['visibility', { meters: 10 * 1609 }],
-        ['clouds', []],
         ['temperature', { celsius: 24 }],
-        ['barometer', {kpa: 3000 / 10 / 2.9529988 }]
+        ['barometer', {kpa: 3000 / 29.529988 }]
       ],
       output: false
     },
@@ -27,9 +26,8 @@ describe('metarParser', function() {
         ['icao', 'KACV'],
         ['wind', {degrees: 70, speed_kts: 3, gust_kts: 3}],
         ['visibility', { meters: 10 * 1609 }],
-        ['clouds', []],
         ['temperature', { celsius: 4 }],
-        ['barometer', {kpa: 3001 / 10 / 2.9529988 }]
+        ['barometer', {kpa: 3001 / 29.529988 }]
       ],
       output: false
     },
@@ -40,9 +38,8 @@ describe('metarParser', function() {
         ['icao', 'KPIE'],
         ['wind', {degrees: 20, speed_kts: 13, gust_kts: 17}],
         ['visibility', { meters: 10 * 1609 }],
-        ['clouds', []],
         ['temperature', { celsius: 17 }],
-        ['barometer', {kpa: 2998 / 10 / 2.9529988 }]
+        ['barometer', {kpa: 2998 / 29.529988 }]
       ],
       output: false
     },
@@ -53,9 +50,8 @@ describe('metarParser', function() {
         ['icao', 'KSPG'],
         ['wind', {degrees: 50, speed_kts: 12, gust_kts: 12}],
         ['visibility', { meters: 10 * 1609 }],
-        ['clouds', []],
         ['temperature', { celsius: 18 }],
-        ['barometer', {kpa: 2997 / 10 / 2.9529988 }]
+        ['barometer', {kpa: 2997 / 29.529988 }]
       ],
       output: false
     },
@@ -66,7 +62,7 @@ describe('metarParser', function() {
         ['icao', 'EDDS'],
         ['wind', {degrees: 290, speed_kts: 10, gust_kts: 10}],
         ['visibility', { meters: 9999 }],
-        ['clouds', [{base_feet_agl: 4000, minDensity: 1, maxDensity: 2}]],
+        ['clouds', [{base_feet_agl: 4000}]],
         ['temperature', { celsius: 9 }],
         ['barometer', {kpa: 101.2 }]
       ],
@@ -79,7 +75,7 @@ describe('metarParser', function() {
         ['icao', 'LBBG'],
         ['wind', {degrees: 120, speed_kts: 12 / 1.9438445, gust_kts: 12 / 1.9438445}],
         ['visibility', { meters: 1400 }],
-        ['clouds', [{base_feet_agl: 2200, minDensity: 5, maxDensity: 7}, {base_feet_agl: 5000, minDensity: 8, maxDensity: 8}]],
+        ['clouds', [{base_feet_agl: 2200}, {base_feet_agl: 5000}]],
         ['temperature', { celsius: -4 }],
         ['barometer', {kpa: 102.0 }]
       ],
@@ -92,9 +88,9 @@ describe('metarParser', function() {
         ['icao', 'KTTN'],
         ['wind', {degrees: 40, speed_kts: 11, gust_kts: 11}],
         ['visibility', { meters: 0.5 * 1609 }],
-        ['clouds', [{base_feet_agl: 300, minDensity: 5, maxDensity: 7}, {base_feet_agl: 1000, minDensity: 8, maxDensity: 8}]],
+        ['clouds', [{base_feet_agl: 300}, {base_feet_agl: 1000}]],
         ['temperature', { celsius: -2 }],
-        ['barometer', {kpa: 3006 / 10 / 2.9529988 }]
+        ['barometer', {kpa: 3006 / 29.529988 }]
       ],
       output: false
     },
@@ -105,9 +101,8 @@ describe('metarParser', function() {
         ['icao', 'KEYW'],
         ['wind', {degrees: 130, speed_kts: 5, gust_kts: 5}],
         ['visibility', { meters: 10 * 1609 }],
-        ['clouds', []],
         ['temperature', { celsius: 24 }],
-        ['barometer', {kpa: 3000 / 10 / 2.9529988 }]
+        ['barometer', {kpa: 3000 / 29.529988 }]
       ],
       output: false
     },
@@ -118,7 +113,7 @@ describe('metarParser', function() {
         ['icao', 'EDDH'],
         ['wind', {degrees: 290, speed_kts: 13, gust_kts: 13}],
         ['visibility', { meters: 6000 }],
-        ['clouds', [{base_feet_agl: 600, minDensity: 3, maxDensity: 4}, {base_feet_agl: 900, minDensity: 5, maxDensity: 7}]],
+        ['clouds', [{base_feet_agl: 600}, {base_feet_agl: 900}]],
         ['temperature', { celsius: 4 }],
         ['barometer', {kpa: 102.8 }]
       ],
@@ -131,9 +126,9 @@ describe('metarParser', function() {
         ['icao', 'ETEB'],
         ['wind', {degrees: 260, speed_kts: 10, gust_kts: 10}],
         ['visibility', { meters: 9999 }],
-        ['clouds', [{base_feet_agl: 9000, minDensity: 3, maxDensity: 4}]],
+        ['clouds', [{base_feet_agl: 9000}]],
         ['temperature', { celsius: 0 }],
-        ['barometer', {kpa: 3052 / 10 / 2.9529988 }]
+        ['barometer', {kpa: 3052 / 29.529988 }]
       ],
       output: false
     },
@@ -143,10 +138,9 @@ describe('metarParser', function() {
       expectedValues: [
         ['icao', 'KEYW'],
         ['wind', {degrees: 190, speed_kts: 6, gust_kts: 6}],
-        ['visibility', { meters: 9999 }],
-        ['clouds', [{base_feet_agl: 2400, minDensity: 1, maxDensity: 2}, {base_feet_agl: 3900, minDensity: 5, maxDensity: 7}]],
+        ['clouds', [{base_feet_agl: 2400}, {base_feet_agl: 3900}]],
         ['temperature', { celsius: 26 }],
-        ['barometer', {kpa: 3000 / 10 / 2.9529988 }]
+        ['barometer', {kpa: 3000 / 29.529988 }]
       ],
       output: false
     },
@@ -167,9 +161,27 @@ describe('metarParser', function() {
         console.log(metarData);
       }
       assert.ok(metarData);
+      assert.ok(metarData.raw_text);
+      assert.ok(metarData.raw_parts);
+      assert.ok(metarData.raw_parts.length > 2);
+      if (metarData.visibility) {
+        assert.ok(metarData.visibility.miles);
+        assert.ok(metarData.visibility.meters);
+      }
+      if (metarData.clouds && metarData.clouds[0]) {
+        assert.ok(metarData.clouds[0].code);
+        assert.ok(metarData.clouds[0].base_feet_agl);
+        assert.ok(metarData.clouds[0].base_meters_agl);
+      }
+      if (metarData.ceiling) {
+        assert.ok(metarData.ceiling.code);
+        assert.ok(metarData.ceiling.base_feet_agl);
+        assert.ok(metarData.ceiling.base_meters_agl);
+      }
+
       test.expectedValues.forEach((valueTest) => {
         if (Array.isArray(valueTest[1])) {
-          assert.ok(metarData[valueTest[0]]);
+          assert.ok(metarData[valueTest[0]], valueTest[0]);
           assert.strictEqual(metarData[valueTest[0]].length, valueTest[1].length);
         } else if (typeof valueTest[1] === 'object') {
           assert.ok(metarData[valueTest[0]]);

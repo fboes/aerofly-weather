@@ -21,18 +21,17 @@ Installation
 1. Make sure you have [Node.js](https://nodejs.org/) with at least version 10 installed. Call `node -v` to see your current version.
 1. Run `npm install -g aerofly-weather` to install Aerofly-Weather. 
 1. After having installed `aerofly-weather`, there are new command line tools available on your local PC (see below).
-1. Optional: Use `aerofly-make-batch` to create a batch file on your desktop for automating the import of METAR data. There is a small [guide on how to modify this batch file](docs/command-line.md).
+1. Use `aerofly-make-batch` to create a batch file on your desktop for automating the import of METAR data. There is a small [guide on how to modify this batch file](docs/command-line.md).
+1. You will need a copy of IPACS' Aerofly FS 2 which has run at least once.
 
 Usage of Command Line Tools
 ---------------------------
 
 The command line tools allow for a number of ways to get METAR information into IPACS' Aerofly FS 2, depending on your [source of METAR information](docs/metar.md):
 
-| CLI Command | Description |
-| ----------- | ----------- |
-| `aerofly-metar [METAR]` | Insert the [METAR information](docs/metar.md) into your configuration file, with `[METAR]` being a valid METAR forecast string enclosed in quotes. |
-| `aerofly-metar-url [URL]` | Fetch [METAR information](docs/metar.md) from an `[URL]`. The URL method may be used with a METAR API which supplies _raw_ METAR information. |
-| `aerofly-checkwx [ICAO-CODE] [API-KEY]` | Fetch [METAR information](docs/metar.md) supplied by https://api.checkwx.com/. You will need a valid `[API-KEY]` from https://api.checkwx.com/, and supply the `[ICAO-CODE]` from your selected airport. |
+* `aerofly-metar [METAR]`: Insert the [METAR information](docs/metar.md) into your configuration file, with `[METAR]` being a valid METAR forecast string enclosed in quotes.
+* `aerofly-metar-url [URL]`: Fetch [METAR information](docs/metar.md) from an `[URL]`. The URL method may be used with a METAR API which supplies _raw_ METAR information.
+* `aerofly-checkwx [ICAO-CODE] [API-KEY]`: Fetch [METAR information](docs/metar.md) supplied by https://api.checkwx.com/. You will need a valid `[API-KEY]` from https://api.checkwx.com/, and supply the `[ICAO-CODE]` from your selected airport.
 
 After choosing a method, do these steps to actually get METAR information into Aerofly FS 2:
 

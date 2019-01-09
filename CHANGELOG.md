@@ -3,6 +3,9 @@ Change log
 
 For detailed information check [Aerofly Weather's releases on Github](https://github.com/fboes/aerofly-weather/releases).
 
+0.3.0
+-----
+
 * :pill: Maximum possible values match Aerofly FS 2 settings
 * :gift: Add CLI parameters `--time=<X>` and `--date=<X>`
 * :gift: Add General Data Protection Regulation (GDPR) compliance statement

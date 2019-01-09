@@ -4,7 +4,7 @@ Command line magic
 Desktop shortcuts
 -----------------
 
-Desktop shortcuts make your every-day start-up more accessible. METAR information will be copied to Aerofly FS 2 by just clicking on a small file on your desktop.
+Desktop shortcuts make your every-day start-up more accessible. METAR information will be copied to Aerofly FS 2 by just clicking an icon sitting on your desktop.
 
 The easiest way to create a batch file is to trigger `aerofly-make-batch` from a command line. Below you will find detailed instructions on how to configure this manually.
 
@@ -50,3 +50,15 @@ CHECKWX_APIKEY=12345abcd
 echo "export CHECKWX_APIKEY=$CHECKWX_APIKEY" >> ~/.profile
 echo "export CHECKWX_APIKEY=$CHECKWX_APIKEY" >> ~/.bash_profile
 ```
+
+General CLI parameters
+----------------------
+
+These parameters will work with `aerofly-metar`, `aerofly-metar-url` and `aerofly-checkwx`:
+
+* `[FILE]`: Every command accepts a last parameter to specify the file location. By default this will be `main.mcf` in the current directory. You may want to supply `"%userprofile%\Documents\Aerofly FS 2\main.mcf"` to change your `main.mcf` regardless of your current directory.
+* `--hours=X`: Change time copied from METAR information to Aerofly FS 2 by `X` hours.
+* `--time=<X>`: Set time to HH:MM+ZZ:ZZ in Aerofly FS 2, e.g. `12:30-08:00`. Remember to include the time zone, else the time will be interpreted as UTC time.
+* `--date=<X>`: Set date to YYYY-MM-DD in Aerofly FS 2, e.g. `2018-12-31`.
+* `--verbose`: Output extra information about found and parsed data.
+* `--help`: Show help information about tool.

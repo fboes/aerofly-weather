@@ -6,3 +6,4 @@ rem Replace 12345abcd with actual API key
 set CHECKWX_APIKEY=12345abcd
 call aerofly-checkwx %ICAO% %CHECKWX_APIKEY% --verbose
 pause
+rem start steam://rungameid/434030

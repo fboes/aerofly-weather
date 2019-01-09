@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+
+'use strict';
+
+if (process.argv.length > 2) {
+  console.log(`Usage: aerofly-make-batch
+
+Create a new batch file on your desktop for quickly starting METAR import.`);
+  process.exit(0);
+}
+
+const os = require('os');
+const fs = require('fs');
+const path = require('path');
+
+const homedir = os.homedir();
+if (homedir) {
+  let leFile = '';
+  let leContent = '';
+  if (os.platform().match(/^win/)) {
+    // Microsoft Windows
+    leFile = path.join(homedir, 'Desktop', 'aerofly-weather.bat');
+    leContent = fs.readFileSync(path.join(__dirname, '..', 'docs', 'aerofly-metar.bat'), 'utf8');
+  } else {
+    // Linux / Mac OSX
+    leFile = path.join(homedir, 'Desktop', 'aerofly-weather.sh');
+    leContent = fs.readFileSync(path.join(__dirname, '..', 'docs', 'aerofly-metar.sh'), 'utf8');
+  }
+
+  if (leFile && leContent) {
+    fs.writeFile(leFile, leContent, (err) => {
+      if (err) {
+        throw err;
+      }
+      fs.chmod(leFile, 0o744, (err) => {
+        if (err) {
+          throw err;
+        }
+        console.log('Done creating ' + leFile);
+      });
+    });
+  }
+}

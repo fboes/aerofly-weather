@@ -1,7 +1,7 @@
 ✈️ METAR weather importer for Aerofly FS 2
 ===========================================
 
-Copy [METAR information](docs/metar.md) into IPCAS' Aerofly FS 2. 
+Copy [METAR information](docs/metar.md) into IPCAS' Aerofly FS 2.
 
 This tool will copy the following METAR information to your configuration file while Aerofly FS 2 is not running:
 
@@ -12,14 +12,17 @@ This tool will copy the following METAR information to your configuration file w
 
 The [METAR information](docs/metar.md) can be supplied manually, or can be fetched from an URL.
 
+This tool is capable of settings weather values which are not accessible in Aerofly FS 2. This is done deliberately. Please supply [feedback](https://github.com/fboes/aerofly-weather/issues) in case of any strange effects you encounter.
+
+
 Installation
 ------------
 
 1. This tool requires Windows, Mac OSX or Linux.
 1. Make sure you have [Node.js](https://nodejs.org/) with at least version 10 installed. Call `node -v` to see your current version.
-1. Run `npm install -g aerofly-weather` to install Aerofly-Weather.
-
-After having installed `aerofly-weather`, there are new command line (CLI) commands available on your local PC.
+1. Run `npm install -g aerofly-weather` to install Aerofly-Weather. 
+1. After having installed `aerofly-weather`, there are new command line (CLI) commands available on your local PC.
+1. Optional: Use `aerofly-make-batch` to create a batch file on your desktop for importing METAR data into Aerofly FS 2. There is a small [guide on how to modify this batch file](docs/command-line.md).
 
 Usage
 -----

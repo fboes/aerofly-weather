@@ -6,36 +6,30 @@ Desktop shortcuts
 
 Desktop shortcuts make your every-day start-up more accessible. METAR information will be copied to Aerofly FS 2 by just clicking on a small file on your desktop.
 
+The easiest way to create a batch file is to trigger `aerofly-make-batch` from a command line. Below you will find detailed instructions on how to configure this manually.
+
 ### Microsoft Windows
 
 To enable a desktop shortcut, you will have to create it:
 
 1. Right click on your desktop > "New" > "Text Document".
-2. Name the new document `metar.txt`.
-3. Open the text document and paste the code example below in there.
-4. Right click on `metar.txt` > "Rename" > `metar.bat`.
+2. Name the new document `aerofly-weather.txt`.
+3. Open the text document and paste [`aerofly-metar.bat`](aerofly-metar.bat) or [`aerofly-checkwx.bat`](aerofly-checkwx.bat) in there.
+4. Right click on `aerofly-weather.txt` > "Rename" > `aerofly-weather.bat`.
 
-Batch code example for `aerofly-metar`:
+After you have created `aerofly-weather`, double-clicking this file starts the METAR copy process.
 
-```batch
-cd "%userprofile%\Documents\Aerofly FS 2"
-copy main.mcf main.bak
-set /p METAR=Enter METAR: 
-aerofly-metar %METAR% --verbose
-pause
-```
+Mac OSX
+-------
 
-Batch code example for `aerofly-checkwx`, replacing `12345abcd` with your actual API key:
+> Please note: This is untested. If this is working / not working for you, please supply [feedback](https://github.com/fboes/aerofly-weather/issues).
 
-```batch
-cd "%userprofile%\Documents\Aerofly FS 2"
-copy main.mcf main.bak
-set /p ICAO=Enter ICAO code: 
-aerofly-checkwx %ICAO% 12345abcd --verbose
-pause
-```
-
-After you have created `metar.bat`, double-clicking this file starts the METAR copy process.
+1. Open Automator
+1. Click "Actions" in the top-left corner of the Automator window, then select "Utilities" in the Library.
+2. Drag the "Ask for Text" action into your workflow. (Checked: Ignore this action's input; Checked: Require an answer)
+2. Drag the "Set Value of Variable" action into your workflow. (Checked: Ignore this action's input; Checked: Require an answer)
+2. Drag the "Run Shell Script" action into your workflow. Paste the code example from [`aerofly-metar.sh`](aerofly-metar.sh) or [`aerofly-checkwx.sh`](aerofly-checkwx.sh) into the Script Editor (Shell: /bin/bash; Pass input: as arguments)
+4. After finishing, compile your command.
 
 Environment variables
 ---------------------
@@ -44,14 +38,15 @@ Environment variables
 
 ### Microsoft Windows
 
-```bash
-SET  CHECKWX_APIKEY=12345abcd
-SETX CHECKWX_APIKEY 12345abcd
+```batch
+set  CHECKWX_APIKEY=12345abcd
+setx CHECKWX_APIKEY %CHECKWX_APIKEY%
 ```
 
 ### Linux / Mac OS X
 
 ```bash
-echo "export CHECKWX_APIKEY=12345abcd" >> ~/.profile
-echo "export CHECKWX_APIKEY=12345abcd" >> ~/.bash_profile
+CHECKWX_APIKEY=12345abcd
+echo "export CHECKWX_APIKEY=$CHECKWX_APIKEY" >> ~/.profile
+echo "export CHECKWX_APIKEY=$CHECKWX_APIKEY" >> ~/.bash_profile
 ```

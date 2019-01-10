@@ -151,6 +151,14 @@ describe('metarParser', function() {
         ['visibility', { meters: 1.5 * 1609 }]
       ],
       output: false
+    },
+    {
+      source: 'EHAM with CAVOK',
+      metarCode: 'EHAM 100125Z 33004KT CAVOK M00/M01 Q1026 NOSIG',
+      expectedValues: [
+        ['visibility', { miles: 10, meters: 10 * 1609 }]
+      ],
+      output: false
     }
   ];
 

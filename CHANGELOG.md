@@ -5,6 +5,7 @@ For detailed information check [Aerofly Weather's releases on Github](https://gi
 
 * :pill: Improve installation, switching to desktop batch file as preferred method
 * :pill: Support `CAVOK` in METAR code
+* :pill: Support weather conditions in METAR code
 
 0.3.0
 -----

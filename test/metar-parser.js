@@ -75,10 +75,12 @@ describe('metarParser', function() {
         ['icao', 'LBBG'],
         ['wind', {degrees: 120, speed_kts: 12 / 1.9438445, gust_kts: 12 / 1.9438445}],
         ['visibility', { meters: 1400 }],
+        ['conditions', [ {code: '+'}, {code: 'SN'} ]],
         ['clouds', [{base_feet_agl: 2200}, {base_feet_agl: 5000}]],
         ['temperature', { celsius: -4 }],
         ['barometer', {kpa: 102.0 }]
       ],
+
       output: false
     },
     {
@@ -88,6 +90,7 @@ describe('metarParser', function() {
         ['icao', 'KTTN'],
         ['wind', {degrees: 40, speed_kts: 11, gust_kts: 11}],
         ['visibility', { meters: 0.5 * 1609 }],
+        ['conditions', [ {code: 'VC'}, {code: 'TS'}, {code: 'SN'}, {code: 'FZ'}, {code: 'FG'} ]],
         ['clouds', [{base_feet_agl: 300}, {base_feet_agl: 1000}]],
         ['temperature', { celsius: -2 }],
         ['barometer', {kpa: 3006 / 29.529988 }]
@@ -148,7 +151,12 @@ describe('metarParser', function() {
       source: 'https://api.checkwx.com/#2019-01-07',
       metarCode: 'KSFO 070121Z 19023KT 1 1/2SM R28R/6000VP6000FT -RA BKN004 BKN013 OVC035 15/12 A2970 RMK AO2 T01500122 PNO $',
       expectedValues: [
-        ['visibility', { meters: 1.5 * 1609 }]
+        ['icao', 'KSFO'],
+        ['conditions', [ {code: '-'}, {code: 'RA'} ]],
+        ['visibility', { meters: 1.5 * 1609 }],
+        ['temperature', { celsius: 15 }],
+        ['dewpoint', { celsius: 12 }],
+        ['barometer', {kpa: 2970 / 29.529988 }]
       ],
       output: false
     },
@@ -156,7 +164,10 @@ describe('metarParser', function() {
       source: 'EHAM with CAVOK',
       metarCode: 'EHAM 100125Z 33004KT CAVOK M00/M01 Q1026 NOSIG',
       expectedValues: [
-        ['visibility', { miles: 10, meters: 10 * 1609 }]
+        ['visibility', { miles: 10, meters: 10 * 1609 }],
+        ['temperature', { celsius: -0 }],
+        ['dewpoint', { celsius: -1 }],
+        ['barometer', {kpa: 102.6 }]
       ],
       output: false
     }
@@ -192,7 +203,7 @@ describe('metarParser', function() {
           assert.ok(metarData[valueTest[0]], valueTest[0]);
           assert.strictEqual(metarData[valueTest[0]].length, valueTest[1].length);
         } else if (typeof valueTest[1] === 'object') {
-          assert.ok(metarData[valueTest[0]]);
+          assert.ok(metarData[valueTest[0]], valueTest[0]);
           for (let [key, value] of Object.entries(valueTest[1])) {
             assert.strictEqual(metarData[valueTest[0]][key], value, 'Match for ' + key + '.' + value);
           }

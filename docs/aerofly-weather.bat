@@ -3,7 +3,14 @@
 :: Change variables to fit your local settings
 SET CHECKWX_APIKEY=
 SET METAR_URL=
-SET MCF_LOCATION="%userprofile%\Documents\Aerofly FS 2\main.mcf"
+SET MCF_LOCATION="%userprofile%\Documents\Aerofly FS 2"
+
+:: Change directory
+PUSHD %MCF_LOCATION%
+
+:: Backup
+ECHO Backup of main.mcf
+COPY main.mcf main.bak
 
 :: https://stackoverflow.com/questions/9307512/create-a-batch-file-with-multiple-options
 :Menu
@@ -57,3 +64,4 @@ SET MCF_LOCATION="%userprofile%\Documents\Aerofly FS 2\main.mcf"
   GOTO End
 
 :End
+POPD

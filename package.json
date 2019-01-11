@@ -17,12 +17,14 @@
     "url": "git+https://github.com/fboes/aerofly-weather.git"
   },
   "keywords": [
-    "Aerofly",
-    "FS2",
-    "METAR",
+    "aerofly-fs2",
+    "flight",
+    "simulator",
+    "metar",
     "weather",
-    "API",
-    "NodeJs"
+    "api",
+    "cli",
+    "checkwx"
   ],
   "author": "Frank Boës <info@3960.org> (https://3960.org/)",
   "preferGlobal": true,

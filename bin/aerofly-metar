@@ -11,9 +11,9 @@ Copy METAR information string into Aerofly FS2 configuration file.
 For more information on METAR see https://aviationweather.gov/metar.
 
 Options:
-      --hours=<X>            Offset time by X hours, e.g. '-8'
-      --time=<X>             Set time to HH:MM+ZZ:ZZ, e.g. '12:30-08:00'
-      --date=<X>             Set date to YYYY-MM-DD, e.g. '2018-12-31'
+      --hours=<HOURS>        Offset time by HOURS hours, e.g. '-8'
+      --time=<HH:MM+ZZ:ZZ>   Set time to HH:MM+ZZ:ZZ, e.g. '12:30-08:00'
+      --date=<YYYY-MM-DD>    Set date to YYYY-MM-DD, e.g. '2018-12-31'
       --help                 Display this help and exit
       --verbose              Show debug output`);
   process.exit(0);

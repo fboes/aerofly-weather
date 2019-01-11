@@ -12,7 +12,7 @@ These command line tools will copy the following METAR information to your confi
 
 The [METAR information](docs/metar.md) can be supplied manually, or can be fetched from an URL.
 
-This tool is capable of settings weather values which are not accessible in Aerofly FS 2. This is done deliberately. Please supply [feedback](https://github.com/fboes/aerofly-weather/issues) in case of any strange effects you encounter.
+This tool is capable of setting weather values which are not accessible in Aerofly FS 2. This is done deliberately. Please supply [feedback](https://github.com/fboes/aerofly-weather/issues) in case of any strange effects you encounter.
 
 Installation
 ------------
@@ -20,31 +20,27 @@ Installation
 1. This tool requires Windows, Mac OSX or Linux.
 1. Make sure you have [Node.js](https://nodejs.org/) with at least version 10 installed. Call `node -v` to see your current version.
 1. Run `npm install -g aerofly-weather` to install Aerofly-Weather. 
-1. After having installed `aerofly-weather`, there are new command line tools available on your local PC (see below).
-1. Use `aerofly-make-batch` to create a batch file on your desktop for automating the import of METAR data. There is a small [guide on how to modify this batch file](docs/command-line.md).
-1. You will need a copy of IPACS' Aerofly FS 2 which has run at least once.
+1. Use `aerofly-make-batch` to create a batch file on your desktop.
 
-Usage of Command Line Tools
+This package also comes with a load of [command line tools](docs/command-line.md). For basic usage the desktop batch file will suffice.
+
+Usage of desktop batch file
 ---------------------------
 
-The command line tools allow for a number of ways to get METAR information into IPACS' Aerofly FS 2, depending on your [source of METAR information](docs/metar.md):
+You will need a copy of IPACS' Aerofly FS 2 which has run at least once. This creates a file called `main.mcf`, which contains all settings and the weather data in Aerofly FS 2. This file will be modified by the tools supplied with this package.
 
-* `aerofly-metar [METAR]`:  
-  Insert the [METAR information](docs/metar.md) into your configuration file, with `[METAR]` being a valid METAR forecast string enclosed in quotes.
-* `aerofly-metar-url [URL]`:  
-  Fetch [METAR information](docs/metar.md) from an `[URL]`. The URL method may be used with a METAR API which supplies _raw_ METAR information.
-* `aerofly-checkwx [ICAO-CODE] [API-KEY]`:  
-  Fetch [METAR information](docs/metar.md) supplied by https://api.checkwx.com/. You will need a valid `[API-KEY]` from https://api.checkwx.com/, and supply the `[ICAO-CODE]` from your selected airport.
+Click on the desktop file called `aerofly-weather.bat` and follow the on-screen instructions. Basically it offers you to:
 
-After choosing a method, do these steps to actually get METAR information into Aerofly FS 2:
+* Set weather data from a [METAR string](docs/metar.md).
+* Fetch a METAR string from an URL and set the weather accordingly.
+* Fetch weather data from the CheckWx API and set the weather accordingly.
 
-1. Open a Command Prompt (e.g. by typing "Command Prompt" into your Windows Search).
-1. Go to your Aerofly FS 2 save data directory where your main configuration file `main.mcf` is located. Usually for Windows this file is located in `Documents\Aerofly FS 2`.
-1. Make a backup of your `main.mcf`.
-1. Execute `aerofly-metar [METAR]`, `aerofly-metar-url [URL]` or `aerofly-checkwx [APIKEY] [ICAO-CODE]`.
-1. Start Aerofly FS 2.
+The desktop batch file also contains some settings for the tools. If you want to edit the desktop batch file, just right click on it and select "Edit". There is a small [guide on how work with the command line tools contained in the desktop batch file](docs/command-line.md).
 
-There is also a small [guide on how to work best with the command line tools as well as an explanation for additional parameters](docs/command-line.md).
+Advanced usage
+--------------
+
+This package comes with a load of [command line tools](docs/command-line.md). These can be integrated into scripts or batch files.
 
 Update
 ------

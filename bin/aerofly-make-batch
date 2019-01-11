@@ -2,10 +2,16 @@
 
 'use strict';
 
-if (process.argv.length > 2) {
-  console.log(`Usage: aerofly-make-batch
+if (process.argv.length > 2 && process.argv[2] === '--help') {
+  console.log(`Usage: aerofly-make-batch [TYPE]
 
-Create a new batch file on your desktop for quickly starting METAR import.`);
+Create a new batch file on your desktop for quickly starting METAR import to
+Aerofly FS 2.
+[TYPE] is one of 'weather' (all options), 'checkwx' (only CheckWx import) or
+'metar' (only METAR string import).
+
+Options:
+      --help                 Display this help and exit`);
   process.exit(0);
 }
 
@@ -14,30 +20,28 @@ const fs = require('fs');
 const path = require('path');
 
 const homedir = os.homedir();
+const sourceFile = process.argv[2] ? path.basename('aerofly-' + process.argv[2]) : 'aerofly-weather';
+
 if (homedir) {
-  let leFile = '';
-  let leContent = '';
+  let leSource = '';
+  let leTarget = '';
   if (os.platform().match(/^win/)) {
     // Microsoft Windows
-    leFile = path.join(homedir, 'Desktop', 'aerofly-weather.bat');
-    leContent = fs.readFileSync(path.join(__dirname, '..', 'docs', 'aerofly-metar.bat'), 'utf8');
+    leSource = path.join(__dirname, '..', 'docs', sourceFile + '.bat');
+    leTarget = path.join(homedir, 'Desktop', 'aerofly-weather.bat');
   } else {
     // Linux / Mac OSX
-    leFile = path.join(homedir, 'Desktop', 'aerofly-weather.sh');
-    leContent = fs.readFileSync(path.join(__dirname, '..', 'docs', 'aerofly-metar.sh'), 'utf8');
+    leSource = path.join(__dirname, '..', 'docs', sourceFile + '.sh');
+    leTarget = path.join(homedir, 'Desktop', 'aerofly-weather.sh');
   }
 
-  if (leFile && leContent) {
-    fs.writeFile(leFile, leContent, (err) => {
+  if (leTarget && leSource) {
+    fs.copyFile(leSource, leTarget, (err) => {
       if (err) {
-        throw err;
+        console.error(err);
+        process.exit(1);
       }
-      fs.chmod(leFile, 0o744, (err) => {
-        if (err) {
-          throw err;
-        }
-        console.log('Done creating ' + leFile);
-      });
+      console.log('Done creating ' + leTarget);
     });
   }
 }

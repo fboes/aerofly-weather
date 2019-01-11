@@ -1,8 +1,9 @@
-@echo off
-cd "%userprofile%\Documents\Aerofly FS 2"
-copy main.mcf main.bak
-set /p METAR=Enter METAR:
-call aerofly-metar %METAR% --verbose
-pause
+@ECHO OFF
+CD "%userprofile%\Documents\Aerofly FS 2"
+COPY main.mcf main.bak
 
-rem start steam://rungameid/434030
+SET /p METAR=Enter METAR:
+CALL aerofly-metar %METAR% --verbose
+
+PAUSE
+START steam://rungameid/434030

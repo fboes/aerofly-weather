@@ -7,7 +7,7 @@ const args = require('../lib/argumentor')(process.argv);
 if (args._.length < 1 || args.help) {
   console.log(`Usage: aerofly-fetch <URL> [FILE]
 
-Copy raw METAR information from URL into Aerofly FS2 configuration file.
+Copy raw METAR information from URL into your Aerofly FS2 configuration file.
 
 Options:
       --hours=<HOURS>        Offset time by HOURS hours, e.g. '-8'

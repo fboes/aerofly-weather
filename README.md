@@ -12,7 +12,7 @@ These command line tools will copy the following METAR information to your confi
 
 The [METAR information](docs/metar.md) can be supplied manually, or can be fetched from an URL.
 
-This tool is capable of setting weather values which are not accessible in Aerofly FS 2. This is done deliberately. Please supply [feedback](https://github.com/fboes/aerofly-weather/issues) in case of any strange effects you encounter.
+This tool is capable of setting weather values which you cannot access in Aerofly FS 2. This is tested and is done deliberately. Please supply [feedback](https://github.com/fboes/aerofly-weather/issues) in case of any strange effects you encounter.
 
 Installation
 ------------
@@ -33,7 +33,7 @@ Click on the desktop file called `aerofly-weather.bat` and follow the on-screen 
 
 * Set weather data from a [METAR string](docs/metar.md).
 * Fetch a METAR string from an URL and set the weather accordingly.
-* Fetch weather data from the CheckWx API and set the weather accordingly.
+* Fetch weather data from the [CheckWX API](https://www.checkwx.com/) and set the weather accordingly.
 
 The desktop batch file also contains some settings for the tools. If you want to edit the desktop batch file, just right click on it and select "Edit". There is a small [guide on how work with the command line tools contained in the desktop batch file](docs/command-line.md).
 

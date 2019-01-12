@@ -15,7 +15,7 @@ cp main.mcf main.bak
 
 # https://stackoverflow.com/questions/9307512/create-a-batch-file-with-multiple-options
 echo "Get Aerofly FS 2 weather data from..."
-OPTIONS=("METAR input" "METAR URL" "CheckWx" "Start Aerofly FS 2" "Quit")
+OPTIONS=("METAR input" "METAR URL" "CheckWX" "Start Aerofly FS 2" "Quit")
 select OPT in "${OPTIONS[@]}"
 
 do
@@ -27,14 +27,22 @@ do
 
     "METAR URL")
       if [ -z "$METAR_URL" ]; then
-        echo "Please set METAR_URL in line 5"
+        echo "Please set METAR_URL in line 5 / 6"
         exit 1
       fi
       read -p 'Enter ICAO string: ' ICAO
       aerofly-metar-url $METAR_URL$ICAO$METAR_URL_END --verbose
       ;;
 
-    "CheckWx")
+    "Check URL")
+      if [ -z "$METAR_URL" ]; then
+        echo "Please set METAR_URL in line 5 / 6"
+        exit 1
+      fi
+      start $METAR_URL
+      ;;
+
+    "CheckWX")
       if [ -z "$CHECKWX_APIKEY" ]; then
         echo "Please set CHECKWX_APIKEY in line 4"
         exit 1
@@ -45,7 +53,7 @@ do
 
     "Start Aerofly FS 2")
       # This is pure guess work and is not tested on actual PC
-      open steam://rungameid/434030
+      start steam://rungameid/434030
       break;
       ;;
 

@@ -26,13 +26,13 @@ Examples for command line tool integrations
 
 * [`aerofly-weather.bat`](aerofly-weather.bat): Interactive menu, will be used for desktop batch file.
 * [`aerofly-metar.bat`](aerofly-metar.bat): Ask user every time for METAR string.
-* [`aerofly-checkwx.bat`](aerofly-checkwx.bat): Ask user every time for ICAO code to fetch METAR information from CheckWx.
+* [`aerofly-checkwx.bat`](aerofly-checkwx.bat): Ask user every time for ICAO code to fetch METAR information from CheckWX.
 
 ### Linux / Mac OS X
 
 * [`aerofly-weather.sh`](aerofly-weather.sh): Interactive menu, will be used for desktop batch file.
 * [`aerofly-metar.sh`](aerofly-metar.sh): Ask user every time for METAR string.
-* [`aerofly-checkwx.sh`](aerofly-checkwx.sh): Ask user every time for ICAO code to fetch METAR information from CheckWx.
+* [`aerofly-checkwx.sh`](aerofly-checkwx.sh): Ask user every time for ICAO code to fetch METAR information from CheckWX.
 
 Environment variables
 ---------------------

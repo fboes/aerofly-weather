@@ -7,7 +7,7 @@ const args = require('../lib/argumentor')(process.argv);
 if (args._.length < 1 || args.help) {
   console.log(`Usage: aerofly-metar "<METAR>" [FILE]
 
-Copy METAR information string into Aerofly FS2 configuration file.
+Copy METAR information string into your Aerofly FS2 configuration file.
 For more information on METAR see https://aviationweather.gov/metar.
 
 Options:

@@ -19,7 +19,7 @@ COPY /Y main.mcf main.bak
   ECHO Get Aerofly FS 2 weather data from...
   ECHO 1. METAR input  (METAR string required)
   ECHO 2. METAR URL    (ICAO code required)
-  ECHO 3. CheckWx      (ICAO code required)
+  ECHO 3. CheckWX      (ICAO code required)
   ECHO.
   ECHO 4. Start Aerofly FS 2
   ECHO 5. Quit
@@ -30,7 +30,7 @@ COPY /Y main.mcf main.bak
   :: Note - list ERRORLEVELS in decreasing order
   IF ERRORLEVEL 5 GOTO End
   IF ERRORLEVEL 4 GOTO Aerofly
-  IF ERRORLEVEL 3 GOTO MetarCheckWx
+  IF ERRORLEVEL 3 GOTO MetarCheckWX
   IF ERRORLEVEL 2 GOTO MetarURL
   IF ERRORLEVEL 1 GOTO Metar
 
@@ -42,7 +42,7 @@ COPY /Y main.mcf main.bak
 
 :MetarURL
   IF "%METAR_URL%"=="" (
-    ECHO Please set METAR_URL in line 5
+    ECHO Please set METAR_URL in line 5 / 6
     GOTO Menu
   )
   SET /p ICAO=Enter ICAO code          ?
@@ -50,7 +50,15 @@ COPY /Y main.mcf main.bak
   ECHO -------------------------------------------------------
   GOTO Menu
 
-:MetarCheckWx
+:CheckURL
+  IF "%METAR_URL%"=="" (
+    ECHO Please set METAR_URL in line 5 / 6
+    GOTO Menu
+  )
+  START %METAR_URL%
+  GOTO Menu
+
+:MetarCheckWX
   IF "%CHECKWX_APIKEY%"=="" (
     ECHO Please set CHECKWX_APIKEY in line 4
     GOTO Menu

@@ -7,7 +7,7 @@ if (process.argv.length > 2 && process.argv[2] === '--help') {
 
 Create a new batch file on your desktop for quickly starting METAR import to
 Aerofly FS 2.
-[TYPE] is one of 'weather' (all options), 'checkwx' (only CheckWx import) or
+[TYPE] is one of 'weather' (all options), 'checkwx' (only CheckWX import) or
 'metar' (only METAR string import).
 
 Options:

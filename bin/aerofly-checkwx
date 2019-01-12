@@ -10,7 +10,7 @@ if (args._.length === 1 && process.env.CHECKWX_APIKEY) {
 if (args._.length < 2 || args.help) {
   console.log(`Usage: aerofly-checkwx <ICAO> [CHECKWX_APIKEY] [FILE]
 
-Copy raw METAR information from https://api.checkwx.com into Aerofly FS2 configuration file.
+Copy METAR information from https://api.checkwx.com into your Aerofly FS2 configuration file.
 You will need an API key to fetch information.
 
 You may supply 'CHECKWX_APIKEY' by setting the environment variable 'CHECKWX_APIKEY'

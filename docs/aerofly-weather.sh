@@ -3,6 +3,7 @@
 # Change variables to fit your local settings
 CHECKWX_APIKEY=
 METAR_URL=
+METAR_URL_END=
 MCF_LOCATION="~\Documents\Aerofly FS 2"
 
 # Change directory
@@ -30,7 +31,7 @@ do
         exit 1
       fi
       read -p 'Enter ICAO string: ' ICAO
-      aerofly-metar-url $METAR_URL$ICAO --verbose
+      aerofly-metar-url $METAR_URL$ICAO$METAR_URL_END --verbose
       ;;
 
     "CheckWx")

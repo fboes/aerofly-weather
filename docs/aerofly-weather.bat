@@ -3,6 +3,7 @@
 :: Change variables to fit your local settings
 SET CHECKWX_APIKEY=
 SET METAR_URL=
+SET METAR_URL_END=
 SET MCF_LOCATION="%userprofile%\Documents\Aerofly FS 2"
 
 :: Change directory
@@ -45,7 +46,7 @@ COPY /Y main.mcf main.bak
     GOTO Menu
   )
   SET /p ICAO=Enter ICAO code          ?
-  CALL aerofly-metar-url %METAR_URL%%ICAO% --verbose
+  CALL aerofly-metar-url %METAR_URL%%ICAO%%METAR_URL_END% --verbose
   ECHO -------------------------------------------------------
   GOTO Menu
 

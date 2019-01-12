@@ -47,6 +47,7 @@ Update
 
 1. To find out if your installation of Aerofly-Weather needs updating, run `npm outdated -g aerofly-weather`.
 2. Run `npm update -g aerofly-weather` to update your local Aerofly-Weather installation to the latest stable release.
+3. Optional: Use `aerofly-make-batch` to create a new batch file on your desktop.
 
 Status
 -------

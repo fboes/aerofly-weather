@@ -96,7 +96,7 @@ describe('metarToAerofly', function() {
       icao: 'KPIE',
       observed: new Date('2019-01-29T18:30:18.825Z'),
       wind: { degrees: 270, speed_kts: 5, gust_kts: 5 },
-      visibility: { meters: 20000 },
+      visibility: { meters: 9999 },
       clouds: [
         { base_feet_agl: 2900, minDensity: 5, maxDensity: 7 }
       ],
@@ -118,5 +118,20 @@ describe('metarToAerofly', function() {
     assert.strictEqual(aeroflyObject.wind_direction_in_degree,  270);
     assert.strictEqual(aeroflyObject.visibility,    1);
     assert.strictEqual(aeroflyObject.clouds.length, 1);
+  });
+
+  it('must interpret 9999 meters as 10 statute miles', function() {
+    const aeroflyObject = metarToAerofly({
+      icao: 'KPIE',
+      observed: new Date('2019-01-29T18:30:18.825Z'),
+      visibility: { meters: 9999 }
+    }, {
+      maxVisibility: 12000 // :? is bigger than 9999
+    });
+
+    //console.log(aeroflyObject);
+    assert.ok(aeroflyObject);
+
+    assert.strictEqual(aeroflyObject.visibility,    1, '...because 9999 is interpreted as 10 statute miles');
   });
 });

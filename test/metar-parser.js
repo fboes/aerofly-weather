@@ -16,7 +16,7 @@ describe('metarParser', function() {
         ['wind', {degrees: 130, speed_kts: 5, gust_kts: 5}],
         ['visibility', { meters: convert.milesToMeters(10) }],
         ['temperature', { celsius: 24, fahrenheit: 75.2 }],
-        ['barometer', {kpa: 3000 / 29.529988 }]
+        ['barometer', {kpa: 3000 / 10 / 2.9529988 }]
       ],
       output: false
     },
@@ -28,7 +28,7 @@ describe('metarParser', function() {
         ['wind', {degrees: 70, speed_kts: 3, gust_kts: 3}],
         ['visibility', { meters: convert.milesToMeters(10) }],
         ['temperature', { celsius: 4, fahrenheit: 39.2 }],
-        ['barometer', {kpa: 3001 / 29.529988 }]
+        ['barometer', { hgin: 30.01, kpa: convert.hginToKpa(30.01) }]
       ],
       output: false
     },
@@ -40,7 +40,7 @@ describe('metarParser', function() {
         ['wind', {degrees: 20, speed_kts: 13, gust_kts: 17}],
         ['visibility', { meters: convert.milesToMeters(10) }],
         ['temperature', { celsius: 17, fahrenheit: 62.6 }],
-        ['barometer', {kpa: 2998 / 29.529988 }]
+        ['barometer', { hgin: 29.98, kpa: convert.hginToKpa(29.98) }]
       ],
       output: false
     },
@@ -52,7 +52,7 @@ describe('metarParser', function() {
         ['wind', {degrees: 50, speed_kts: 12, gust_kts: 12}],
         ['visibility', { meters: convert.milesToMeters(10) }],
         ['temperature', { celsius: 18, fahrenheit: 64.4 }],
-        ['barometer', {kpa: 2997 / 29.529988 }]
+        ['barometer', {kpa: 2997 / 10 / 2.9529988 }]
       ],
       output: false
     },
@@ -94,7 +94,7 @@ describe('metarParser', function() {
         ['conditions', [ 'VC', 'TS', 'SN', 'FZ', 'FG' ]],
         ['clouds', [{base_feet_agl: 300, code: 'BKN'}, {base_feet_agl: 1000, code: 'OVC'}]],
         ['temperature', { celsius: -2, fahrenheit: 28.4 }],
-        ['barometer', {kpa: 3006 / 29.529988 }]
+        ['barometer', {kpa: convert.hginToKpa(30.06) }]
       ],
       output: false
     },
@@ -106,7 +106,7 @@ describe('metarParser', function() {
         ['wind', {degrees: 130, speed_kts: 5, gust_kts: 5}],
         ['visibility', { meters: convert.milesToMeters(10) }],
         ['temperature', { celsius: 24 }],
-        ['barometer', {kpa: 3000 / 29.529988 }]
+        ['barometer', {kpa: 3000 / 10 / 2.9529988 }]
       ],
       output: false
     },
@@ -132,7 +132,7 @@ describe('metarParser', function() {
         ['visibility', { meters: 9999 }],
         ['clouds', [{base_feet_agl: 9000, code: 'SCT'}]],
         ['temperature', { celsius: 0, fahrenheit: 32 }],
-        ['barometer', {kpa: 3052 / 29.529988 }]
+        ['barometer', {kpa: 3052 / 10 / 2.9529988 }]
       ],
       output: false
     },
@@ -144,7 +144,7 @@ describe('metarParser', function() {
         ['wind', {degrees: 190, speed_kts: 6, gust_kts: 6}],
         ['clouds', [{base_feet_agl: 2400, code: 'FEW'}, {base_feet_agl: 3900, code: 'BKN'}]],
         ['temperature', { celsius: 26 }],
-        ['barometer', {kpa: 3000 / 29.529988 }]
+        ['barometer', {kpa: 3000 / 10 / 2.9529988 }]
       ],
       output: false
     },
@@ -157,7 +157,7 @@ describe('metarParser', function() {
         ['visibility', { meters: convert.milesToMeters(1.5) }],
         ['temperature', { celsius: 15, fahrenheit: 59 }],
         ['dewpoint', { celsius: 12, fahrenheit: 53.6 }],
-        ['barometer', {kpa: 2970 / 29.529988, mb: 2970 / 2.9529988 }]
+        ['barometer', {kpa: 2970 / 10 / 2.9529988, mb: 2970 / 2.9529988 }]
       ],
       output: false
     },

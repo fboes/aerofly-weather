@@ -3,9 +3,14 @@ Change log
 
 For detailed information check [Aerofly Weather's releases on Github](https://github.com/fboes/aerofly-weather/releases).
 
+* :gift: Consider weather conditions for Aerofly turbulences
+
+0.4.0
+-----
+
+* :gift: Support weather conditions in METAR code
 * :pill: Improve installation, switching to desktop batch file as preferred method
 * :pill: Support `CAVOK` in METAR code
-* :pill: Support weather conditions in METAR code
 
 0.3.0
 -----

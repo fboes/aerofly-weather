@@ -27,7 +27,7 @@ Rainy in New York (USA) with limited visibility:
 KLGA 050808Z 04007KT 1SM R04/P6000FT -RA BR BKN006 OVC014 06/04 A2967 RMK AO2 P0001 T00560044
 ```
 
-A fine night night in Miami (USA):
+A foggy night night in Miami (USA):
 
 ```
 KMIA 050753Z 18007KT 5SM BR FEW005 23/23 A2997 RMK AO2 SLP149 T02280228 

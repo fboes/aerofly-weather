@@ -10,7 +10,7 @@ PUSHD %MCF_LOCATION%
 
 :: Backup
 ECHO Backup of main.mcf
-COPY main.mcf main.bak
+COPY /Y main.mcf main.bak
 
 :: https://stackoverflow.com/questions/9307512/create-a-batch-file-with-multiple-options
 :Menu
@@ -35,7 +35,7 @@ COPY main.mcf main.bak
 
 :Metar
   SET /p METAR=Enter METAR string      ?
-  CALL aerofly-metar "%METAR%" %MCF_LOCATION% --verbose
+  CALL aerofly-metar "%METAR%" --verbose
   ECHO -------------------------------------------------------
   GOTO Menu
 
@@ -45,7 +45,7 @@ COPY main.mcf main.bak
     GOTO Menu
   )
   SET /p ICAO=Enter ICAO code          ?
-  CALL aerofly-metar-url %METAR_URL%%ICAO% %MCF_LOCATION% --verbose
+  CALL aerofly-metar-url %METAR_URL%%ICAO% --verbose
   ECHO -------------------------------------------------------
   GOTO Menu
 
@@ -55,7 +55,7 @@ COPY main.mcf main.bak
     GOTO Menu
   )
   SET /p ICAO=Enter ICAO code          ?
-  CALL aerofly-checkwx %ICAO% %CHECKWX_APIKEY% %MCF_LOCATION% --verbose
+  CALL aerofly-checkwx %ICAO% %CHECKWX_APIKEY% --verbose
   ECHO -------------------------------------------------------
   GOTO Menu
 

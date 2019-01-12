@@ -4,6 +4,7 @@ Change log
 For detailed information check [Aerofly Weather's releases on Github](https://github.com/fboes/aerofly-weather/releases).
 
 * :gift: Consider weather conditions for Aerofly turbulences
+* :pill: Fix broken batch files
 
 0.4.0
 -----
@@ -15,11 +16,11 @@ For detailed information check [Aerofly Weather's releases on Github](https://gi
 0.3.0
 -----
 
-* :pill: Maximum possible values match Aerofly FS 2 settings
 * :gift: Add CLI parameters `--time=<X>` and `--date=<X>`
 * :gift: Add General Data Protection Regulation (GDPR) compliance statement
 * :gift: Add examples for desktop integration
 * :gift: Add `aerofly-make-batch` to add desktop shortcut for `aerofly-metar`
+* :pill: Maximum possible values match Aerofly FS 2 settings
 * :wrench: Improve internal documentation and structure
 * :bomb: Changed internal METAR object structure to match https://api.checkwx.com/#31-single
 

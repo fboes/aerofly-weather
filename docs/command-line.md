@@ -19,6 +19,8 @@ These parameters will work with `aerofly-metar`, `aerofly-metar-url` and `aerofl
 * `--verbose`: Output extra information about found and parsed data.
 * `--help`: Show help information about tool.
 
+There is an extend documentation for each command line tool by appending `--help`.
+
 Examples for command line tool integrations
 -------------------------------------------
 

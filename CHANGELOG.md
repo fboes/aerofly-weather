@@ -3,10 +3,15 @@ Change log
 
 For detailed information check [Aerofly Weather's releases on Github](https://github.com/fboes/aerofly-weather/releases).
 
+* :pill: METAR parser now reads `KPH`
+* :pill: Fix conversion for m/s to knots
+* :pill: Get ICAO code from Aerofly FS 2 flight plan destination
+
+0.4.1
+-----
+
 * :gift: Consider weather conditions for Aerofly turbulences
 * :pill: Fix broken batch files
-* :pill: METAR parser now reads `KPH`
-* :pill: Fix conversion m/s to kts
 
 0.4.0
 -----

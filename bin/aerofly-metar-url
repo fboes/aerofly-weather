@@ -9,6 +9,9 @@ if (args._.length < 1 || args.help) {
 
 Copy raw METAR information from URL into your Aerofly FS2 configuration file.
 
+If your URL contains 'XXXX', this tool will look at your last Aerofly FS 2
+flight plan and replace XXXX with the ICAO code of your destination airport.
+
 Options:
       --hours=<HOURS>        Offset time by HOURS hours, e.g. '-8'
       --time=<HH:MM+ZZ:ZZ>   Set time to HH:MM+ZZ:ZZ, e.g. '12:30-08:00'

@@ -40,4 +40,18 @@ describe('convert', function() {
     assert.ok(mps > 0.277);
     assert.ok(mps < 0.278);
   });
+
+  it('must convert m/s to kts', function() {
+    const kts = convert.mpsToKts(1);
+    //console.log(kts);
+    assert.ok(kts > 1.94);
+    assert.ok(kts < 1.95);
+  });
+
+  it('must convert kts to m/s', function() {
+    const mps = convert.ktsToMps(1);
+    //console.log(mps);
+    assert.ok(mps > 0.51);
+    assert.ok(mps < 0.52);
+  });
 });

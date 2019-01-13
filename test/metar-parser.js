@@ -61,7 +61,13 @@ describe('metarParser', function() {
       metarCode: "EDDS 081620Z 29010KT 9999 FEW040TCU 09/M03 Q1012 NOSIG",
       expectedValues: [
         ['icao', 'EDDS'],
-        ['wind', {degrees: 290, speed_kts: 10, gust_kts: 10}],
+        ['wind', {
+          degrees: 290,
+          speed_kts: 10,
+          speed_mps: convert.ktsToMps(10),
+          gust_kts:  10,
+          gust_mps:  convert.ktsToMps(10)
+        }],
         ['visibility', { meters: 9999 }],
         ['clouds', [{base_feet_agl: 4000, code: 'FEW'}]],
         ['temperature', { celsius: 9, fahrenheit: 48.2 }],
@@ -74,7 +80,13 @@ describe('metarParser', function() {
       metarCode: "METAR LBBG 041600Z 12012MPS 090V150 1400 R04/P1500N R22/P1500U +SN BKN022 OVC050 M04/M07 Q1020 NOSIG 8849//91=",
       expectedValues: [
         ['icao', 'LBBG'],
-        ['wind', {degrees: 120, speed_kts: 12 / 1.9438445, gust_kts: 12 / 1.9438445}],
+        ['wind', {
+          degrees: 120,
+          speed_kts: convert.mpsToKts(12),
+          speed_mps: 12,
+          gust_kts:  convert.mpsToKts(12),
+          gust_mps:  12
+        }],
         ['visibility', { meters: 1400 }],
         ['conditions', [ '+', 'SN' ]],
         ['clouds', [{base_feet_agl: 2200, code: 'BKN'}, {base_feet_agl: 5000, code: 'OVC'}]],
@@ -227,6 +239,12 @@ describe('metarParser', function() {
             assert.deepStrictEqual(metarData[valueTest[0]].degrees, valueTest[1].degrees, 'degrees match');
             assert.deepStrictEqual(metarData[valueTest[0]].speed_kts, valueTest[1].speed_kts, 'speed_kts match');
             assert.deepStrictEqual(metarData[valueTest[0]].gust_kts, valueTest[1].gust_kts, 'gust_kts match');
+            if (valueTest[1].speed_mps) {
+              assert.deepStrictEqual(metarData[valueTest[0]].speed_mps, valueTest[1].speed_mps, 'speed_mps match');
+            }
+            if (valueTest[1].gust_mps) {
+              assert.deepStrictEqual(metarData[valueTest[0]].gust_mps, valueTest[1].gust_mps, 'gust_mps match');
+            }
             break;
           case 'visibility':
             assert.deepStrictEqual(metarData[valueTest[0]].meters, valueTest[1].meters, 'meters match');

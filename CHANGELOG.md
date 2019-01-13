@@ -5,6 +5,7 @@ For detailed information check [Aerofly Weather's releases on Github](https://gi
 
 * :gift: Consider weather conditions for Aerofly turbulences
 * :pill: Fix broken batch files
+* :pill: METAR parser now reads `KPH`
 
 0.4.0
 -----

@@ -33,4 +33,11 @@ describe('convert', function() {
     assert.ok(meters > 1609);
     assert.ok(meters < 1610);
   });
+
+  it('must convert km/h in m/s', function() {
+    const mps = convert.kphToMps(1);
+    //console.log(mps);
+    assert.ok(mps > 0.277);
+    assert.ok(mps < 0.278);
+  });
 });

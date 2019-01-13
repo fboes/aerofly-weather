@@ -29,7 +29,7 @@ Usage of desktop batch file
 
 You will need a copy of IPACS' Aerofly FS 2 which has run at least once. This creates a file called `main.mcf`, which contains all settings and the weather data in Aerofly FS 2. This file will be modified by the tools supplied with this package.
 
-Click on the desktop file called `aerofly-weather.bat` and follow the on-screen instructions. Basically it offers you to:
+Click on the desktop file called `aerofly-weather.bat` / `aerofly-weather.sh` and follow the on-screen instructions. Basically it offers you to:
 
 * Set weather data from a [METAR string](docs/metar.md).
 * Fetch a METAR string from an URL and set the weather accordingly.

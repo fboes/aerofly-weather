@@ -42,6 +42,13 @@ if (homedir) {
         process.exit(1);
       }
       console.log('Done creating ' + leTarget);
+      fs.chmod(leTarget, 0o744, (err) => {
+        if (err) {
+          console.error(err);
+          process.exit(1);
+        }
+        console.log('Set executable right for ' + leTarget);
+      });
     });
   }
 }

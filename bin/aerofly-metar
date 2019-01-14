@@ -14,6 +14,8 @@ Options:
       --hours=<HOURS>        Offset time by HOURS hours, e.g. '-8'
       --time=<HH:MM+ZZ:ZZ>   Set time to HH:MM+ZZ:ZZ, e.g. '12:30-08:00'
       --date=<YYYY-MM-DD>    Set date to YYYY-MM-DD, e.g. '2018-12-31'
+      --flightplan           Delete currently active flightplan if origin or
+                             destination does not match METAR ICAO code
       --help                 Display this help and exit
       --verbose              Show debug output`);
   process.exit(0);
@@ -25,6 +27,7 @@ require('../lib/main')(args['verbose'])
     args._[1]  || 'main.mcf',
     args.hours || 0,
     args.time  || null,
-    args.date  || null
+    args.date  || null,
+    args.flightplan  || null
   )
 ;

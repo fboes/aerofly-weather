@@ -43,5 +43,19 @@ describe('metarToAerofly', function() {
     const output = aeroflyWriterDing.getFlightplan();
     //console.log(output);
     assert.ok(output);
+    assert.ok(output.origin);
+    assert.ok(output.origin.icao);
+    assert.ok(output.destination);
+    assert.ok(output.destination.icao);
+  });
+
+  it('should remove flightplans', function() {
+    const aeroflyWriterDing = aeroflyWriter('./test/main-has_nav.mcf');
+    aeroflyWriterDing.setFlightplan(null, null);
+    const output = aeroflyWriterDing.output();
+    // console.log(output);
+    assert.ok(output);
+    assert.ok(output.match(/Identifier\]\[\]/g));
+    assert.ok(output.match(/Uid\]\[0\]/g));
   });
 });

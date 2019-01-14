@@ -35,7 +35,7 @@ COPY /Y main.mcf main.bak
   IF ERRORLEVEL 1 GOTO Metar
 
 :Metar
-  SET /p METAR=Enter METAR string      ?
+  SET /p METAR=Enter METAR string        ?
   CALL aerofly-metar "%METAR%" --verbose
   ECHO -------------------------------------------------------
   GOTO Menu
@@ -45,7 +45,7 @@ COPY /Y main.mcf main.bak
     ECHO Please set METAR_URL in line 5 / 6
     GOTO Menu
   )
-  SET /p ICAO=Enter ICAO code          ?
+  SET /p ICAO=Enter ICAO code            ?
   CALL aerofly-metar-url %METAR_URL%%ICAO%%METAR_URL_END% --verbose
   ECHO -------------------------------------------------------
   GOTO Menu
@@ -63,7 +63,7 @@ COPY /Y main.mcf main.bak
     ECHO Please set CHECKWX_APIKEY in line 4
     GOTO Menu
   )
-  SET /p ICAO=Enter ICAO code          ?
+  SET /p ICAO=Enter ICAO code            ?
   CALL aerofly-checkwx %ICAO% %CHECKWX_APIKEY% --verbose
   ECHO -------------------------------------------------------
   GOTO Menu

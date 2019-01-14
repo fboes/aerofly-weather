@@ -6,6 +6,7 @@ For detailed information check [Aerofly Weather's releases on Github](https://gi
 * :pill: METAR parser now reads `KPH`
 * :pill: Fix conversion for m/s to knots
 * :pill: Get ICAO code from Aerofly FS 2 flight plan destination
+* :pill: Add some humidity - but ignore it as of now
 
 0.4.1
 -----

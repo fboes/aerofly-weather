@@ -1,0 +1,16 @@
+        <[tmnavigation_config][navigation][]
+            <[tmnav_route][Route][]
+                <[tmnav_route_airport][Origin][]
+                    <[string8][Identifier][]>
+                    <[vector2_float64][Location][0 0]>
+                    <[uint64][Uid][0]>
+                >
+                <[tmnav_route_airport][Destination][]
+                    <[string8][Identifier][]>
+                    <[vector2_float64][Location][0 0]>
+                    <[uint64][Uid][0]>
+                >
+                <[pointer_list_tmnav_route_way][Ways][]
+                >
+            >
+        >

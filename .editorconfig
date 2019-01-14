@@ -18,3 +18,6 @@ insert_final_newline = false
 
 [*.bat]
 end_of_line = crlf
+
+[*.mcf]
+indent_size = 4

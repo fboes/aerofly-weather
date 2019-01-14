@@ -1,0 +1,48 @@
+        <[tmnavigation_config][navigation][]
+            <[tmnav_route][Route][]
+                <[tmnav_route_airport][Origin][]
+                    <[string8][Identifier][KMIA]>
+                    <[vector2_float64][Location][0 0]>
+                    <[uint64][Uid][5109134297738903633]>
+                >
+                <[tmnav_route_airport][Destination][]
+                    <[string8][Identifier][KEYW]>
+                    <[vector2_float64][Location][0 0]>
+                    <[uint64][Uid][5033946389883387985]>
+                >
+                <[pointer_list_tmnav_route_way][Ways][]
+                    <[tmnav_route_departure][09][0]
+                        <[string8][Identifier][09]>
+                        <[vector2_float64][Location][18147.8818507325 37644.9033264604]>
+                        <[uint64][Uid][5108175523572809826]>
+                        <[vector2_float64][Direction][0.998946691989945 0.0458857991359667]>
+                        <[float64][Elevation][2.4384]>
+                    >
+                    <[tmnav_route_waypoint][VKZ][1]
+                        <[string8][Identifier][VKZ]>
+                        <[vector2_float64][Location][18176.329197037 37637.8953667529]>
+                        <[uint64][Uid][5116182167128703009]>
+                        <[float64][NavaidFrequency][117100000]>
+                        <[uint64][NavaidUid][5116182167128703008]>
+                        <[vector2_float64][Altitude][0 100000]>
+                    >
+                    <[tmnav_route_waypoint][MTH][2]
+                        <[string8][Identifier][MTH]>
+                        <[vector2_float64][Location][18005.0486360494 37426.8141729562]>
+                        <[uint64][Uid][5067970777732612161]>
+                        <[float64][NavaidFrequency][260000]>
+                        <[uint64][NavaidUid][5067970777732612160]>
+                        <[vector2_float64][Altitude][0 100000]>
+                    >
+                    <[tmnav_route_approach][27][3]
+                        <[string8][Identifier][27]>
+                        <[vector2_float64][Location][17885.436059753 37395.3724138608]>
+                        <[uint64][Uid][5034303731162611810]>
+                        <[vector2_float64][Direction][-0.999947893950131 -0.0102082997946955]>
+                        <[float64][Elevation][0.9144]>
+                        <[float64][NavaidFrequency][0]>
+                        <[uint64][NavaidUid][0]>
+                    >
+                >
+            >
+        >

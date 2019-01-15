@@ -9,6 +9,7 @@ For detailed information check [Aerofly Weather's releases on Github](https://gi
 * :pill: Get ICAO code from Aerofly FS 2 flightplan destination
 * :pill: `--flightplan` deletes flightplan in Aerofly FS 2 if it does not match METAR
 * :pill: Add some humidity - but ignore it as of now
+* :pill: Shell commands now ask for missing parameters
 
 0.4.1
 -----

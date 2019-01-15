@@ -30,12 +30,14 @@ Examples for command line tool integrations
 * [`aewx-weather.bat`](aewx-weather.bat): Interactive menu, will be used for desktop batch file.
 * [`aewx-metar.bat`](aewx-metar.bat): Ask user every time for METAR string.
 * [`aewx-checkwx.bat`](aewx-checkwx.bat): Ask user every time for ICAO code to fetch METAR information from CheckWX.
+* [`aewx-metar-url.bat`](aewx-metar-url.bat): Ask user every time for ICAO code to fetch METAR information from pre-defined URL.
 
 ### Linux / Mac OS X
 
 * [`aewx-weather.sh`](aewx-weather.sh): Interactive menu, will be used for desktop batch file.
 * [`aewx-metar.sh`](aewx-metar.sh): Ask user every time for METAR string.
 * [`aewx-checkwx.sh`](aewx-checkwx.sh): Ask user every time for ICAO code to fetch METAR information from CheckWX.
+* [`aewx-metar-url.sh`](aewx-metar-url.sh): Ask user every time for ICAO code to fetch METAR information from pre-defined URL.
 
 Environment variables
 ---------------------

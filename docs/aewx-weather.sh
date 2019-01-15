@@ -22,7 +22,7 @@ do
   case $OPT in
     "METAR input")
       read -p 'Enter METAR string: ' METAR
-      aerofly-metar "${METAR}" --verbose
+      aewx-metar "${METAR}" --verbose
       ;;
 
     "METAR URL")
@@ -31,7 +31,7 @@ do
         exit 1
       fi
       read -p 'Enter ICAO string: ' ICAO
-      aerofly-metar-url ${METAR_URL}${ICAO}${METAR_URL_END} --verbose
+      aewx-metar-url ${METAR_URL}${ICAO}${METAR_URL_END} --verbose
       ;;
 
     "Check URL")
@@ -48,7 +48,7 @@ do
         exit 1
       fi
       read -p 'Enter ICAO string: ' ICAO
-      aerofly-checkwx ${ICAO} ${CHECKWX_APIKEY} --verbose
+      aewx-checkwx ${ICAO} ${CHECKWX_APIKEY} --verbose
       ;;
 
     "Start Aerofly FS 2")

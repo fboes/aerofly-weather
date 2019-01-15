@@ -12,7 +12,7 @@ These sites make METAR information publicly available:
 * https://aviationweather.gov/metar
 * https://metars.com/
 
-Copy METAR strings found on these pages to `aerofly-metar`.
+Copy METAR strings found on these pages to `aewx-metar`.
 
 Some METAR examples
 -------------------
@@ -44,6 +44,6 @@ LSGG 050820Z VRB01KT 9999 FEW070 BKN110 M03/M04 Q1033 NOSIG
 Use CheckWX API
 ---------------
 
-If your want to use `aerofly-checkwx` you will need to apply for a CheckWX API key. See https://api.checkwx.com/ on how to get an API key.
+If your want to use `aewx-checkwx` you will need to apply for a CheckWX API key. See https://api.checkwx.com/ on how to get an API key.
 
 After receiving your API key, you will need to enter this key into your desktop batch file or your [local command line tools](command-line.md).

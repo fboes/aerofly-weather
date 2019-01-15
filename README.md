@@ -20,7 +20,7 @@ Installation
 1. This tool requires Windows, Mac OSX or Linux.
 1. Make sure you have [Node.js](https://nodejs.org/) with at least version 10 installed. Call `node -v` to see your current version.
 1. Run `npm install -g aerofly-weather` to install Aerofly-Weather. 
-1. Use `aerofly-make-batch` to create a batch file on your desktop.
+1. Use `aewx-make-batch` to create a batch file on your desktop.
 
 This package also comes with a load of [command line tools](docs/command-line.md). For basic usage the desktop batch file will suffice.
 
@@ -29,7 +29,7 @@ Usage of desktop batch file
 
 You will need a copy of IPACS' Aerofly FS 2 which has run at least once. This creates a file called `main.mcf`, which contains all settings and the weather data in Aerofly FS 2. This file will be modified by the tools supplied with this package.
 
-Click on the desktop file called `aerofly-weather.bat` / `aerofly-weather.sh` and follow the on-screen instructions. Basically it offers you to:
+Click on the desktop file called `aewx-weather.bat` / `aewx-weather.sh` and follow the on-screen instructions. Basically it offers you to:
 
 * Set weather data from a [METAR weather string](docs/metar.md).
 * Fetch a METAR weather string from an URL and set the weather accordingly.
@@ -47,7 +47,7 @@ Update
 
 1. To find out if your installation of Aerofly-Weather needs updating, run `npm outdated -g aerofly-weather`.
 2. Run `npm update -g aerofly-weather` to update your local Aerofly-Weather installation to the latest stable release.
-3. Optional: Use `aerofly-make-batch` to create a new batch file on your desktop.
+3. Optional: Use `aewx-make-batch` to create a new batch file on your desktop.
 
 Status
 -------

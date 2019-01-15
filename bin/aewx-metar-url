@@ -5,7 +5,7 @@
 const args = require('../lib/argumentor')(process.argv);
 
 if (args._.length < 1 || args.help) {
-  console.log(`Usage: aerofly-fetch <URL> [FILE]
+  console.log(`Usage: aewx-fetch <URL> [FILE]
 
 Copy raw METAR information from URL into your Aerofly FS2 configuration file.
 

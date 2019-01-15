@@ -2,10 +2,11 @@
 
 'use strict';
 
-const args = require('../lib/argumentor')(process.argv);
+const args             = require('../lib/argumentor')(process.argv);
+const fillOutTheBlanks = require('../lib/fill-out-the-blanks');
 
-if (args._.length < 1 || args.help) {
-  console.log(`Usage: aewx-fetch <URL> [FILE]
+if (args.help) {
+  console.log(`Usage: aewx-fetch [URL] [FILE]
 
 Copy raw METAR information from URL into your Aerofly FS2 configuration file.
 
@@ -23,13 +24,21 @@ Options:
   process.exit(0);
 }
 
-require('../lib/main')(args['verbose'])
-  .fromUrl(
-    args._[0],
-    args._[1]  || 'main.mcf',
-    args.hours || 0,
-    args.time  || null,
-    args.date  || null,
-    args.flightplan  || null
-  )
-;
+
+
+(async() => {
+  args._ = await fillOutTheBlanks({
+    0: 'an URL'
+  }, args._, 'Please enter %s:');
+
+  require('../lib/main')(args['verbose'])
+    .fromUrl(
+      args._[0],
+      args._[1]  || 'main.mcf',
+      args.hours || 0,
+      args.time  || null,
+      args.date  || null,
+      args.flightplan  || null
+    )
+  ;
+})();

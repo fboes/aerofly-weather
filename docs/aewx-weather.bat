@@ -2,8 +2,6 @@
 
 :: Change variables to fit your local settings
 SET CHECKWX_APIKEY=
-SET METAR_URL=
-SET METAR_URL_END=
 SET MCF_LOCATION="%userprofile%\Documents\Aerofly FS 2"
 
 :: Change directory
@@ -35,36 +33,17 @@ COPY /Y main.mcf main.bak
   IF ERRORLEVEL 1 GOTO Metar
 
 :Metar
-  SET /p METAR=Enter METAR string        ?
-  CALL aewx-metar "%METAR%" --verbose
+  CALL aewx-metar --verbose
   ECHO -------------------------------------------------------
   GOTO Menu
 
 :MetarURL
-  IF "%METAR_URL%"=="" (
-    ECHO Please set METAR_URL in line 5 / 6
-    GOTO Menu
-  )
-  SET /p ICAO=Enter ICAO code            ?
-  CALL aewx-metar-url %METAR_URL%%ICAO%%METAR_URL_END% --verbose
+  CALL aewx-metar-url --verbose
   ECHO -------------------------------------------------------
   GOTO Menu
 
-:CheckURL
-  IF "%METAR_URL%"=="" (
-    ECHO Please set METAR_URL in line 5 / 6
-    GOTO Menu
-  )
-  START %METAR_URL%
-  GOTO Menu
-
 :MetarCheckWX
-  IF "%CHECKWX_APIKEY%"=="" (
-    ECHO Please set CHECKWX_APIKEY in line 4
-    GOTO Menu
-  )
-  SET /p ICAO=Enter ICAO code            ?
-  CALL aewx-checkwx %ICAO% %CHECKWX_APIKEY% --verbose
+  CALL aewx-checkwx --verbose
   ECHO -------------------------------------------------------
   GOTO Menu
 

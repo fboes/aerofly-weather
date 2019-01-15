@@ -2,10 +2,11 @@
 
 'use strict';
 
-const args = require('../lib/argumentor')(process.argv);
+const args             = require('../lib/argumentor')(process.argv);
+const fillOutTheBlanks = require('../lib/fill-out-the-blanks');
 
-if (args._.length < 1 || args.help) {
-  console.log(`Usage: aewx-metar "<METAR>" [FILE]
+if (args.help) {
+  console.log(`Usage: aewx-metar "[METAR]" [FILE]
 
 Copy METAR information string into your Aerofly FS2 configuration file.
 For more information on METAR see https://aviationweather.gov/metar.
@@ -21,13 +22,19 @@ Options:
   process.exit(0);
 }
 
-require('../lib/main')(args['verbose'])
-  .fromString(
-    args._[0],
-    args._[1]  || 'main.mcf',
-    args.hours || 0,
-    args.time  || null,
-    args.date  || null,
-    args.flightplan  || null
-  )
-;
+(async() => {
+  args._ = await fillOutTheBlanks({
+    0: 'a METAR code'
+  }, args._, 'Please enter %s:');
+
+  require('../lib/main')(args['verbose'])
+    .fromString(
+      args._[0],
+      args._[1]  || 'main.mcf',
+      args.hours || 0,
+      args.time  || null,
+      args.date  || null,
+      args.flightplan  || null
+    )
+  ;
+})();

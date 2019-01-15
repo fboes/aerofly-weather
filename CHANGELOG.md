@@ -3,6 +3,7 @@ Change log
 
 For detailed information check [Aerofly Weather's releases on Github](https://github.com/fboes/aerofly-weather/releases).
 
+* :bomb: Rename CLI commands from `aerofly-` to `aewx-`
 * :pill: METAR parser now reads `KPH`
 * :pill: Fix conversion for m/s to knots
 * :pill: Get ICAO code from Aerofly FS 2 flightplan destination
@@ -25,13 +26,13 @@ For detailed information check [Aerofly Weather's releases on Github](https://gi
 0.3.0
 -----
 
+* :bomb: Changed internal METAR object structure to match https://api.checkwx.com/#31-single
 * :gift: Add CLI parameters `--time=<X>` and `--date=<X>`
 * :gift: Add General Data Protection Regulation (GDPR) compliance statement
 * :gift: Add examples for desktop integration
 * :gift: Add `aerofly-make-batch` to add desktop shortcut for `aerofly-metar`
 * :pill: Maximum possible values match Aerofly FS 2 settings
 * :wrench: Improve internal documentation and structure
-* :bomb: Changed internal METAR object structure to match https://api.checkwx.com/#31-single
 
 0.2.0
 -----

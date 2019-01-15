@@ -6,7 +6,7 @@ env:
   mocha: true
   es6: true
 parserOptions:
-  ecmaVersion: 6
+  ecmaVersion: 2017
 rules:
   arrow-parens:
     - error

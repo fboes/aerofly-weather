@@ -3,7 +3,7 @@
 'use strict';
 
 if (process.argv.length > 2 && process.argv[2] === '--help') {
-  console.log(`Usage: aerofly-make-batch [TYPE]
+  console.log(`Usage: aewx-make-batch [TYPE]
 
 Create a new batch file on your desktop for quickly starting METAR import to
 Aerofly FS 2.
@@ -20,7 +20,7 @@ const fs = require('fs');
 const path = require('path');
 
 const homedir = os.homedir();
-const sourceFile = process.argv[2] ? path.basename('aerofly-' + process.argv[2]) : 'aerofly-weather';
+const sourceFile = process.argv[2] ? path.basename('aewx-' + process.argv[2]) : 'aewx-weather';
 
 if (homedir) {
   let leSource = '';
@@ -28,11 +28,11 @@ if (homedir) {
   if (os.platform().match(/^win/)) {
     // Microsoft Windows
     leSource = path.join(__dirname, '..', 'docs', sourceFile + '.bat');
-    leTarget = path.join(homedir, 'Desktop', 'aerofly-weather.bat');
+    leTarget = path.join(homedir, 'Desktop', 'aewx-weather.bat');
   } else {
     // Linux / Mac OSX
     leSource = path.join(__dirname, '..', 'docs', sourceFile + '.sh');
-    leTarget = path.join(homedir, 'Desktop', 'aerofly-weather.sh');
+    leTarget = path.join(homedir, 'Desktop', 'aewx-weather.sh');
   }
 
   if (leTarget && leSource) {

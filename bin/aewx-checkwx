@@ -4,11 +4,20 @@
 
 const args = require('../lib/argumentor')(process.argv);
 
-if (args._.length < 1 || args.help) {
-  console.log(`Usage: aerofly-metar "<METAR>" [FILE]
+if (args._.length === 1 && process.env.CHECKWX_APIKEY) {
+  args._.push(process.env.CHECKWX_APIKEY);
+}
+if (args._.length < 2 || args.help) {
+  console.log(`Usage: aewx-checkwx <ICAO> [CHECKWX_APIKEY] [FILE]
 
-Copy METAR information string into your Aerofly FS2 configuration file.
-For more information on METAR see https://aviationweather.gov/metar.
+Copy METAR information from https://api.checkwx.com into your Aerofly FS2
+configuration file. You will need an API key to fetch information.
+
+If <ICAO> is set to 'XXXX', this tool will look at your last Aerofly FS 2
+flight plan and set <ICAO> to your destination airport.
+
+You may supply 'CHECKWX_APIKEY' by setting the environment variable
+'CHECKWX_APIKEY'.
 
 Options:
       --hours=<HOURS>        Offset time by HOURS hours, e.g. '-8'
@@ -22,9 +31,10 @@ Options:
 }
 
 require('../lib/main')(args['verbose'])
-  .fromString(
+  .fromCheckwx(
+    args._[1],
     args._[0],
-    args._[1]  || 'main.mcf',
+    args._[2]  || 'main.mcf',
     args.hours || 0,
     args.time  || null,
     args.date  || null,

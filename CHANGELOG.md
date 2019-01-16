@@ -6,6 +6,7 @@ For detailed information check [Aerofly Weather's releases on Github](https://gi
 * 🎁 `VRB` in METAR now makes for a random wind direction
 * 🎁 Substitute ICAO code `XXXX` / `YYYY` with departure / arrival codes found in currently active flightplan
 * 🎁 Add `aewx-metar-fetch` CLI command for fetching METAR from URL
+* 💊 Fix conversion for millibar to knots
 
 0.5.0
 -----

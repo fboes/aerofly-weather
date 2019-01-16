@@ -14,14 +14,14 @@ describe('convert', function() {
   });
 
   it('must convert kpa in hgin', function() {
-    const hgin = convert.kpaToHgin(1);
+    const hgin = convert.kpaToInhg(1);
     // console.log(hgin);
     assert.ok(hgin > 0.29);
     assert.ok(hgin < 0.30);
   });
 
   it('must convert hgin in kpa', function() {
-    const kpa = convert.hginToKpa(1);
+    const kpa = convert.inhgToKpa(1);
     //console.log(kpa);
     assert.ok(kpa > 3.38);
     assert.ok(kpa < 3.39);

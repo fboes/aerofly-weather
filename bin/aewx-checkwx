@@ -15,18 +15,18 @@ if (args.help) {
 Copy METAR information from https://api.checkwx.com into your Aerofly FS2
 configuration file. You will need an API key to fetch information.
 
-If <ICAO> is set to 'XXXX', this tool will look at your last Aerofly FS 2
-flight plan and set <ICAO> to your destination airport.
+If [ICAO] is set to 'XXXX' / 'YYYY', this tool will look at your last Aerofly
+FS 2 flight plan and set [ICAO] to your departure / arrival airport.
 
-You may supply 'CHECKWX_APIKEY' by setting the environment variable
+You may supply [CHECKWX_APIKEY] by setting the environment variable
 'CHECKWX_APIKEY'.
 
 Options:
       --hours=<HOURS>        Offset time by HOURS hours, e.g. '-8'
       --time=<HH:MM+ZZ:ZZ>   Set time to HH:MM+ZZ:ZZ, e.g. '12:30-08:00'
       --date=<YYYY-MM-DD>    Set date to YYYY-MM-DD, e.g. '2018-12-31'
-      --flightplan           Delete currently active flightplan if origin or
-                             destination does not match METAR ICAO code
+      --flightplan           Delete currently active flightplan if departure or
+                             arrival does not match METAR ICAO code
       --help                 Display this help and exit
       --verbose              Show debug output`);
   process.exit(0);

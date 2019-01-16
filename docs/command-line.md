@@ -3,12 +3,12 @@ Usage of Command Line Tools
 
 The command line tools allow for a number of ways to get METAR information into IPACS' Aerofly FS 2, depending on your [source of METAR information](./metar.md):
 
-* `aewx-metar <METAR>`:  
-  Insert the [METAR information](./metar.md) into your configuration file, with `<METAR>` being a valid METAR forecast string enclosed in quotes.
-* `aewx-metar-url <URL>`:  
-  Fetch [METAR information](./metar.md) from an `<URL>`. The URL method may be used with a METAR API which supplies _raw_ METAR information.
-* `aewx-checkwx <ICAO-CODE> [API-KEY]`:  
-  Fetch [METAR information](./metar.md) supplied by https://api.checkwx.com/. You will need a valid `[API-KEY]` from https://api.checkwx.com/, and supply the `<ICAO-CODE>` from your selected airport.
+* `aewx-metar [METAR]`:  
+  Insert the [METAR information](./metar.md) into your configuration file, with `[METAR]` being a valid METAR forecast string enclosed in quotes.
+* `aewx-metar-url [URL]`:  
+  Fetch [METAR information](./metar.md) from an `[URL]`. The URL method may be used with a METAR API which supplies _raw_ METAR information.
+* `aewx-checkwx [ICAO-CODE] [API-KEY]`:  
+  Fetch [METAR information](./metar.md) supplied by https://api.checkwx.com/. You will need a valid `[API-KEY]` from https://api.checkwx.com/, and supply the `[ICAO-CODE]` from your selected airport.
 
 These parameters will work with `aewx-metar`, `aewx-metar-url` and `aewx-checkwx`:
 
@@ -16,7 +16,7 @@ These parameters will work with `aewx-metar`, `aewx-metar-url` and `aewx-checkwx
 * `--hours=<ZZ>`: Change time copied from METAR information to Aerofly FS 2 by `ZZ` hours. Add `-` for negative values.
 * `--time=<HH:MM+ZZ:ZZ>`: Set time to HH:MM+ZZ:ZZ in Aerofly FS 2, e.g. `12:30-08:00`. Remember to include the time zone, else the time will be interpreted as UTC time.
 * `--date=<YYYY-MM-DD>`: Set date to YYYY-MM-DD in Aerofly FS 2, e.g. `2018-12-31`.
-* `--flightplan`: Delete currently active flightplan if origin or destination does not match METAR ICAO code.
+* `--flightplan`: Delete currently active flightplan if departure or arrival does not match METAR ICAO code.
 * `--verbose`: Output extra information about found and parsed data.
 * `--help`: Show help information about tool.
 

@@ -5,21 +5,22 @@
 const args             = require('../lib/argumentor')(process.argv);
 const fillOutTheBlanks = require('../lib/fill-out-the-blanks');
 
-if (!args._[1] && process.env.CHECKWX_APIKEY) {
-  args._[1] = process.env.CHECKWX_APIKEY;
+if (!args._[1] && process.env.AEWX_URL) {
+  args._[1] = process.env.AEWX_URL;
 }
 
 if (args.help) {
-  console.log(`Usage: aewx-checkwx [ICAO] [CHECKWX_APIKEY] [FILE]
+  console.log(`Usage: aewx-fetch [ICAO] [AEWX_URL] [FILE]
 
-Copy METAR information from https://api.checkwx.com into your Aerofly FS2
-configuration file. You will need an API key to fetch information.
+Copy raw METAR information from URL into your Aerofly FS2 configuration file. In
+[AEWX_URL] a string 'XXXX' will be replaced by [ICAO].
 
-If [ICAO] is set to 'XXXX' / 'YYYY', this tool will look at your last Aerofly
-FS 2 flight plan and set [ICAO] to your departure / arrival airport.
+If your URL contains 'XXXX' / 'YYYY', this tool will look at your last Aerofly
+FS 2 flight plan and replace XXXX / YYYY with the ICAO code of your departure /
+arrival airport.
 
-You may supply [CHECKWX_APIKEY] by setting the environment variable
-'CHECKWX_APIKEY'.
+You may supply [AEWX_URL] by setting the environment variable
+'AEWX_URL'.
 
 Options:
       --hours=<HOURS>        Offset time by HOURS hours, e.g. '-8'
@@ -35,13 +36,12 @@ Options:
 (async() => {
   args._ = await fillOutTheBlanks({
     0: 'an ICAO code',
-    1: 'your CheckWX API key'
+    1: 'an URL'
   }, args._, 'Please enter %s:');
 
   require('../lib/main')(args['verbose'])
-    .fromCheckwx(
-      args._[1],
-      args._[0],
+    .fromUrl(
+      args._[1].replace('XXXX', args._[0]),
       args._[2]  || 'main.mcf',
       args.hours || 0,
       args.time  || null,

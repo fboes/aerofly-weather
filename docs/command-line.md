@@ -7,8 +7,10 @@ The command line tools allow for a number of ways to get METAR information into 
   Insert the [METAR information](./metar.md) into your configuration file, with `[METAR]` being a valid METAR forecast string enclosed in quotes.
 * `aewx-metar-url [URL]`:  
   Fetch [METAR information](./metar.md) from an `[URL]`. The URL method may be used with a METAR API which supplies _raw_ METAR information.
-* `aewx-checkwx [ICAO-CODE] [API-KEY]`:  
-  Fetch [METAR information](./metar.md) supplied by https://api.checkwx.com/. You will need a valid `[API-KEY]` from https://api.checkwx.com/, and supply the `[ICAO-CODE]` from your selected airport.
+* `aewx-metar-fetch [ICAO] [AEWX_URL]`:  
+  Works like `aewx-metar-url`, but `[ICAO]` code will pasted into `[AEWX_URL]` at the point where the URL contains `XXXX`. This may be useful if you are querying the same URL again and again, but with different ICAO codes.
+* `aewx-checkwx [ICAO-CODE] [CHECKWX_APIKEY]`:  
+  Fetch [METAR information](./metar.md) supplied by https://api.checkwx.com/. You will need a valid `[CHECKWX_APIKEY]` from https://api.checkwx.com/, and supply the `[ICAO-CODE]` from your selected airport.
 
 These parameters will work with `aewx-metar`, `aewx-metar-url` and `aewx-checkwx`:
 
@@ -42,21 +44,36 @@ Examples for command line tool integrations
 Environment variables
 ---------------------
 
-`aewx-checkwx` requires you to enter your API key every time the command is executed. For convenience you may store your API key in a local environment variable called `CHECKWX_APIKEY`. To set the environment variable use the following examples, replacing `12345abcd` with your actual key:
+`aewx-checkwx` requires you to enter your API key every time the command is executed. For convenience you may store your API key in a local environment variable called `CHECKWX_APIKEY`. 
+
+`aewx-metar-fetch` requires you to enter your base URL every time the command is executed. For convenience you may store your base URL in a local environment variable called `AEWX_URL`. 
+
+To set the environment variable use the following examples:
 
 ### Microsoft Windows
 
 ```batch
+:: Replace '12345abcd' with your actual key
 set  CHECKWX_APIKEY=12345abcd
 setx CHECKWX_APIKEY %CHECKWX_APIKEY%
+
+:: Replace 'https://example.com/metar/XXXX' with your actual URL
+set  AEWX_URL=https://example.com/metar/XXXX
+setx AEWX_URL %AEWX_URL%
 ```
 
 ### Linux / Mac OS X
 
 ```bash
+# Replace '12345abcd' with your actual key
 CHECKWX_APIKEY=12345abcd
-echo "export CHECKWX_APIKEY=$CHECKWX_APIKEY" >> ~/.profile
-echo "export CHECKWX_APIKEY=$CHECKWX_APIKEY" >> ~/.bash_profile
+echo "export CHECKWX_APIKEY=${CHECKWX_APIKEY}" >> ~/.profile
+echo "export CHECKWX_APIKEY=${CHECKWX_APIKEY}" >> ~/.bash_profile
+
+# Replace 'https://example.com/metar/XXXX' with your actual URL
+AEWX_URL=https://example.com/metar/XXXX
+echo "export AEWX_URL=${AEWX_URL}" >> ~/.profile
+echo "export AEWX_URL=${AEWX_URL}" >> ~/.bash_profile
 ```
 
 Add data from `STDIN`

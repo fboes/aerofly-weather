@@ -6,7 +6,7 @@ const args             = require('../lib/argumentor')(process.argv);
 const fillOutTheBlanks = require('../lib/fill-out-the-blanks');
 
 if (args.help) {
-  console.log(`Usage: aewx-fetch [URL] [FILE]
+  console.log(`Usage: aewx-url [URL] [FILE]
 
 Copy raw METAR information from URL into your Aerofly FS2 configuration file.
 
@@ -24,8 +24,6 @@ Options:
       --verbose              Show debug output`);
   process.exit(0);
 }
-
-
 
 (async() => {
   args._ = await fillOutTheBlanks({

@@ -91,6 +91,37 @@ describe('metarToAerofly', function() {
     assert.strictEqual(aeroflyObject.clouds.length, 1);
   });
 
+  it('must handle excess values', function() {
+    const aeroflyObject = metarToAerofly({
+      icao: 'KPIE',
+      observed: new Date('2019-01-29T23:59:59.999Z'),
+      wind: { degrees: -90, speed_kts: 40, gust_kts: 40 },
+      visibility: { meters: 20000 },
+      clouds: [
+        { base_feet_agl: 2900, minDensity: 5, maxDensity: 7 }
+      ],
+      temperature: {
+        celsius: 18
+      },
+      barometer: {
+        kpa: 101.0
+      }
+    }, {
+      maxWind: 20,
+      maxVisibility: 1000,
+      maxTemperature: 5
+    });
+
+    assert.ok(aeroflyObject);
+    assert.strictEqual(aeroflyObject.time_day,      29);
+    assert.strictEqual(aeroflyObject.time_month,    1);
+    assert.ok(aeroflyObject.time_hours < 24);
+    assert.strictEqual(aeroflyObject.wind_direction_in_degree,  270, '-90° is 270°');
+    assert.ok(aeroflyObject.wind_strength > 1);
+    assert.strictEqual(aeroflyObject.visibility,    1, 'Limit to 1');
+    assert.strictEqual(aeroflyObject.wind_thermal_activity,    1, 'Limit to 1');
+  });
+
   it('must convert METAR object to Aerofly object #3', function() {
     const aeroflyObject = metarToAerofly({
       icao: 'KPIE',

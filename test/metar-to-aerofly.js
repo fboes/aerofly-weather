@@ -25,10 +25,10 @@ describe('metarToAerofly', function() {
 
     // console.log(aeroflyObject);
     assert.ok(aeroflyObject);
-    assert.strictEqual(aeroflyObject.time_day,      29);
-    assert.strictEqual(aeroflyObject.time_month,    1);
-    assert.strictEqual(aeroflyObject.time_hours,    12.5);
-    assert.strictEqual(aeroflyObject.wind_direction_in_degree,  270, 'Wind direction');
+    assert.strictEqual(aeroflyObject.time.day,      29);
+    assert.strictEqual(aeroflyObject.time.month,    1);
+    assert.strictEqual(aeroflyObject.time.hours,    12.5);
+    assert.strictEqual(aeroflyObject.wind.direction_in_degree,  270, 'Wind direction');
     assert.strictEqual(aeroflyObject.visibility,    1, 'Visibility');
     assert.strictEqual(aeroflyObject.clouds.length, 1, 'Clouds');
   });
@@ -53,11 +53,11 @@ describe('metarToAerofly', function() {
     });
 
     assert.ok(aeroflyObject);
-    assert.strictEqual(aeroflyObject.time_day,      29);
-    assert.strictEqual(aeroflyObject.time_month,    1);
-    assert.strictEqual(aeroflyObject.time_hours,    12.5);
-    assert.strictEqual(aeroflyObject.wind_direction_in_degree,  270);
-    assert.strictEqual(aeroflyObject.wind_strength, 1, 'Testing sqrt formula for 40kts');
+    assert.strictEqual(aeroflyObject.time.day,      29);
+    assert.strictEqual(aeroflyObject.time.month,    1);
+    assert.strictEqual(aeroflyObject.time.hours,    12.5);
+    assert.strictEqual(aeroflyObject.wind.direction_in_degree,  270);
+    assert.strictEqual(aeroflyObject.wind.strength, 1, 'Testing sqrt formula for 40kts');
     assert.strictEqual(aeroflyObject.visibility,    1);
     assert.strictEqual(aeroflyObject.clouds.length, 1);
   });
@@ -82,11 +82,11 @@ describe('metarToAerofly', function() {
     });
 
     assert.ok(aeroflyObject);
-    assert.strictEqual(aeroflyObject.time_day,      29);
-    assert.strictEqual(aeroflyObject.time_month,    1);
-    assert.strictEqual(aeroflyObject.time_hours,    12.5);
-    assert.strictEqual(aeroflyObject.wind_direction_in_degree,  270);
-    assert.strictEqual(aeroflyObject.wind_strength, 1, 'Testing sqrt formula for 40kts');
+    assert.strictEqual(aeroflyObject.time.day,      29);
+    assert.strictEqual(aeroflyObject.time.month,    1);
+    assert.strictEqual(aeroflyObject.time.hours,    12.5);
+    assert.strictEqual(aeroflyObject.wind.direction_in_degree,  270);
+    assert.strictEqual(aeroflyObject.wind.strength, 1, 'Testing sqrt formula for 40kts');
     assert.strictEqual(aeroflyObject.visibility,    1);
     assert.strictEqual(aeroflyObject.clouds.length, 1);
   });
@@ -113,13 +113,13 @@ describe('metarToAerofly', function() {
     });
 
     assert.ok(aeroflyObject);
-    assert.strictEqual(aeroflyObject.time_day,      29);
-    assert.strictEqual(aeroflyObject.time_month,    1);
-    assert.ok(aeroflyObject.time_hours < 24);
-    assert.strictEqual(aeroflyObject.wind_direction_in_degree,  270, '-90° is 270°');
-    assert.ok(aeroflyObject.wind_strength > 1);
-    assert.strictEqual(aeroflyObject.visibility,    1, 'Limit to 1');
-    assert.strictEqual(aeroflyObject.wind_thermal_activity,    1, 'Limit to 1');
+    assert.strictEqual(aeroflyObject.time.day,      29);
+    assert.strictEqual(aeroflyObject.time.month,    1);
+    assert.ok(aeroflyObject.time.hours < 24);
+    assert.strictEqual(aeroflyObject.wind.direction_in_degree,  270, '-90° is 270°');
+    assert.ok(aeroflyObject.wind.strength > 1);
+    assert.strictEqual(aeroflyObject.visibility,       1, 'Limit to 1');
+    assert.strictEqual(aeroflyObject.thermal_activity, 1, 'Limit to 1');
   });
 
   it('must convert METAR object to Aerofly object #3', function() {
@@ -143,10 +143,10 @@ describe('metarToAerofly', function() {
 
     // console.log(aeroflyObject);
     assert.ok(aeroflyObject);
-    assert.strictEqual(aeroflyObject.time_day,      29);
-    assert.strictEqual(aeroflyObject.time_month,    1);
-    assert.strictEqual(aeroflyObject.time_hours,    6.5, 'Time has been incremented by maxValues.hourOffset');
-    assert.strictEqual(aeroflyObject.wind_direction_in_degree,  270);
+    assert.strictEqual(aeroflyObject.time.day,      29);
+    assert.strictEqual(aeroflyObject.time.month,    1);
+    assert.strictEqual(aeroflyObject.time.hours,    6.5, 'Time has been incremented by maxValues.hourOffset');
+    assert.strictEqual(aeroflyObject.wind.direction_in_degree,  270);
     assert.strictEqual(aeroflyObject.visibility,    1);
     assert.strictEqual(aeroflyObject.clouds.length, 1);
   });

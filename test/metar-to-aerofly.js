@@ -37,7 +37,7 @@ describe('metarToAerofly', function() {
     const aeroflyObject = metarToAerofly({
       icao: 'KPIE',
       observed: new Date('2019-01-29T12:30:18.825Z'),
-      wind: { degrees: 270, speed_kts: 40, gust_kts: 40 },
+      wind: { degrees: 270, speed_kts: 16, gust_kts: 16 },
       visibility: { meters: 20000 },
       clouds: [
         { base_feet_agl: 2900, minDensity: 5, maxDensity: 7 }
@@ -49,7 +49,7 @@ describe('metarToAerofly', function() {
         kpa: 101.0
       }
     }, {
-      maxWind: 40
+      maxWind: 16
     });
 
     assert.ok(aeroflyObject);
@@ -57,7 +57,7 @@ describe('metarToAerofly', function() {
     assert.strictEqual(aeroflyObject.time.month,    1);
     assert.strictEqual(aeroflyObject.time.hours,    12.5);
     assert.strictEqual(aeroflyObject.wind.direction_in_degree,  270);
-    assert.strictEqual(aeroflyObject.wind.strength, 1, 'Testing sqrt formula for 40kts');
+    assert.strictEqual(aeroflyObject.wind.strength, 1, 'Testing sqrt formula for 16kts');
     assert.strictEqual(aeroflyObject.visibility,    1);
     assert.strictEqual(aeroflyObject.clouds.length, 1);
   });
@@ -66,7 +66,7 @@ describe('metarToAerofly', function() {
     const aeroflyObject = metarToAerofly({
       icao: 'KPIE',
       observed: new Date('2019-01-29T12:30:18.825Z'),
-      wind: { degrees: 270, speed_kts: 20, gust_kts: 20 },
+      wind: { degrees: 270, speed_kts: 8, gust_kts: 8 },
       visibility: { meters: 20000 },
       clouds: [
         { base_feet_agl: 2900, minDensity: 5, maxDensity: 7 }
@@ -78,7 +78,7 @@ describe('metarToAerofly', function() {
         kpa: 101.0
       }
     }, {
-      maxWind: 20
+      maxWind: 8
     });
 
     assert.ok(aeroflyObject);
@@ -86,7 +86,7 @@ describe('metarToAerofly', function() {
     assert.strictEqual(aeroflyObject.time.month,    1);
     assert.strictEqual(aeroflyObject.time.hours,    12.5);
     assert.strictEqual(aeroflyObject.wind.direction_in_degree,  270);
-    assert.strictEqual(aeroflyObject.wind.strength, 1, 'Testing sqrt formula for 40kts');
+    assert.strictEqual(aeroflyObject.wind.strength, 1, 'Testing sqrt formula for 16kts');
     assert.strictEqual(aeroflyObject.visibility,    1);
     assert.strictEqual(aeroflyObject.clouds.length, 1);
   });

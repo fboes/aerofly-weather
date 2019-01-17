@@ -26,15 +26,16 @@ This tool modifies the following settings in Aerofly's `main.mcf`:
     <[float64][cirrus_density][0]>             # see above
 >
 ```
+
 Visibility
 ----------
 
-There are no real tests for visibility yet.
+Visibility tests set maximum visibility in Aerofly FS 2 to 30,000 meters.
 
 Wind
 ----
 
-Setting the wind strength to `1` yields a wind speed of ~40 knots; setting it to `2` yields ~120 knots, and `4` yields ~380 knots. This implies a exponential function, which can be approximated by `f(x) = 20 * (x + x^2)`, with `x` being the value set and `f(x)` returning the resulting wind speed in knots.
+Setting the wind strength to `1` yields a wind speed of ~16 knots; setting it to `2` yields ~50 knots, and `4` yields ~160 knots. This implies a exponential function, which can be approximated by `f(x) = 8 * (x + x^2)`, with `x` being the value set and `f(x)` returning the resulting wind speed in knots.
 
 Cloud height
 ------------

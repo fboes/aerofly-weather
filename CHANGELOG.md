@@ -7,6 +7,7 @@ For detailed information check [Aerofly Weather's releases on Github](https://gi
 * 🎁 Substitute ICAO code `XXXX` / `YYYY` with departure / arrival codes found in currently active flightplan
 * 🎁 Add `aewx-metar-fetch` CLI command for fetching METAR from URL
 * 💊 Fix conversion for kilopascal to millibar
+* 💊 Set max wind speed in Aerofly FS 2 to 16 knots and max visibility to 30km
 
 0.5.0
 -----

@@ -103,7 +103,7 @@ describe('metarBlender', function() {
   it('must blend to the middle', function() {
     const blendedMetar = metarBlender(fromMetar, toMetar).blend(0.5);
 
-    console.log(blendedMetar);
+    //console.log(blendedMetar);
     assert.ok(blendedMetar);
     assert.notStrictEqual(blendedMetar.dewpoint.celsius, fromMetar.dewpoint.celsius);
     assert.notStrictEqual(blendedMetar.humidity_percent, fromMetar.humidity_percent);

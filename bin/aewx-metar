@@ -6,10 +6,16 @@ const args             = require('../lib/argumentor')(process.argv);
 const fillOutTheBlanks = require('../lib/fill-out-the-blanks');
 
 if (args.help) {
-  console.log(`Usage: aewx-metar "[METAR]" [FILE]
+  console.log(`Usage: aewx-metar [options...] "[METAR]" [FILE]
 
 Copy METAR information string into your Aerofly FS2 configuration file.
-For more information on METAR see https://aviationweather.gov/metar.
+
+Arguments:
+      [FILE]                 File to modify. Defaults to 'main.mcf' in current
+                             path.
+      [METAR]                METAR code. For more information on METAR see
+                             https://aviationweather.gov/metar.
+                             If not set this will be asked from STDIN.
 
 Options:
       --hours=<HOURS>        Offset time by HOURS hours, e.g. '-8'

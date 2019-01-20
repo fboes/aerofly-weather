@@ -10,17 +10,24 @@ if (!args._[1] && process.env.AEWX_URL) {
 }
 
 if (args.help) {
-  console.log(`Usage: aewx-fetch [ICAO] [AEWX_URL] [FILE]
+  console.log(`Usage: aewx-fetch [options...] [ICAO] [AEWX_URL] [FILE]
 
-Copy raw METAR information from URL into your Aerofly FS2 configuration file. In
-[AEWX_URL] a string 'XXXX' will be replaced by [ICAO].
+Copy raw METAR information from URL into your Aerofly FS2 configuration file.
 
-If your URL contains 'XXXX' / 'YYYY', this tool will look at your last Aerofly
-FS 2 flight plan and replace XXXX / YYYY with the ICAO code of your departure /
-arrival airport.
-
-You may supply [AEWX_URL] by setting the environment variable
-'AEWX_URL'.
+Arguments:
+      [ICAO]                 ICAO code of airport the METAR will be fetched for.
+                             If this is set to 'XXXX', ICAO code will be fetched
+                             from Aerofly FS 2 flightplan departure airport.
+                             If this is set to 'YYYY', ICAO code will be fetched
+                             from Aerofly FS 2 flightplan arrival airport.
+                             If not set this will be asked from STDIN.
+      [AEWX_URL]             URL to query, with 'XXXX' being replaced by given
+                             ICAO code.
+                             You may supply [AEWX_URL] by setting the
+                             environment variable 'AEWX_URL'.
+                             If not set this will be asked from STDIN.
+      [FILE]                 File to modify. Defaults to 'main.mcf' in current
+                             path.
 
 Options:
       --hours=<HOURS>        Offset time by HOURS hours, e.g. '-8'

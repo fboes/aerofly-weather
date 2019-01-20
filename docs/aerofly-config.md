@@ -41,3 +41,7 @@ Cloud height
 ------------
 
 Setting the cloud height to `1` yields a cloud height of 40.000 feet AGL.
+
+---
+
+Return to [table of contents](README.md).

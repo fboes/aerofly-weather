@@ -10,16 +10,24 @@ if (!args._[1] && process.env.CHECKWX_APIKEY) {
 }
 
 if (args.help) {
-  console.log(`Usage: aewx-checkwx [ICAO] [CHECKWX_APIKEY] [FILE]
+  console.log(`Usage: aewx-checkwx [options...] [ICAO] [CHECKWX_APIKEY] [FILE]
 
 Copy METAR information from https://api.checkwx.com into your Aerofly FS2
 configuration file. You will need an API key to fetch information.
 
-If [ICAO] is set to 'XXXX' / 'YYYY', this tool will look at your last Aerofly
-FS 2 flight plan and set [ICAO] to your departure / arrival airport.
-
-You may supply [CHECKWX_APIKEY] by setting the environment variable
-'CHECKWX_APIKEY'.
+Arguments:
+      [ICAO]                 ICAO code of airport the METAR will be fetched for.
+                             If this is set to 'XXXX', ICAO code will be fetched
+                             from Aerofly FS 2 flightplan departure airport.
+                             If this is set to 'YYYY', ICAO code will be fetched
+                             from Aerofly FS 2 flightplan arrival airport.
+                             If not set this will be asked from STDIN.
+      [CHECKWX_APIKEY]       CheckWX API key to validate your request.
+                             If not set this will be asked from STDIN.
+                             You may supply [CHECKWX_APIKEY] by setting the
+                             environment variable 'CHECKWX_APIKEY'.
+      [FILE]                 File to modify. Defaults to 'main.mcf' in current
+                             path.
 
 Options:
       --hours=<HOURS>        Offset time by HOURS hours, e.g. '-8'

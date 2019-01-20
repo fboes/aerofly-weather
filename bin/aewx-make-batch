@@ -27,11 +27,11 @@ if (homedir) {
   let leTarget = '';
   if (os.platform().match(/^win/)) {
     // Microsoft Windows
-    leSource = path.join(__dirname, '..', 'docs', sourceFile + '.bat');
+    leSource = path.join(__dirname, '..', 'docs', 'scripts', sourceFile + '.bat');
     leTarget = path.join(homedir, 'Desktop', 'aewx-weather.bat');
   } else {
     // Linux / Mac OSX
-    leSource = path.join(__dirname, '..', 'docs', sourceFile + '.sh');
+    leSource = path.join(__dirname, '..', 'docs', 'scripts', sourceFile + '.sh');
     leTarget = path.join(homedir, 'Desktop', 'aewx-weather.sh');
   }
 

@@ -47,3 +47,7 @@ Use CheckWX API
 If your want to use `aewx-checkwx` you will need to apply for a CheckWX API key. See https://api.checkwx.com/ on how to get an API key.
 
 After receiving your API key, you will need to enter this key into your desktop batch file or your [local command line tools](command-line.md).
+
+---
+
+Return to [table of contents](README.md).

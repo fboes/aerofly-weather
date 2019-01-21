@@ -1,7 +1,7 @@
 ✈️ AEWX - METAR weather importer for Aerofly FS 2
 ==================================================
 
-Copy [METAR weather information](docs/metar.md) into IPCAS' Aerofly FS 2.
+Copy [METAR weather information](docs/metar.md) into [IPCAS' Aerofly FS 2](https://www.aerofly.com/).
 
 These command line tools will copy the following METAR weather information to your configuration file while Aerofly FS 2 is not running:
 

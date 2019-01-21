@@ -30,7 +30,7 @@ This tool modifies the following settings in Aerofly's `main.mcf`:
 Visibility
 ----------
 
-Visibility tests set maximum visibility in Aerofly FS 2 to 30,000 meters.
+Visibility tests set maximum visibility in Aerofly FS 2 to 20,000 meters.
 
 Wind
 ----

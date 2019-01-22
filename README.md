@@ -54,6 +54,7 @@ Status
 
 [![npm version](https://badge.fury.io/js/aerofly-weather.svg)](https://badge.fury.io/js/aerofly-weather)
 [![Build Status](https://travis-ci.org/fboes/aerofly-weather.svg?branch=master)](https://travis-ci.org/fboes/aerofly-weather)
+[![Dependency Status](https://david-dm.org/fboes/aerofly-weather/status.svg)](https://david-dm.org/fboes/aerofly-weather)
 [![devDependency Status](https://david-dm.org/fboes/aerofly-weather/dev-status.svg)](https://david-dm.org/fboes/aerofly-weather?type=dev)
 
 Legal stuff

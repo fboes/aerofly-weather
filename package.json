@@ -52,6 +52,6 @@
     }
   },
   "dependencies": {
-    "aewx-metar-parser": "^0.9.2"
+    "aewx-metar-parser": "^0.9.3"
   }
 }

@@ -6,6 +6,7 @@ For detailed information check [Aerofly Weather's releases on Github](https://gi
 * 🎁 `VRB` in METAR now makes for a random wind direction
 * 🎁 Substitute ICAO code `XXXX` / `YYYY` with departure / arrival codes found in currently active flightplan
 * 🎁 Add `aewx-metar-fetch` CLI command for fetching METAR from URL
+* 🎁 `VRB` in METAR now makes for turbulence in Aerofly FS 2
 * 💊 Fix conversion for kilopascal to millibar
 * 💊 Set max wind speed in Aerofly FS 2 to 16 knots and max visibility to 30km
 * 💊 Set min temperature for thermal activity in Aerofly FS 2 to 5°C

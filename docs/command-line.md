@@ -1,5 +1,5 @@
 ![](./favicon-64x64.png) Usage of Command Line Tools
-==================
+====================================================
 
 The command line tools allow for a number of ways to get METAR information into IPACS' Aerofly FS 2, depending on your [source of METAR information](./metar.md):
 
@@ -10,7 +10,7 @@ The command line tools allow for a number of ways to get METAR information into 
 * [`aewx-metar-fetch [ICAO] [AEWX_URL]`](../bin/aewx-metar-fetch):  
   Works like `aewx-metar-url`, but `[ICAO]` code will pasted into `[AEWX_URL]` at the point where the URL contains `XXXX`. This may be useful if you are querying the same URL again and again, but with different ICAO codes.
 * [`aewx-checkwx [ICAO-CODE] [CHECKWX_APIKEY]`](../bin/aewx-checkwx):  
-  Fetch [METAR information](./metar.md) supplied by https://api.checkwx.com/. You will need a valid `[CHECKWX_APIKEY]` from https://api.checkwx.com/, and supply the `[ICAO-CODE]` from your selected airport.
+  Fetch [METAR information](./metar.md) supplied by https://api.checkwx.com/. You will need a valid `[CHECKWX_APIKEY]` from https://api.checkwx.com/, and supply the `[ICAO-CODE]` of your selected airport.
 
 There is an extend documentation for each command line tool by appending `--help`.
 

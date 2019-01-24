@@ -3,7 +3,7 @@
 
 Copy [METAR weather information](docs/metar.md) into [IPCAS' Aerofly FS 2](https://www.aerofly.com/).
 
-These command line tools will copy the following METAR weather information to your configuration file while Aerofly FS 2 is not running:
+The AEWX command line tools will copy the following METAR weather information to your configuration file while Aerofly FS 2 is not running:
 
 * Time and day (will set the year and month to current year and month because they are not present in METAR information)
 * Wind & turbulences
@@ -12,20 +12,23 @@ These command line tools will copy the following METAR weather information to yo
 
 The [METAR weather information](docs/metar.md) can be supplied manually, or can be fetched from an URL.
 
-This tool is capable of setting weather values which you cannot access in Aerofly FS 2. This is tested and is done deliberately. Please supply [feedback](https://github.com/fboes/aerofly-weather/issues) in case of any strange effects you encounter.
+AEWX is capable of setting weather values which you cannot access in Aerofly FS 2. This is tested and is done deliberately. Please supply [feedback](https://github.com/fboes/aerofly-weather/issues) in case of any strange effects you encounter.
 
 Installation
 ------------
 
 1. This tool requires Windows, Mac OSX or Linux.
-1. Make sure you have [Node.js](https://nodejs.org/) with at least version 10 installed. Call `node -v` to see your current version.
-1. Run `npm install -g aerofly-weather` to install Aerofly-Weather. 
+1. Install [Node.js](https://nodejs.org/) with at least version 10.
+1. Open the Command Prompt / Terminal application already installed on your computer.
+1. Run `npm install -g aerofly-weather` to install Aerofly-Weather.
 1. Use `aewx-make-batch` to create a batch file on your desktop.
 
 This package also comes with a load of [command line tools](docs/command-line.md). For basic usage the desktop batch file will suffice.
 
 Usage of desktop batch file
 ---------------------------
+
+![](docs/aerofly-weather-desktop.png)
 
 You will need a copy of IPACS' Aerofly FS 2 which has run at least once. This creates a file called `main.mcf`, which contains all settings and the weather data in Aerofly FS 2. This file will be modified by the tools supplied with this package.
 

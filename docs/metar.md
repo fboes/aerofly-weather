@@ -1,5 +1,5 @@
 ![](./favicon-64x64.png) More information on METAR
-=========================
+==================================================
 
 Wikipedia has an [article on METAR information](https://en.wikipedia.org/wiki/METAR) explaining the very basics.
 

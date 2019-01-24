@@ -1,4 +1,4 @@
-Documentation
+![](./favicon-64x64.png) Documentation
 -------------
 
 1. [Advanced scripting with the command line tools](command-line.md)

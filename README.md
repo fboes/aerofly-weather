@@ -1,4 +1,4 @@
-✈️ AEWX - METAR weather importer for Aerofly FS 2
+![](docs/favicon-64x64.png) AEWX - METAR weather importer for Aerofly FS 2
 ==================================================
 
 Copy [METAR weather information](docs/metar.md) into [IPCAS' Aerofly FS 2](https://www.aerofly.com/).

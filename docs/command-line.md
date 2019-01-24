@@ -1,4 +1,4 @@
-Usage of Command Line Tools
+![](./favicon-64x64.png) Usage of Command Line Tools
 ==================
 
 The command line tools allow for a number of ways to get METAR information into IPACS' Aerofly FS 2, depending on your [source of METAR information](./metar.md):

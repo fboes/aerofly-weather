@@ -1,4 +1,4 @@
-Settings in Aerofly's `main.mcf`
+![](./favicon-64x64.png) Settings in Aerofly's `main.mcf`
 --------------------------------
 
 This tool modifies the following settings in Aerofly's `main.mcf`:

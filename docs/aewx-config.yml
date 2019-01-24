@@ -1,0 +1,14 @@
+# AEWX configuration file
+
+# Change interpretation of METAR data
+maxCloudsHeight:  40000 # ft = 100% Aerofly
+maxWind:          40    # kt = 100% Aerofly
+maxVisibility:    20000 # m  = 100% Aerofly
+maxTurbulence:    20    # kt = 100% Aerofly
+minTemperature:   5     # °C = 0% Aerofly
+maxTemperature:   30    # °C = 100% Aerofly
+hourOffset:       0.0   # Change time by X hours
+noRandom:         false # Deactivate randomization of values
+
+AEWX_URL:         https://www.example.com/metar/XXXX
+CHECKWX_APIKEY:   12345abcd

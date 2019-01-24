@@ -18,16 +18,18 @@ COPY /Y main.mcf main.bak
   ECHO 1. METAR input  (METAR string required)
   ECHO 2. METAR URL    (ICAO code required)
   ECHO 3. CheckWX      (ICAO code required)
+  ECHO 4. Help
   ECHO.
-  ECHO 4. Start Aerofly FS 2
-  ECHO 5. Quit
+  ECHO 5. Start Aerofly FS 2
+  ECHO 6. Quit
   ECHO.
 
-  CHOICE /C 12345 /M "Select option "
+  CHOICE /C 123456 /M "Select option "
 
   :: Note - list ERRORLEVELS in decreasing order
-  IF ERRORLEVEL 5 GOTO End
-  IF ERRORLEVEL 4 GOTO Aerofly
+  IF ERRORLEVEL 6 GOTO End
+  IF ERRORLEVEL 5 GOTO Aerofly
+  IF ERRORLEVEL 4 GOTO Help
   IF ERRORLEVEL 3 GOTO MetarCheckWX
   IF ERRORLEVEL 2 GOTO MetarURL
   IF ERRORLEVEL 1 GOTO Metar
@@ -45,6 +47,10 @@ COPY /Y main.mcf main.bak
 :MetarCheckWX
   CALL aewx-checkwx --verbose
   ECHO -------------------------------------------------------
+  GOTO Menu
+
+:Help
+  START https://www.npmjs.com/package/aerofly-weather
   GOTO Menu
 
 :Aerofly

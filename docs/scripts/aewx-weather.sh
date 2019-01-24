@@ -2,7 +2,7 @@
 
 # Change variables to fit your local settings
 CHECKWX_APIKEY=
-MCF_LOCATION="~\Documents\Aerofly FS 2"
+MCF_LOCATION='~/Library/Containers/com.aerofly.aerofly-fs-2'
 
 # Change directory
 pushd ${MCF_LOCATION}
@@ -13,7 +13,7 @@ cp main.mcf main.bak
 
 # https://stackoverflow.com/questions/9307512/create-a-batch-file-with-multiple-options
 echo "Get Aerofly FS 2 weather data from..."
-OPTIONS=("METAR input" "METAR URL" "CheckWX" "Start Aerofly FS 2" "Quit")
+OPTIONS=("METAR input" "METAR URL" "CheckWX" "Help" "Start Aerofly FS 2" "Quit")
 select OPT in "${OPTIONS[@]}"
 
 do
@@ -28,6 +28,10 @@ do
 
     "CheckWX")
       aewx-checkwx --verbose
+      ;;
+
+    "Help")
+      start https://www.npmjs.com/package/aerofly-weather
       ;;
 
     "Start Aerofly FS 2")

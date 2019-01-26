@@ -8,7 +8,7 @@ The command line tools allow for a number of ways to get METAR information into 
 * [`aewx-metar-url [URL]`](../bin/aewx-metar-url):  
   Fetch [METAR information](./metar.md) from an `[URL]`. The URL method may be used with a METAR API which supplies _raw_ METAR information.
 * [`aewx-metar-fetch [ICAO] [AEWX_URL]`](../bin/aewx-metar-fetch):  
-  Works like `aewx-metar-url`, but `[ICAO]` code will pasted into `[AEWX_URL]` at the point where the URL contains `XXXX`. This may be useful if you are querying the same URL again and again, but with different ICAO codes.
+  Works like `aewx-metar-url`, but the `[ICAO]` code will be pasted into `[AEWX_URL]` at the point where the URL contains `XXXX`. This may be useful if you are querying the same URL again and again, but with different ICAO codes.
 * [`aewx-checkwx [ICAO-CODE] [CHECKWX_APIKEY]`](../bin/aewx-checkwx):  
   Fetch [METAR information](./metar.md) supplied by https://api.checkwx.com/. You will need a valid `[CHECKWX_APIKEY]` from https://api.checkwx.com/, and supply the `[ICAO-CODE]` of your selected airport.
 

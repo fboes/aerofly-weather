@@ -35,9 +35,9 @@ Visibility tests set maximum visibility in Aerofly FS 2 to 20,000 meters.
 Wind
 ----
 
-Setting the **wind strength** to `1` yields a wind speed of ~16 knots; setting it to `2` yields ~48 knots, and `4` yields ~160 knots. This implies a exponential function, which can be approximated by `f(x) = 8 * (x + x^2)`, with `x` being the value set and `f(x)` returning the resulting wind speed in knots.
+Setting the **wind strength** to `1` yields a wind speed of ~16 knots; setting it to `2` yields ~48 knots, and `4` yields ~160 knots. This implies an exponential function, which can be approximated by `f(x) = 8 * (x + x^2)`, with `x` being the value set and `f(x)` returning the resulting wind speed in knots.
 
-**Turbulence** causes the wind to change its direction of attack in Aerofly FS2, as well as change its speed. The direct impact has not been measrured yet.
+**Turbulence** causes the wind to change its direction of attack in Aerofly FS2, as well as change its speed. The direct impact has not been measured yet.
 
 The effect of **thermal activity** has not been measured yet.
 

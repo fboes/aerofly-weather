@@ -38,7 +38,7 @@ Click on the desktop file called `aewx-weather.bat` / `aewx-weather.sh` and foll
 * Fetch a METAR weather string from an URL and set the weather accordingly.
 * Fetch weather data from the [CheckWX API](https://www.checkwx.com/) and set the weather accordingly.
 
-The desktop batch file also contains some settings for the tools. If you want to edit the desktop batch file, just right click on it and select "Edit". There is a small [guide on how work with the command line tools contained in the desktop batch file](docs/command-line.md).
+The desktop batch file also contains some settings for the tools. If you want to edit the desktop batch file, just right click on it and select "Edit". There is a small [guide on how to work with the command line tools contained in the desktop batch file](docs/command-line.md).
 
 Advanced usage
 --------------

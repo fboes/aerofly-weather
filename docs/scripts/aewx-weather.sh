@@ -19,15 +19,15 @@ select OPT in "${OPTIONS[@]}"
 do
   case $OPT in
     "METAR input")
-      aewx-metar --verbose
+      aewx-metar
       ;;
 
     "METAR URL")
-      aewx-metar-url --verbose
+      aewx-metar-url
       ;;
 
     "CheckWX")
-      aewx-checkwx --verbose
+      aewx-checkwx
       ;;
 
     "Help")

@@ -35,17 +35,17 @@ COPY /Y main.mcf main.bak
   IF ERRORLEVEL 1 GOTO Metar
 
 :Metar
-  CALL aewx-metar --verbose
+  CALL aewx-metar
   ECHO -------------------------------------------------------
   GOTO Menu
 
 :MetarURL
-  CALL aewx-metar-url --verbose
+  CALL aewx-metar-url
   ECHO -------------------------------------------------------
   GOTO Menu
 
 :MetarCheckWX
-  CALL aewx-checkwx --verbose
+  CALL aewx-checkwx
   ECHO -------------------------------------------------------
   GOTO Menu
 

@@ -5,6 +5,7 @@ For detailed information check [Aerofly Weather's releases on Github](https://gi
 
 * 🎁 Add icon
 * 🎁 Improve documentation
+* 🎁 Improve shell output, making it more readable
 
 0.5.1
 -----

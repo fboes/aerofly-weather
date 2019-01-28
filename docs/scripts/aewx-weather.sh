@@ -2,7 +2,8 @@
 
 # Change variables to fit your local settings
 CHECKWX_APIKEY=
-MCF_LOCATION='~/Library/Containers/com.aerofly.aerofly-fs-2'
+MCF_LOCATION="~/Library/Containers/com.aerofly.aerofly-fs-2"
+AVWX_URL="http://avwx.rest/api/metar/XXXX?options=&format=json&onfail=cache"
 
 # Change directory
 pushd ${MCF_LOCATION}
@@ -13,7 +14,7 @@ cp main.mcf main.bak
 
 # https://stackoverflow.com/questions/9307512/create-a-batch-file-with-multiple-options
 echo "Get Aerofly FS 2 weather data from..."
-OPTIONS=("METAR input" "METAR URL" "CheckWX" "Help" "Start Aerofly FS 2" "Quit")
+OPTIONS=("METAR input" "AVWX" "CheckWX" "Help" "Start Aerofly FS 2" "Quit")
 select OPT in "${OPTIONS[@]}"
 
 do
@@ -22,8 +23,8 @@ do
       aewx-metar
       ;;
 
-    "METAR URL")
-      aewx-metar-url
+    "AVWX")
+      aewx-metar-fetch "" %AVWX_URL% --response=json
       ;;
 
     "CheckWX")

@@ -3,6 +3,7 @@
 :: Change variables to fit your local settings
 SET CHECKWX_APIKEY=
 SET MCF_LOCATION="%userprofile%\Documents\Aerofly FS 2"
+SET AVWX_URL="http://avwx.rest/api/metar/XXXX?options=&format=json&onfail=cache"
 
 :: Change directory
 PUSHD %MCF_LOCATION%
@@ -16,7 +17,7 @@ COPY /Y main.mcf main.bak
   ECHO.
   ECHO Get Aerofly FS 2 weather data from...
   ECHO 1. METAR input  (METAR string required)
-  ECHO 2. METAR URL    (URL required)
+  ECHO 2. AVWX         (ICAO code required)
   ECHO 3. CheckWX      (ICAO code required)
   ECHO 4. Help
   ECHO.
@@ -31,7 +32,7 @@ COPY /Y main.mcf main.bak
   IF ERRORLEVEL 5 GOTO Aerofly
   IF ERRORLEVEL 4 GOTO Help
   IF ERRORLEVEL 3 GOTO MetarCheckWX
-  IF ERRORLEVEL 2 GOTO MetarURL
+  IF ERRORLEVEL 2 GOTO MetarAVWX
   IF ERRORLEVEL 1 GOTO Metar
 
 :Metar
@@ -39,8 +40,8 @@ COPY /Y main.mcf main.bak
   ECHO -------------------------------------------------------
   GOTO Menu
 
-:MetarURL
-  CALL aewx-metar-url
+:MetarAVWX
+  CALL aewx-metar-fetch "" %AVWX_URL% --response=json
   ECHO -------------------------------------------------------
   GOTO Menu
 

@@ -8,7 +8,8 @@ const fillOutTheBlanks = require('../lib/fill-out-the-blanks');
 if (args.help) {
   console.log(`Usage: aewx-url [options...] [URL] [FILE]
 
-Copy raw METAR information from URL into your Aerofly FS2 configuration file.
+Copy METAR information from URL into your Aerofly FS2 configuration file.
+In default response mode the HTTP response has to contain raw METAR information.
 
 Arguments:
       [URL]                  URL to query. The URL has to response with a single
@@ -22,6 +23,9 @@ Arguments:
                              path.
 
 Options:
+      --response=<TYPE>      Set this to 'json' to parse from a simple JSON
+                             object, reading raw METAR from 'root.raw' and other
+                             usual places.
       --hours=<HOURS>        Offset time by HOURS hours, e.g. '-8'
       --time=<HH:MM+ZZ:ZZ>   Set time to HH:MM+ZZ:ZZ, e.g. '12:30-08:00'
       --date=<YYYY-MM-DD>    Set date to YYYY-MM-DD, e.g. '2018-12-31'

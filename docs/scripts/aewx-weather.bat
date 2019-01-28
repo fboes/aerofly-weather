@@ -16,7 +16,7 @@ COPY /Y main.mcf main.bak
   ECHO.
   ECHO Get Aerofly FS 2 weather data from...
   ECHO 1. METAR input  (METAR string required)
-  ECHO 2. METAR URL    (ICAO code required)
+  ECHO 2. METAR URL    (URL required)
   ECHO 3. CheckWX      (ICAO code required)
   ECHO 4. Help
   ECHO.

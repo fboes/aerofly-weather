@@ -3,7 +3,7 @@
 
 Copy [METAR weather information](docs/metar.md) into [IPCAS' Aerofly FS 2](https://www.aerofly.com/).
 
-The AEWX command line tools will copy the following METAR weather information to your configuration file while Aerofly FS 2 is not running:
+The AEWX command line tools will copy the following METAR weather information to your configuration file while Aerofly FS 2 is _not_ running:
 
 * Time and day (will set the year and month to current year and month because they are not present in METAR information)
 * Wind & turbulences
@@ -20,8 +20,8 @@ Installation
 1. This tool requires Windows, Mac OSX or Linux.
 1. Install [Node.js](https://nodejs.org/) with at least version 10.
 1. Open the Command Prompt / Terminal application already installed on your computer.
-1. Run `npm install -g aerofly-weather` to install Aerofly-Weather.
-1. Use `aewx-make-batch` to create a batch file on your desktop.
+1. Type `npm install -g aerofly-weather` and hit `ENTER` to install Aerofly-Weather.
+1. Type `aewx-make-batch` and hit `ENTER` to create the main batch file on your desktop.
 
 This package also comes with a load of [command line tools](docs/command-line.md). For basic usage the desktop batch file will suffice.
 

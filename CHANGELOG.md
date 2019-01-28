@@ -3,9 +3,16 @@ Change log
 
 For detailed information check [Aerofly Weather's releases on Github](https://github.com/fboes/aerofly-weather/releases).
 
+0.5.3
+-----
+
+* 🎁 Improve shell output, making it more readable
+
+0.5.2
+-----
+
 * 🎁 Add icon
 * 🎁 Improve documentation
-* 🎁 Improve shell output, making it more readable
 
 0.5.1
 -----

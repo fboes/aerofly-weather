@@ -1,0 +1,59 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const args             = require('../lib/argumentor')(process.argv);
+const fillOutTheBlanks = require('../lib/fill-out-the-blanks');
+
+if (!args._[1] && process.env.CHECKWX_APIKEY) {
+  args._[1] = process.env.CHECKWX_APIKEY;
+}
+
+if (args.help) {
+  console.log(`Usage: aerowx-checkwx [options...] [ICAO] [CHECKWX_APIKEY] [FILE]
+
+Copy METAR information from https://api.checkwx.com into your Aerofly FS2
+configuration file. You will need an API key to fetch information.
+
+Arguments:
+      [ICAO]                 ICAO code of airport the METAR will be fetched for.
+                             If this is set to 'DEP', ICAO code will be fetched
+                             from Aerofly FS 2 flightplan departure airport.
+                             If this is set to 'ARR', ICAO code will be fetched
+                             from Aerofly FS 2 flightplan arrival airport.
+                             If not set this will be asked from STDIN.
+      [CHECKWX_APIKEY]       CheckWX API key to validate your request.
+                             If not set this will be asked from STDIN.
+                             You may supply [CHECKWX_APIKEY] by setting the
+                             environment variable 'CHECKWX_APIKEY'.
+      [FILE]                 File to modify. Defaults to 'main.mcf' in current
+                             path.
+
+Options:
+      --hours=<HOURS>        Offset time by HOURS hours, e.g. '-8'
+      --time=<HH:MM+ZZ:ZZ>   Set time to HH:MM+ZZ:ZZ, e.g. '12:30-08:00'
+      --date=<YYYY-MM-DD>    Set date to YYYY-MM-DD, e.g. '2018-12-31'
+      --flightplan           Delete currently active flightplan if departure or
+                             arrival does not match METAR ICAO code
+      --quiet                No console output
+      --dry-run              Do not save 'main.mcf'
+      --help                 Display this help and exit
+      --verbose              Show debug output`);
+  process.exit(0);
+}
+
+(async() => {
+  args._ = await fillOutTheBlanks({
+    0: 'an ICAO code',
+    1: 'your CheckWX API key'
+  }, args._, 'Please enter %s:');
+
+  require('../lib/main')(args['verbose'])
+    .fromCheckwx(
+      args._[1],
+      args._[0],
+      args._[2]  || 'main.mcf',
+      args
+    )
+  ;
+})();

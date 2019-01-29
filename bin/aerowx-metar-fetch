@@ -5,15 +5,15 @@
 const args             = require('../lib/argumentor')(process.argv);
 const fillOutTheBlanks = require('../lib/fill-out-the-blanks');
 
-if (!args._[1] && process.env.CHECKWX_APIKEY) {
-  args._[1] = process.env.CHECKWX_APIKEY;
+if (!args._[1] && process.env.AEROWX_URL) {
+  args._[1] = process.env.AEROWX_URL;
 }
 
 if (args.help) {
-  console.log(`Usage: aewx-checkwx [options...] [ICAO] [CHECKWX_APIKEY] [FILE]
+  console.log(`Usage: aerowx-fetch [options...] [ICAO] [AEROWX_URL] [FILE]
 
-Copy METAR information from https://api.checkwx.com into your Aerofly FS2
-configuration file. You will need an API key to fetch information.
+Copy METAR information from URL into your Aerofly FS2 configuration file.
+In default response mode the HTTP response has to be raw METAR information.
 
 Arguments:
       [ICAO]                 ICAO code of airport the METAR will be fetched for.
@@ -22,14 +22,18 @@ Arguments:
                              If this is set to 'ARR', ICAO code will be fetched
                              from Aerofly FS 2 flightplan arrival airport.
                              If not set this will be asked from STDIN.
-      [CHECKWX_APIKEY]       CheckWX API key to validate your request.
+      [AEROWX_URL]           URL to query, with 'XXXX' being replaced by given
+                             ICAO code.
+                             You may supply [AEROWX_URL] by setting the
+                             environment variable 'AEROWX_URL'.
                              If not set this will be asked from STDIN.
-                             You may supply [CHECKWX_APIKEY] by setting the
-                             environment variable 'CHECKWX_APIKEY'.
       [FILE]                 File to modify. Defaults to 'main.mcf' in current
                              path.
 
 Options:
+      --response=<TYPE>      Set this to 'json' to parse from a simple JSON
+                             object, reading raw METAR from 'root.raw' and other
+                             usual places.
       --hours=<HOURS>        Offset time by HOURS hours, e.g. '-8'
       --time=<HH:MM+ZZ:ZZ>   Set time to HH:MM+ZZ:ZZ, e.g. '12:30-08:00'
       --date=<YYYY-MM-DD>    Set date to YYYY-MM-DD, e.g. '2018-12-31'
@@ -45,13 +49,12 @@ Options:
 (async() => {
   args._ = await fillOutTheBlanks({
     0: 'an ICAO code',
-    1: 'your CheckWX API key'
+    1: 'an URL'
   }, args._, 'Please enter %s:');
 
   require('../lib/main')(args['verbose'])
-    .fromCheckwx(
-      args._[1],
-      args._[0],
+    .fromUrl(
+      args._[1].replace('XXXX', args._[0]),
       args._[2]  || 'main.mcf',
       args
     )

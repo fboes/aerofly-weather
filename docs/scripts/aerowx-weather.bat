@@ -36,17 +36,17 @@ COPY /Y main.mcf main.bak
   IF ERRORLEVEL 1 GOTO Metar
 
 :Metar
-  CALL aewx-metar
+  CALL aerowx-metar
   ECHO -------------------------------------------------------
   GOTO Menu
 
 :MetarAVWX
-  CALL aewx-metar-fetch "" %AVWX_URL% --response=json
+  CALL aerowx-metar-fetch "" %AVWX_URL% --response=json
   ECHO -------------------------------------------------------
   GOTO Menu
 
 :MetarCheckWX
-  CALL aewx-checkwx
+  CALL aerowx-checkwx
   ECHO -------------------------------------------------------
   GOTO Menu
 

@@ -3,13 +3,13 @@
 
 The command line tools allow for a number of ways to get METAR information into IPACS' Aerofly FS 2, depending on your [source of METAR information](./metar.md):
 
-* [`aewx-metar [METAR]`](../bin/aewx-metar):  
+* [`aerowx-metar [METAR]`](../bin/aerowx-metar):  
   Insert the [METAR information](./metar.md) into your configuration file, with `[METAR]` being a valid METAR forecast string enclosed in quotes.
-* [`aewx-metar-url [URL]`](../bin/aewx-metar-url):  
+* [`aerowx-metar-url [URL]`](../bin/aerowx-metar-url):  
   Fetch [METAR information](./metar.md) from an `[URL]`. The URL method may be used with a METAR API which supplies _raw_ or _JSON_ METAR information.
-* [`aewx-metar-fetch [ICAO] [AEWX_URL]`](../bin/aewx-metar-fetch):  
-  Works like `aewx-metar-url`, but the `[ICAO]` code will be pasted into `[AEWX_URL]` at the position where the URL contains `XXXX`. This may be useful if you are querying the same URL again and again, but with different ICAO codes.
-* [`aewx-checkwx [ICAO-CODE] [CHECKWX_APIKEY]`](../bin/aewx-checkwx):  
+* [`aerowx-metar-fetch [ICAO] [AEROWX_URL]`](../bin/aerowx-metar-fetch):  
+  Works like `aerowx-metar-url`, but the `[ICAO]` code will be pasted into `[AEROWX_URL]` at the position where the URL contains `XXXX`. This may be useful if you are querying the same URL again and again, but with different ICAO codes.
+* [`aerowx-checkwx [ICAO-CODE] [CHECKWX_APIKEY]`](../bin/aerowx-checkwx):  
   Fetch [METAR information](./metar.md) supplied by https://api.checkwx.com/. You will need a valid `[CHECKWX_APIKEY]` from https://api.checkwx.com/, and supply the `[ICAO-CODE]` of your selected airport.
 
 There is an extend documentation for each command line tool by appending `--help`.
@@ -19,24 +19,24 @@ Examples for command line tool integrations
 
 ### Microsoft Windows
 
-* [`aewx-weather.bat`](scripts/aewx-weather.bat): Interactive menu, will be used for desktop batch file.
-* [`aewx-metar.bat`](scripts/aewx-metar.bat): Ask user every time for METAR string.
-* [`aewx-checkwx.bat`](scripts/aewx-checkwx.bat): Ask user every time for ICAO code to fetch METAR information from CheckWX.
-* [`aewx-metar-url.bat`](scripts/aewx-metar-url.bat): Ask user every time for ICAO code to fetch METAR information from pre-defined URL.
+* [`aerowx-weather.bat`](scripts/aerowx-weather.bat): Interactive menu, will be used for desktop batch file.
+* [`aerowx-metar.bat`](scripts/aerowx-metar.bat): Ask user every time for METAR string.
+* [`aerowx-checkwx.bat`](scripts/aerowx-checkwx.bat): Ask user every time for ICAO code to fetch METAR information from CheckWX.
+* [`aerowx-metar-url.bat`](scripts/aerowx-metar-url.bat): Ask user every time for ICAO code to fetch METAR information from pre-defined URL.
 
 ### Linux / Mac OS X
 
-* [`aewx-weather.sh`](scripts/aewx-weather.sh): Interactive menu, will be used for desktop batch file.
-* [`aewx-metar.sh`](scripts/aewx-metar.sh): Ask user every time for METAR string.
-* [`aewx-checkwx.sh`](scripts/aewx-checkwx.sh): Ask user every time for ICAO code to fetch METAR information from CheckWX.
-* [`aewx-metar-url.sh`](scripts/aewx-metar-url.sh): Ask user every time for ICAO code to fetch METAR information from pre-defined URL.
+* [`aerowx-weather.sh`](scripts/aerowx-weather.sh): Interactive menu, will be used for desktop batch file.
+* [`aerowx-metar.sh`](scripts/aerowx-metar.sh): Ask user every time for METAR string.
+* [`aerowx-checkwx.sh`](scripts/aerowx-checkwx.sh): Ask user every time for ICAO code to fetch METAR information from CheckWX.
+* [`aerowx-metar-url.sh`](scripts/aerowx-metar-url.sh): Ask user every time for ICAO code to fetch METAR information from pre-defined URL.
 
 Environment variables
 ---------------------
 
-`aewx-checkwx` requires you to enter your API key every time the command is executed. For convenience you may store your API key in a local environment variable called `CHECKWX_APIKEY`. 
+`aerowx-checkwx` requires you to enter your API key every time the command is executed. For convenience you may store your API key in a local environment variable called `CHECKWX_APIKEY`. 
 
-`aewx-metar-fetch` requires you to enter your base URL every time the command is executed. For convenience you may store your base URL in a local environment variable called `AEWX_URL`. 
+`aerowx-metar-fetch` requires you to enter your base URL every time the command is executed. For convenience you may store your base URL in a local environment variable called `AEROWX_URL`. 
 
 To set the environment variable use the following examples:
 
@@ -48,8 +48,8 @@ set  CHECKWX_APIKEY=12345abcd
 setx CHECKWX_APIKEY %CHECKWX_APIKEY%
 
 :: Replace 'https://example.com/metar/XXXX' with your actual URL
-set  AEWX_URL=https://example.com/metar/XXXX
-setx AEWX_URL %AEWX_URL%
+set  AEROWX_URL=https://example.com/metar/XXXX
+setx AEROWX_URL %AEROWX_URL%
 ```
 
 ### Linux / Mac OS X
@@ -61,19 +61,19 @@ echo "export CHECKWX_APIKEY=${CHECKWX_APIKEY}" >> ~/.profile
 echo "export CHECKWX_APIKEY=${CHECKWX_APIKEY}" >> ~/.bash_profile
 
 # Replace 'https://example.com/metar/XXXX' with your actual URL
-AEWX_URL=https://example.com/metar/XXXX
-echo "export AEWX_URL=${AEWX_URL}" >> ~/.profile
-echo "export AEWX_URL=${AEWX_URL}" >> ~/.bash_profile
+AEROWX_URL=https://example.com/metar/XXXX
+echo "export AEROWX_URL=${AEROWX_URL}" >> ~/.profile
+echo "export AEROWX_URL=${AEROWX_URL}" >> ~/.bash_profile
 ```
 
 Add data from `STDIN`
 ---------------------
 
-For Linux / Mac OS X: All `aewx-weather` tools do not accept input from `STDIN`. To remedy this shortcoming pipe `STDIN` into a variable:
+For Linux / Mac OS X: `aerowx-weather` tools do not accept input from `STDIN`. To remedy this shortcoming pipe `STDIN` into a variable:
 
 ```bash
 METAR=$(cat METAR.txt)
-aewx-metar $METAR
+aerowx-metar $METAR
 
 ```
 

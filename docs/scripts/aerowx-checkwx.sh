@@ -6,4 +6,4 @@ cp main.mcf main.bak
 # Replace 12345abcd with actual API key
 CHECKWX_APIKEY=12345abcd
 read -p 'Enter ICAO string: ' ICAO
-aewx-checkwx ${ICAO} ${CHECKWX_APIKEY} --verbose
+aerowx-checkwx ${ICAO} ${CHECKWX_APIKEY} --verbose

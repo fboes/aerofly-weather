@@ -20,15 +20,15 @@ select OPT in "${OPTIONS[@]}"
 do
   case $OPT in
     "METAR input")
-      aewx-metar
+      aerowx-metar
       ;;
 
     "AVWX")
-      aewx-metar-fetch "" %AVWX_URL% --response=json
+      aerowx-metar-fetch "" %AVWX_URL% --response=json
       ;;
 
     "CheckWX")
-      aewx-checkwx
+      aerowx-checkwx
       ;;
 
     "Help")

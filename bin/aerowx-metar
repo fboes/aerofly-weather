@@ -6,26 +6,18 @@ const args             = require('../lib/argumentor')(process.argv);
 const fillOutTheBlanks = require('../lib/fill-out-the-blanks');
 
 if (args.help) {
-  console.log(`Usage: aewx-url [options...] [URL] [FILE]
+  console.log(`Usage: aerowx-metar [options...] "[METAR]" [FILE]
 
-Copy METAR information from URL into your Aerofly FS2 configuration file.
-In default response mode the HTTP response has to be raw METAR information.
+Copy METAR information string into your Aerofly FS2 configuration file.
 
 Arguments:
-      [URL]                  URL to query. The URL has to response with a single
-                             METAR code.
-                             If this contains 'DEP', ICAO code will be fetched
-                             from Aerofly FS 2 flightplan departure airport.
-                             If this contains 'ARR', ICAO code will be fetched
-                             from Aerofly FS 2 flightplan arrival airport.
-                             If not set this will be asked from STDIN.
       [FILE]                 File to modify. Defaults to 'main.mcf' in current
                              path.
+      [METAR]                METAR code. For more information on METAR see
+                             https://aviationweather.gov/metar.
+                             If not set this will be asked from STDIN.
 
 Options:
-      --response=<TYPE>      Set this to 'json' to parse from a simple JSON
-                             object, reading raw METAR from 'root.raw' and other
-                             usual places.
       --hours=<HOURS>        Offset time by HOURS hours, e.g. '-8'
       --time=<HH:MM+ZZ:ZZ>   Set time to HH:MM+ZZ:ZZ, e.g. '12:30-08:00'
       --date=<YYYY-MM-DD>    Set date to YYYY-MM-DD, e.g. '2018-12-31'
@@ -40,11 +32,11 @@ Options:
 
 (async() => {
   args._ = await fillOutTheBlanks({
-    0: 'an URL'
+    0: 'a METAR code'
   }, args._, 'Please enter %s:');
 
   require('../lib/main')(args['verbose'])
-    .fromUrl(
+    .fromString(
       args._[0],
       args._[1]  || 'main.mcf',
       args

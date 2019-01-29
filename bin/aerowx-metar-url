@@ -5,27 +5,19 @@
 const args             = require('../lib/argumentor')(process.argv);
 const fillOutTheBlanks = require('../lib/fill-out-the-blanks');
 
-if (!args._[1] && process.env.AEWX_URL) {
-  args._[1] = process.env.AEWX_URL;
-}
-
 if (args.help) {
-  console.log(`Usage: aewx-fetch [options...] [ICAO] [AEWX_URL] [FILE]
+  console.log(`Usage: aerowx-url [options...] [URL] [FILE]
 
 Copy METAR information from URL into your Aerofly FS2 configuration file.
 In default response mode the HTTP response has to be raw METAR information.
 
 Arguments:
-      [ICAO]                 ICAO code of airport the METAR will be fetched for.
-                             If this is set to 'DEP', ICAO code will be fetched
+      [URL]                  URL to query. The URL has to response with a single
+                             METAR code.
+                             If this contains 'DEP', ICAO code will be fetched
                              from Aerofly FS 2 flightplan departure airport.
-                             If this is set to 'ARR', ICAO code will be fetched
+                             If this contains 'ARR', ICAO code will be fetched
                              from Aerofly FS 2 flightplan arrival airport.
-                             If not set this will be asked from STDIN.
-      [AEWX_URL]             URL to query, with 'XXXX' being replaced by given
-                             ICAO code.
-                             You may supply [AEWX_URL] by setting the
-                             environment variable 'AEWX_URL'.
                              If not set this will be asked from STDIN.
       [FILE]                 File to modify. Defaults to 'main.mcf' in current
                              path.
@@ -48,14 +40,13 @@ Options:
 
 (async() => {
   args._ = await fillOutTheBlanks({
-    0: 'an ICAO code',
-    1: 'an URL'
+    0: 'an URL'
   }, args._, 'Please enter %s:');
 
   require('../lib/main')(args['verbose'])
     .fromUrl(
-      args._[1].replace('XXXX', args._[0]),
-      args._[2]  || 'main.mcf',
+      args._[0],
+      args._[1]  || 'main.mcf',
       args
     )
   ;

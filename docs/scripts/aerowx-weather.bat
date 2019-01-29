@@ -21,7 +21,7 @@ COPY /Y main.mcf main.bak
   ECHO 3. CheckWX      (ICAO code required)
   ECHO 4. Help
   ECHO.
-  ECHO 5. Start Aerofly FS 2
+  ECHO 5. Start Aerofly FS 2 (Steam)
   ECHO 6. Quit
   ECHO.
 

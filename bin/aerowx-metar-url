@@ -12,8 +12,7 @@ Copy METAR information from URL into your Aerofly FS2 configuration file.
 In default response mode the HTTP response has to be raw METAR information.
 
 Arguments:
-      [URL]                  URL to query. The URL has to response with a single
-                             METAR code.
+      [URL]                  URL to query. See '--response' option for details.
                              If this contains 'DEP', ICAO code will be fetched
                              from Aerofly FS 2 flightplan departure airport.
                              If this contains 'ARR', ICAO code will be fetched
@@ -24,8 +23,8 @@ Arguments:
 
 Options:
       --response=<TYPE>      Set this to 'json' to parse from a simple JSON
-                             object, reading raw METAR from 'root.raw' and other
-                             usual places.
+                             object, reading raw METAR data from the most
+                             common places.
       --apikey=<APIKEY>      Sent HTTP header 'X-API-Key' set to APIKEY.
       --hours=<HOURS>        Offset time by HOURS hours, e.g. '-8'
       --time=<HH:MM+ZZ:ZZ>   Set time to HH:MM+ZZ:ZZ, e.g. '12:30-08:00'

@@ -34,6 +34,7 @@ Options:
       --response=<TYPE>      Set this to 'json' to parse from a simple JSON
                              object, reading raw METAR from 'root.raw' and other
                              usual places.
+      --apikey=<APIKEY>      Sent HTTP header 'X-API-Key' set to APIKEY.
       --hours=<HOURS>        Offset time by HOURS hours, e.g. '-8'
       --time=<HH:MM+ZZ:ZZ>   Set time to HH:MM+ZZ:ZZ, e.g. '12:30-08:00'
       --date=<YYYY-MM-DD>    Set date to YYYY-MM-DD, e.g. '2018-12-31'

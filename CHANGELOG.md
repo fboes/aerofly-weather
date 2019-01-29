@@ -3,6 +3,7 @@ Change log
 
 For detailed information check [Aerofly Weather's releases on Github](https://github.com/fboes/aerofly-weather/releases).
 
+* 💣 Rename ICAO codes for flightplan substitutes to `DEP` / `ARR`
 * 🎁 `aewx-metar-fetch` & `aewx-metar-url` CLI commands accept common JSON patterns, making it compatible with [AVWX](https://avwx.rest/)
 
 0.5.3

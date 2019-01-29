@@ -13,13 +13,13 @@ if (args.help) {
   console.log(`Usage: aewx-fetch [options...] [ICAO] [AEWX_URL] [FILE]
 
 Copy METAR information from URL into your Aerofly FS2 configuration file.
-In default response mode the HTTP response has to contain raw METAR information.
+In default response mode the HTTP response has to be raw METAR information.
 
 Arguments:
       [ICAO]                 ICAO code of airport the METAR will be fetched for.
-                             If this is set to 'XXXX', ICAO code will be fetched
+                             If this is set to 'DEP', ICAO code will be fetched
                              from Aerofly FS 2 flightplan departure airport.
-                             If this is set to 'YYYY', ICAO code will be fetched
+                             If this is set to 'ARR', ICAO code will be fetched
                              from Aerofly FS 2 flightplan arrival airport.
                              If not set this will be asked from STDIN.
       [AEWX_URL]             URL to query, with 'XXXX' being replaced by given

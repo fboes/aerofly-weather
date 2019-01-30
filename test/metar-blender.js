@@ -35,8 +35,10 @@ describe('metarBlender', function() {
       "fahrenheit": 64
     },
     "visibility": {
-      "miles": 10,
-      "meters": 16.093
+      "miles": "10",
+      "miles_float": 10,
+      "meters": "16,093",
+      "meters_float": 16093
     },
     "wind": {
       "degrees": 330,
@@ -59,7 +61,9 @@ describe('metarBlender', function() {
     },
     "visibility": {
       "miles": 2.5,
-      "meters": 4023.36
+      "miles_float": 2.5,
+      "meters": 4023.36,
+      "meters_float": 4023.36
     },
     "conditions": [ "-", "RA", "BR" ],
     "clouds":

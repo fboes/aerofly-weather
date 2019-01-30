@@ -38,6 +38,8 @@ Click on the desktop file called `aerowx-weather.bat` / `aerowx-weather.sh` and 
 * Fetch weather data from the [AVWX API](https://avwx.rest/) and set the weather accordingly.
 * Fetch weather data from the [CheckWX API](https://www.checkwx.com/) (API key required) and set the weather accordingly.
 
+Whenever you are asked for an ICAO code, you may supply `DEP` / `ARR` to get your last Aerofly FS 2 flightplan departure / arrival airport.
+
 The desktop batch file also contains some settings for the tools. If you want to edit the desktop batch file, just right click on it and select "Edit". There is a small [guide on how to work with the command line tools contained in the desktop batch file](docs/command-line.md).
 
 Advanced usage

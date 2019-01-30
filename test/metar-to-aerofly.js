@@ -11,7 +11,7 @@ describe('metarToAerofly', function() {
       icao: 'KPIE',
       observed: new Date('2019-01-29T12:30:18.825Z'),
       wind: { degrees: 270, speed_kts: 21, gust_kts: 30 },
-      visibility: { meters: 20000 },
+      visibility: { meters_float: 20000 },
       clouds: [
         { base_feet_agl: 2900, minDensity: 5, maxDensity: 7 }
       ],
@@ -38,7 +38,7 @@ describe('metarToAerofly', function() {
       icao: 'KPIE',
       observed: new Date('2019-01-29T12:30:18.825Z'),
       wind: { degrees: 270, speed_kts: 16, gust_kts: 16 },
-      visibility: { meters: 20000 },
+      visibility: { meters_float: 20000 },
       clouds: [
         { base_feet_agl: 2900, minDensity: 5, maxDensity: 7 }
       ],
@@ -67,7 +67,7 @@ describe('metarToAerofly', function() {
       icao: 'KPIE',
       observed: new Date('2019-01-29T12:30:18.825Z'),
       wind: { degrees: 270, speed_kts: 8, gust_kts: 8 },
-      visibility: { meters: 20000 },
+      visibility: { meters_float: 20000 },
       clouds: [
         { base_feet_agl: 2900, minDensity: 5, maxDensity: 7 }
       ],
@@ -96,7 +96,7 @@ describe('metarToAerofly', function() {
       icao: 'KPIE',
       observed: new Date('2019-01-29T23:59:59.999Z'),
       wind: { degrees: -90, speed_kts: 40, gust_kts: 40 },
-      visibility: { meters: 20000 },
+      visibility: { meters_float: 20000 },
       clouds: [
         { base_feet_agl: 2900, minDensity: 5, maxDensity: 7 }
       ],
@@ -127,7 +127,7 @@ describe('metarToAerofly', function() {
       icao: 'KPIE',
       observed: new Date('2019-01-29T18:30:18.825Z'),
       wind: { degrees: 270, speed_kts: 5, gust_kts: 5 },
-      visibility: { meters: 9999 },
+      visibility: { meters_float: 9999 },
       clouds: [
         { base_feet_agl: 2900, minDensity: 5, maxDensity: 7 }
       ],
@@ -155,7 +155,7 @@ describe('metarToAerofly', function() {
     const aeroflyObject = metarToAerofly({
       icao: 'KPIE',
       observed: new Date('2019-01-29T18:30:18.825Z'),
-      visibility: { meters: 9999 }
+      visibility: { meters_float: 9999 }
     }, {
       maxVisibility: 12000 // :? is bigger than 9999
     });

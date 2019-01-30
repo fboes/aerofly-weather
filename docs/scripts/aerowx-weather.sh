@@ -4,6 +4,7 @@
 CHECKWX_APIKEY=
 MCF_LOCATION="~/Library/Containers/com.aerofly.aerofly-fs-2"
 AVWX_URL="http://avwx.rest/api/metar/XXXX?options=&format=json&onfail=cache"
+AEROWX_OPTIONS=
 
 # Change directory
 pushd ${MCF_LOCATION}
@@ -20,15 +21,15 @@ select OPT in "${OPTIONS[@]}"
 do
   case $OPT in
     "METAR input")
-      aerowx-metar
+      aerowx-metar ${AEROWX_OPTIONS}
       ;;
 
     "AVWX")
-      aerowx-metar-fetch "" %AVWX_URL% --response=json
+      aerowx-metar-fetch "" ${AVWX_URL} --response=json ${AEROWX_OPTIONS}
       ;;
 
     "CheckWX")
-      aerowx-checkwx
+      aerowx-checkwx ${AEROWX_OPTIONS}
       ;;
 
     "Help")

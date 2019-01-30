@@ -4,6 +4,7 @@
 SET CHECKWX_APIKEY=
 SET MCF_LOCATION="%userprofile%\Documents\Aerofly FS 2"
 SET AVWX_URL="http://avwx.rest/api/metar/XXXX?options=&format=json&onfail=cache"
+SET AEROWX_OPTIONS=
 
 :: Change directory
 PUSHD %MCF_LOCATION%
@@ -36,17 +37,17 @@ COPY /Y main.mcf main.bak
   IF ERRORLEVEL 1 GOTO Metar
 
 :Metar
-  CALL aerowx-metar
+  CALL aerowx-metar %AEROWX_OPTIONS%
   ECHO -------------------------------------------------------
   GOTO Menu
 
 :MetarAVWX
-  CALL aerowx-metar-fetch "" %AVWX_URL% --response=json
+  CALL aerowx-metar-fetch "" %AVWX_URL% --response=json %AEROWX_OPTIONS%
   ECHO -------------------------------------------------------
   GOTO Menu
 
 :MetarCheckWX
-  CALL aerowx-checkwx
+  CALL aerowx-checkwx %AEROWX_OPTIONS%
   ECHO -------------------------------------------------------
   GOTO Menu
 

@@ -1,6 +1,6 @@
 {
   "name": "aerofly-weather",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "description": "Copy METAR information into Aerofly FS2.",
   "main": "lib/main.js",
   "directories": {

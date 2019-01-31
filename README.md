@@ -35,10 +35,10 @@ You will need a copy of IPACS' Aerofly FS 2 which has run at least once. This cr
 Click on the desktop file called `aerowx-weather.bat` / `aerowx-weather.sh` and follow the on-screen instructions. Basically it offers you to:
 
 * Set weather data from a [METAR weather string](docs/metar.md).
-* Fetch weather data from the [AVWX API](https://avwx.rest/) and set the weather accordingly.
-* Fetch weather data from the [CheckWX API](https://www.checkwx.com/) (API key required) and set the weather accordingly.
+* Fetch weather data by [ICAO aiport code](https://en.wikipedia.org/wiki/ICAO_airport_code) via the [AVWX API](https://avwx.rest/) and set the weather accordingly.
+* Fetch weather data by [ICAO aiport code](https://en.wikipedia.org/wiki/ICAO_airport_code) via the [CheckWX API](https://www.checkwx.com/) and set the weather accordingly. This method requires a CheckWX API key.
 
-Whenever you are asked for an ICAO code, you may supply `DEP` / `ARR` to get your last Aerofly FS 2 flightplan departure / arrival airport.
+Whenever you are asked for an ICAO code, you may supply `DEP` / `ARR` instead to get your last Aerofly FS 2 flightplan departure / arrival airport.
 
 The desktop batch file also contains some settings for the tools. If you want to edit the desktop batch file, just right click on it and select "Edit". There is a small [guide on how to work with the command line tools contained in the desktop batch file](docs/command-line.md).
 

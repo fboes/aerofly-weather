@@ -12,7 +12,7 @@ The command line tools allow for a number of ways to get METAR information into 
 * [`aerowx-checkwx [ICAO-CODE] [CHECKWX_APIKEY]`](../bin/aerowx-checkwx):  
   Fetch [METAR information](./metar.md) supplied by https://api.checkwx.com/. You will need a valid `[CHECKWX_APIKEY]` from https://api.checkwx.com/, and supply the `[ICAO-CODE]` of your selected airport.
 
-Whenever you are asked for an ICAO code, you may supply `DEP` / `ARR` to get your last Aerofly FS 2 flightplan departure / arrival airport.
+Whenever you are asked for an ICAO code, you may supply `DEP` / `ARR` instead to get your last Aerofly FS 2 flightplan departure / arrival airport.
 
 There is an extend documentation for each command line tool by appending `--help`. There are extra options which lets you manipulate time, day and flightplan settings.
 

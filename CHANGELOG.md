@@ -3,6 +3,8 @@ Change log
 
 For detailed information check [Aerofly Weather's releases on Github](https://github.com/fboes/aerofly-weather/releases).
 
+* 💊 Fixed thermal activity
+
 0.6.0
 -----
 

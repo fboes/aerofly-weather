@@ -30,7 +30,7 @@ describe('metarToAerofly', function() {
     assert.strictEqual(aeroflyObject.time.hours,    12.5);
     assert.strictEqual(aeroflyObject.wind.direction_in_degree,  270, 'Wind direction');
     assert.strictEqual(aeroflyObject.visibility,    1, 'Visibility');
-    assert.strictEqual(aeroflyObject.clouds.length, 1, 'Clouds');
+    assert.strictEqual(aeroflyObject.clouds.length, 3, 'Clouds');
   });
 
   it('must have proper wind', function() {
@@ -59,7 +59,13 @@ describe('metarToAerofly', function() {
     assert.strictEqual(aeroflyObject.wind.direction_in_degree,  270);
     assert.strictEqual(aeroflyObject.wind.strength, 1, 'Testing sqrt formula for 16kts');
     assert.strictEqual(aeroflyObject.visibility,    1);
-    assert.strictEqual(aeroflyObject.clouds.length, 1);
+    assert.strictEqual(aeroflyObject.clouds.length, 3);
+    assert.notStrictEqual(aeroflyObject.clouds[0].density, 0);
+    assert.notStrictEqual(aeroflyObject.clouds[0].height,  0);
+    assert.strictEqual(aeroflyObject.clouds[1].density, 0);
+    assert.strictEqual(aeroflyObject.clouds[1].height,  0);
+    assert.strictEqual(aeroflyObject.clouds[2].density, 0);
+    assert.strictEqual(aeroflyObject.clouds[2].height,  0);
   });
 
   it('must have proper wind #2', function() {
@@ -88,7 +94,13 @@ describe('metarToAerofly', function() {
     assert.strictEqual(aeroflyObject.wind.direction_in_degree,  270);
     assert.strictEqual(aeroflyObject.wind.strength, 1, 'Testing sqrt formula for 16kts');
     assert.strictEqual(aeroflyObject.visibility,    1);
-    assert.strictEqual(aeroflyObject.clouds.length, 1);
+    assert.strictEqual(aeroflyObject.clouds.length, 3);
+    assert.notStrictEqual(aeroflyObject.clouds[0].density, 0);
+    assert.notStrictEqual(aeroflyObject.clouds[0].height,  0);
+    assert.strictEqual(aeroflyObject.clouds[1].density, 0);
+    assert.strictEqual(aeroflyObject.clouds[1].height,  0);
+    assert.strictEqual(aeroflyObject.clouds[2].density, 0);
+    assert.strictEqual(aeroflyObject.clouds[2].height,  0);
   });
 
   it('must handle excess values', function() {
@@ -120,6 +132,12 @@ describe('metarToAerofly', function() {
     assert.ok(aeroflyObject.wind.strength > 1);
     assert.strictEqual(aeroflyObject.visibility,       1, 'Limit to 1');
     assert.strictEqual(aeroflyObject.thermal_activity, 1, 'Limit to 1');
+    assert.notStrictEqual(aeroflyObject.clouds[0].density, 0);
+    assert.notStrictEqual(aeroflyObject.clouds[0].height,  0);
+    assert.strictEqual(aeroflyObject.clouds[1].density, 0);
+    assert.strictEqual(aeroflyObject.clouds[1].height,  0);
+    assert.strictEqual(aeroflyObject.clouds[2].density, 0);
+    assert.strictEqual(aeroflyObject.clouds[2].height,  0);
   });
 
   it('must convert METAR object to Aerofly object #3', function() {
@@ -129,7 +147,8 @@ describe('metarToAerofly', function() {
       wind: { degrees: 270, speed_kts: 5, gust_kts: 5 },
       visibility: { meters_float: 9999 },
       clouds: [
-        { base_feet_agl: 2900, minDensity: 5, maxDensity: 7 }
+        { base_feet_agl: 2900, minDensity: 5, maxDensity: 7 },
+        { base_feet_agl: 4500, minDensity: 1, maxDensity: 2 }
       ],
       temperature: {
         celsius: 18
@@ -148,7 +167,13 @@ describe('metarToAerofly', function() {
     assert.strictEqual(aeroflyObject.time.hours,    6.5, 'Time has been incremented by maxValues.hourOffset');
     assert.strictEqual(aeroflyObject.wind.direction_in_degree,  270);
     assert.strictEqual(aeroflyObject.visibility,    1);
-    assert.strictEqual(aeroflyObject.clouds.length, 1);
+    assert.strictEqual(aeroflyObject.clouds.length, 3);
+    assert.notStrictEqual(aeroflyObject.clouds[0].density, 0);
+    assert.notStrictEqual(aeroflyObject.clouds[0].height,  0);
+    assert.notStrictEqual(aeroflyObject.clouds[1].density, 0);
+    assert.notStrictEqual(aeroflyObject.clouds[1].height,  0);
+    assert.strictEqual(aeroflyObject.clouds[2].density, 0);
+    assert.strictEqual(aeroflyObject.clouds[2].height,  0);
   });
 
   it('must interpret 9999 meters as 10 statute miles', function() {

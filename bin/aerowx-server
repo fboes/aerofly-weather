@@ -1,0 +1,138 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const fetchMetarUrl     = require('./fetch-url');
+const metarToAerofly    = require('./metar-to-aerofly');
+const AeroflyApi        = require('./aerofly-api');
+const metarParser       = require('aewx-metar-parser');
+
+// -----------------------------------------------------------------------------
+
+const WeatherMethods = {};
+
+WeatherMethods.apiUrl = '';
+WeatherMethods.apiKey = '';
+WeatherMethods.apiResponse = 'json';
+WeatherMethods.intervalObj = null;
+
+WeatherMethods.setClock = function() {
+  const date = new Date();
+  AeroflyApi.setValue('Simulation.DateYear',  date.getUTCFullYear());
+  AeroflyApi.setValue('Simulation.DateMonth', date.getUTCMonth() + 1);
+  AeroflyApi.setValue('Simulation.DateDay',   date.getUTCDate());
+  AeroflyApi.setValue('Simulation.Time',      date.getUTCHours() + (date.getUTCMinutes() / 60));
+};
+
+WeatherMethods.setWeather = function(icaoCode) {
+  WeatherMethods.getRemoteData(icaoCode, (aeroflyObject, err) => {
+    if (aeroflyObject && !err) {
+      AeroflyApi.setValue('Simulation.Visibility',      aeroflyObject.visibility);
+      AeroflyApi.setValue('Simulation.ThermalActivity', aeroflyObject.thermal_activity);
+      AeroflyApi.setValue('Simulation.Turbulence',      aeroflyObject.wind.turbulence);
+      AeroflyApi.setValue('Simulation.WindDirection',   aeroflyObject.wind.direction_in_degree);
+      AeroflyApi.setValue('Simulation.WindStrength',    aeroflyObject.wind.strength);
+      AeroflyApi.setValue('Simulation.Cloud0Height',    aeroflyObject.clouds[0].height);
+      AeroflyApi.setValue('Simulation.Cloud0Density',   aeroflyObject.clouds[0].density);
+      AeroflyApi.setValue('Simulation.Cloud1Height',    aeroflyObject.clouds[1].height);
+      AeroflyApi.setValue('Simulation.Cloud1Density',   aeroflyObject.clouds[1].density);
+      AeroflyApi.setValue('Simulation.Cloud2Height',    aeroflyObject.clouds[2].height);
+      AeroflyApi.setValue('Simulation.Cloud2Density',   aeroflyObject.clouds[2].density);
+    }
+  });
+};
+
+WeatherMethods.morphWeather = function(icaoCode, intervalSeconds = 1) {
+  WeatherMethods.getRemoteData(icaoCode, (aeroflyObject, err) => {
+    if (aeroflyObject && !err) {
+      if (WeatherMethods.intervalObj) {
+        clearInterval(WeatherMethods.intervalObj);
+      }
+      WeatherMethods.intervalObj = setInterval(() => {
+        let hasFinishedMorphing = false;
+
+        AeroflyApi.morphValue('Simulation.Visibility',      aeroflyObject.visibility);
+        AeroflyApi.morphValue('Simulation.ThermalActivity', aeroflyObject.thermal_activity);
+        AeroflyApi.morphValue('Simulation.Turbulence',      aeroflyObject.wind.turbulence);
+        AeroflyApi.morphValue('Simulation.WindDirection',   aeroflyObject.wind.direction_in_degree);
+        AeroflyApi.morphValue('Simulation.WindStrength',    aeroflyObject.wind.strength);
+        AeroflyApi.morphValue('Simulation.Cloud0Height',    aeroflyObject.clouds[0].height);
+        AeroflyApi.morphValue('Simulation.Cloud0Density',   aeroflyObject.clouds[0].density);
+        AeroflyApi.morphValue('Simulation.Cloud1Height',    aeroflyObject.clouds[1].height);
+        AeroflyApi.morphValue('Simulation.Cloud1Density',   aeroflyObject.clouds[1].density);
+        AeroflyApi.morphValue('Simulation.Cloud2Height',    aeroflyObject.clouds[2].height);
+        AeroflyApi.morphValue('Simulation.Cloud2Density',   aeroflyObject.clouds[2].density);
+
+        if (hasFinishedMorphing) {
+          clearInterval(WeatherMethods.intervalObj);
+        }
+      }, intervalSeconds * 1000);
+    }
+  });
+};
+
+WeatherMethods.getRemoteData = function(icaoCode, callback) {
+  if (!WeatherMethods.apiUrl) {
+    throw Error('No URL given for calling');
+  }
+  try {
+    fetchMetarUrl(
+      WeatherMethods.apiUrl.replace(/XXXX/, icaoCode),
+      {
+        response: WeatherMethods.apiResponse,
+        apikey: WeatherMethods.apiKey
+      },
+      (metarCode) => {
+        try {
+          const metarObject = metarParser(metarCode);
+          const aeroflyObject = metarToAerofly(metarObject);
+          callback(aeroflyObject);
+        } catch (err) {
+          callback({}, err);
+        }
+      }
+    );
+  } catch (err) {
+    callback({}, err);
+  }
+};
+
+// -----------------------------------------------------------------------------
+
+const options = {
+  pollNearestAirportSeconds: 600
+};
+
+WeatherMethods.apiUrl = 'http://avwx.rest/api/metar/XXXX?options=&format=json&onfail=cache';
+WeatherMethods.apiKey = '';
+WeatherMethods.apiResponse = 'json';
+
+/**
+ * @return {Boolean} if weather and time should be polled
+ */
+const isActive = function() {
+  // return (AeroflyApi.getValue('Navigation.COM1Frequency') === options.activationFrequency);
+  return true;
+};
+
+/**
+ * @return {Interval} which polls for nearest airport and changes the weather accordingly
+ */
+const startPollingInterval = function() {
+  return setInterval(() => {
+    if (isActive()) {
+      WeatherMethods.morphWeather(AeroflyApi.getValue('Aircraft.NearestAirport'));
+    }
+  }, options.pollNearestAirportSeconds * 1000);
+};
+let pollingInterval;
+
+AeroflyApi.watchEvents(['Navigation.COM1FrequencySwap', 'Aircraft.OnGround'], () => {
+  if (isActive()) {
+    WeatherMethods.setClock();
+    WeatherMethods.setWeather(AeroflyApi.getValue('Aircraft.NearestAirport'));
+    pollingInterval = startPollingInterval();
+  } else if (pollingInterval) {
+    clearInterval(pollingInterval);
+  }
+});

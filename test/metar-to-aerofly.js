@@ -7,7 +7,7 @@ const metarToAerofly = require('../lib/metar-to-aerofly');
 describe('metarToAerofly', function() {
 
   it('must convert METAR object to Aerofly object', function() {
-    const aeroflyObject = metarToAerofly({
+    const aeroflyObject = metarToAerofly().convert({
       icao: 'KPIE',
       observed: new Date('2019-01-29T12:30:18.825Z'),
       wind: { degrees: 270, speed_kts: 21, gust_kts: 30 },
@@ -35,6 +35,8 @@ describe('metarToAerofly', function() {
 
   it('must have proper wind', function() {
     const aeroflyObject = metarToAerofly({
+      maxWind: 16
+    }).convert({
       icao: 'KPIE',
       observed: new Date('2019-01-29T12:30:18.825Z'),
       wind: { degrees: 270, speed_kts: 16, gust_kts: 16 },
@@ -48,8 +50,6 @@ describe('metarToAerofly', function() {
       barometer: {
         kpa: 101.0
       }
-    }, {
-      maxWind: 16
     });
 
     assert.ok(aeroflyObject);
@@ -70,6 +70,8 @@ describe('metarToAerofly', function() {
 
   it('must have proper wind #2', function() {
     const aeroflyObject = metarToAerofly({
+      maxWind: 8
+    }).convert({
       icao: 'KPIE',
       observed: new Date('2019-01-29T12:30:18.825Z'),
       wind: { degrees: 270, speed_kts: 8, gust_kts: 8 },
@@ -83,8 +85,6 @@ describe('metarToAerofly', function() {
       barometer: {
         kpa: 101.0
       }
-    }, {
-      maxWind: 8
     });
 
     assert.ok(aeroflyObject);
@@ -105,6 +105,10 @@ describe('metarToAerofly', function() {
 
   it('must handle excess values', function() {
     const aeroflyObject = metarToAerofly({
+      maxWind: 20,
+      maxVisibility: 1000,
+      maxTemperature: 5
+    }).convert({
       icao: 'KPIE',
       observed: new Date('2019-01-29T23:59:59.999Z'),
       wind: { degrees: -90, speed_kts: 40, gust_kts: 40 },
@@ -118,10 +122,6 @@ describe('metarToAerofly', function() {
       barometer: {
         kpa: 101.0
       }
-    }, {
-      maxWind: 20,
-      maxVisibility: 1000,
-      maxTemperature: 5
     });
 
     assert.ok(aeroflyObject);
@@ -142,6 +142,8 @@ describe('metarToAerofly', function() {
 
   it('must convert METAR object to Aerofly object #3', function() {
     const aeroflyObject = metarToAerofly({
+      hourOffset: 12
+    }).convert({
       icao: 'KPIE',
       observed: new Date('2019-01-29T18:30:18.825Z'),
       wind: { degrees: 270, speed_kts: 5, gust_kts: 5 },
@@ -156,8 +158,6 @@ describe('metarToAerofly', function() {
       barometer: {
         kpa: 101.0
       }
-    }, {
-      hourOffset: 12
     });
 
     // console.log(aeroflyObject);
@@ -178,11 +178,11 @@ describe('metarToAerofly', function() {
 
   it('must interpret 9999 meters as 10 statute miles', function() {
     const aeroflyObject = metarToAerofly({
+      maxVisibility: 12000 // :? is bigger than 9999
+    }).convert({
       icao: 'KPIE',
       observed: new Date('2019-01-29T18:30:18.825Z'),
       visibility: { meters_float: 9999 }
-    }, {
-      maxVisibility: 12000 // :? is bigger than 9999
     });
 
     //console.log(aeroflyObject);

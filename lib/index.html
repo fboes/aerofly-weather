@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en-GB" dir="ltr" prefix="og: http://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8" />
+  <title>AEWX</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      min-height: 100%;
+      --color-blue-light: #a4bee1;
+      --color-blue: #1753a0;
+      --color-blue-dark: #000a2f;
+      /*font-size: 2.5em;*/
+    }
+    body {
+      background: var(--color-blue);
+      background: radial-gradient(ellipse at center, var(--color-blue) 0%, var(--color-blue-dark) 100%);
+      /*background: url(bg.jpg);*/
+      font-family: "Open Sans", Verdana, Arial, Helvetica, sans-serif;
+      color: white;
+      min-height: 100%;
+      margin: 0.25rem 0;
+    }
+    h1 {
+      font-size: 1.15em;
+      border-bottom: 1px solid var(--color-blue-light);
+      border-top: 1px solid var(--color-blue-light);
+      padding: 0.25rem;
+      font-weight: normal;
+      text-align: center;
+    }
+    form {
+      margin: auto;
+      padding: 1rem;
+    }
+
+    .input, .twocol {
+      display: flex;
+    }
+    .input > * {
+      padding: 1rem;
+    }
+    .twocol {
+      flex-flow: row wrap;
+    }
+    .twocol > .input {
+      flex-basis: 50%;
+    }
+    * + .input, * + .twocol {
+      margin-top: 0.5rem;
+    }
+    label, button {
+      flex-basis: 12em;
+    }
+    output {
+      flex-basis: 5em;
+    }
+    input, textarea, button {
+      font: inherit;
+      border: 1px solid var(--color-blue-light);
+      background: transparent;
+      color: inherit;
+      flex-grow: 2;
+    }
+    input[type="range"] {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    button, .button {
+      margin-left: 1rem;
+      flex-grow: 0;
+      cursor: pointer;
+      background: var(--color-blue-light);
+      color: var(--color-blue-dark);
+      display: inline-block;
+    }
+    button:hover, .button:hover {
+      background: var(--color-blue);
+    }
+
+  </style>
+</head>
+<body>
+  <h1>METAR settings</h1>
+  <form action="." method="post">
+    <div class="input">
+      <label>ICAO code</label>
+      <input type="text" name="icao" value="KSFO" />
+      <span class="button" onclick="app.fetch();">Fetch METAR data</span>
+    </div>
+    <div class="input">
+      <label>METAR</label>
+      <textarea name="metar" onkeyup="app.parseMetar(this)">KSFO 281156Z 31005KT 10SM FEW005 BKN200 12/09 A3004 RMK A02 SLP172 T01170089 1133 20111 58005</textarea>
+    </div>
+    <div class="twocol">
+      <div class="input">
+        <label>Time</label>
+        <input type="time" name="time" value="11:56" />
+      </div>
+      <div class="input">
+        <label>Date</label>
+        <input type="date" name="date" value="2019-01-28" />
+      </div>
+      <div class="input">
+        <label>Wind direction</label>
+        <input type="range" name="wind_direction" min="0" max="360" step="1" value="310" data-unit="°" oninput="app.output(this)" />
+        <output name="wind_direction_o">310°</output>
+      </div>
+      <div class="input">
+        <label>Wind strength</label>
+        <input type="range" name="wind_strength" min="0" max="200" step="1" value="21" data-unit="%" oninput="app.output(this)" />
+        <output name="wind_strength_o">21%</output>
+      </div>
+      <div class="input">
+        <label>Turbulence</label>
+        <input type="range" name="turbulence" min="0" max="100" step="1" value="11" data-unit="%" oninput="app.output(this)" />
+        <output name="turbulence_o">11%</output>
+      </div>
+      <div class="input">
+        <label>Thermal activity</label>
+        <input type="range" name="thermal_activity" min="0" max="100" step="1" value="68" data-unit="%" oninput="app.output(this)" />
+        <output name="thermal_activity_o">68%</output>
+      </div>
+      <div class="input">
+        <label>Visibility</label>
+        <input type="range" name="visibility" min="0" max="100" step="1" value="100" data-unit="%" oninput="app.output(this)" />
+        <output name="visibility_o">100%</output>
+      </div>
+    </div>
+    <div class="twocol">
+
+      <div class="input">
+        <label>Cloud layer 1: Height</label>
+        <input type="range" name="cloud_1_height" min="0" max="100" step="1" value="1" data-unit="%" oninput="app.output(this)" />
+        <output name="cloud_1_height_o">1%</output>
+      </div>
+      <div class="input">
+        <label>Cloud layer 1: Density</label>
+        <input type="range" name="cloud_1_density" min="0" max="100" step="1" value="24" data-unit="%" oninput="app.output(this)" />
+        <output name="cloud_1_density_o">24%</output>
+      </div>
+      <div class="input">
+        <label>Cloud layer 2: Height</label>
+        <input type="range" name="cloud_2_height" min="0" max="100" step="1" value="45" data-unit="%" oninput="app.output(this)" />
+        <output name="cloud_2_height_o">45%</output>
+      </div>
+      <div class="input">
+        <label>Cloud layer 2: Density</label>
+        <input type="range" name="cloud_2_density" min="0" max="100" step="1" value="23" data-unit="%" oninput="app.output(this)" />
+        <output name="cloud_2_density_o">23%</output>
+      </div>
+      <div class="input">
+        <label>Cloud layer 3: Height</label>
+        <input type="range" name="cloud_3_height" min="0" max="100" step="1" value="50" data-unit="%" oninput="app.output(this)" />
+        <output name="cloud_3_height_o">50%</output>
+      </div>
+      <div class="input">
+        <label>Cloud layer 3: Density</label>
+        <input type="range" name="cloud_3_density" min="0" max="100" step="1" value="71" data-unit="%" oninput="app.output(this)" />
+        <output name="cloud_3_density_o">71%</output>
+      </div>
+    </div>
+  </form>
+  <script src="./main.js"></script>
+  <script>
+    const app = {
+      leForm: document.querySelector('form'),
+      pad: function(number) {
+        if (number < 10) {
+          return '0' + number;
+        }
+        return number;
+      },
+      percent: function(value) {
+        return Math.round(Number(value) * 100);
+      },
+
+      output: function(el) {
+        document.querySelector('output[name="' + el.name + '_o"]').value = el.value + el.getAttribute('data-unit');
+      },
+
+      repaint: function() {
+        document.querySelectorAll('input[type="range"]').forEach((el) => {
+          app.output(el);
+        })
+      },
+
+      fetch: function() {
+        console.log(app.leForm.icao);
+        app.leForm.metar.value = '';
+      },
+
+      parseMetar: function(el) {
+        const metarObject = metarParser(el.value);
+        const aeroflyObject = metarToAerofly(metarObject);
+
+        app.leForm.icao.value = metarObject.icao;
+        if (metarObject.observed) {
+          app.leForm.time.value = app.pad(metarObject.observed.getUTCHours()) + ':' + app.pad(metarObject.observed.getUTCMinutes());
+          app.leForm.date.value = metarObject.observed.getUTCFullYear() + '-' + app.pad(metarObject.observed.getUTCMonth() + 1) + '-' +app.pad(metarObject.observed.getUTCDate());
+        }
+        app.leForm.wind_direction.value = Math.round(aeroflyObject.wind.direction_in_degree);
+        app.leForm.wind_strength.value = app.percent(aeroflyObject.wind.strength);
+        app.leForm.turbulence.value = app.percent(aeroflyObject.wind.turbulence);
+        app.leForm.thermal_activity.value = app.percent(aeroflyObject.thermal_activity);
+        app.leForm.visibility.value = app.percent(aeroflyObject.visibility);
+
+        aeroflyObject.clouds.forEach((cloud, index) => {
+          app.leForm['cloud_' + (index + 1) + '_height'].value = app.percent(cloud.height);
+          app.leForm['cloud_' + (index + 1) + '_density'].value = app.percent(cloud.density);
+        });
+        app.repaint();
+
+      }
+    };
+
+    app.parseMetar(document.querySelector('[name="metar"]'));
+  </script>
+</body>
+</html>

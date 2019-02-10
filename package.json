@@ -2,7 +2,7 @@
   "name": "aerofly-weather",
   "version": "0.6.0",
   "description": "Copy METAR information into Aerofly FS2.",
-  "main": "lib/main.js",
+  "main": "main.js",
   "directories": {
     "bin": "bin",
     "test": "test",
@@ -11,7 +11,8 @@
   "scripts": {
     "precommit": "npm test",
     "watch": "gulp watch",
-    "test": "eslint *.js bin/* lib/**/*.js test/**/*.js && mocha && npm outdated"
+    "test": "eslint *.js bin/* lib/**/*.js test/**/*.js && mocha && npm outdated",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
   "homepage": "https://github.com/fboes/aerofly-weather#readme",
   "devDependencies": {
     "beeper": "^1.1.1",
+    "electron": "^4.0.4",
     "gulp": "^4.0.0",
     "gulp-eslint": "^5.0.0",
     "gulp-mocha": "^6.0.0",

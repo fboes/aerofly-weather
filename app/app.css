@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  min-height: 100%;
+  --color-blue-light: #a4bee1;
+  --color-blue: #1753a0;
+  --color-blue-dark: #000a2f;
+  /*font-size: 2.5em;*/
+}
+body {
+  background: var(--color-blue);
+  background: radial-gradient(ellipse at center, var(--color-blue) 0%, var(--color-blue-dark) 100%);
+  /*background: url(bg.jpg);*/
+  font-family: "Open Sans", Verdana, Arial, Helvetica, sans-serif;
+  color: white;
+  min-height: 100%;
+  margin: 0.25rem 0;
+}
+h1 {
+  font-size: 1.15em;
+  border-bottom: 1px solid var(--color-blue-light);
+  border-top: 1px solid var(--color-blue-light);
+  padding: 0.25rem;
+  font-weight: normal;
+  text-align: center;
+}
+form {
+  margin: auto;
+  padding: 1rem;
+}
+
+.input, .twocol {
+  display: flex;
+}
+.input > * {
+  padding: 1rem;
+}
+.twocol {
+  flex-flow: row wrap;
+}
+.twocol > .input {
+  flex-basis: 100%;
+}
+@media (min-device-width: 800px) {
+  .twocol > .input {
+    flex-basis: 50%;
+  }
+}
+* + .input, * + .twocol {
+  margin-top: 0.5rem;
+}
+label, button {
+  flex-basis: 12em;
+}
+output {
+  flex-basis: 5em;
+}
+input, textarea, button {
+  font: inherit;
+  border: 1px solid var(--color-blue-light);
+  background: transparent;
+  color: inherit;
+  flex-grow: 2;
+}
+input[type="range"] {
+  padding-left: 0;
+  padding-right: 0;
+}
+button, .button {
+  margin-left: 1rem;
+  flex-grow: 0;
+  cursor: pointer;
+  background: var(--color-blue-light);
+  color: var(--color-blue-dark);
+  display: inline-block;
+}
+button:hover, .button:hover {
+  background: var(--color-blue);
+}
+
+#message {
+  position: fixed;
+  top: -5em;
+  left: 50%;
+  padding: 1em;
+  background-color: #ff9090;
+  display: inline-block;
+  transition: all 0.2s;
+}
+#message.is-visible {
+  top: 0;
+}

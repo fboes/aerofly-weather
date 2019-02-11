@@ -13,13 +13,15 @@ function createWindow() {
     width: develop ? 1600 : 1000,
     height: 750,
     icon: 'docs/favicon-192x192.png',
+    //backgroundColor: '#2e2c29',
+    //title: 'Ding dong',
     webPreferences: {
       nodeIntegration: true
     }
   });
 
   // and load the index.html of the app.
-  win.loadFile('lib/index.html');
+  win.loadURL('file://' + __dirname + '/app/index.html');
 
   if (develop) {
     win.webContents.openDevTools();

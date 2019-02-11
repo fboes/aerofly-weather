@@ -106,60 +106,60 @@
       </div>
       <div class="input">
         <label>Wind direction</label>
-        <input type="range" name="wind.direction_in_degree" min="0" max="360" step="1" value="310" data-unit="°" oninput="app.output(this);app.transferValue(this)" />
+        <input type="range" name="wind.direction_in_degree" min="0" max="360" step="1" value="310" data-unit="°" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
         <output name="wind.direction_in_degree_o">310°</output>
       </div>
       <div class="input">
         <label>Wind strength</label>
-        <input type="range" name="wind.strength" min="0" max="200" step="1" value="21" data-unit="%" oninput="app.output(this);app.transferValue(this)" />
+        <input type="range" name="wind.strength" min="0" max="200" step="1" value="21" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
         <output name="wind.strength_o">21%</output>
       </div>
       <div class="input">
         <label>Turbulence</label>
-        <input type="range" name="wind.turbulence" min="0" max="100" step="1" value="11" data-unit="%" oninput="app.output(this);app.transferValue(this)" />
+        <input type="range" name="wind.turbulence" min="0" max="100" step="1" value="11" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
         <output name="wind.turbulence_o">11%</output>
       </div>
       <div class="input">
         <label>Thermal activity</label>
-        <input type="range" name="thermal_activity" min="0" max="100" step="1" value="68" data-unit="%" oninput="app.output(this);app.transferValue(this)" />
+        <input type="range" name="thermal_activity" min="0" max="100" step="1" value="68" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
         <output name="thermal_activity_o">68%</output>
       </div>
       <div class="input">
         <label>Visibility</label>
-        <input type="range" name="visibility" min="0" max="100" step="1" value="100" data-unit="%" oninput="app.output(this);app.transferValue(this)" />
+        <input type="range" name="visibility" min="0" max="100" step="1" value="100" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
         <output name="visibility_o">100%</output>
       </div>
     </div>
     <div class="twocol">
 
       <div class="input">
-        <label>Cloud layer 1: Height</label>
-        <input type="range" name="clouds.0.height" min="0" max="100" step="1" value="1" data-unit="%" oninput="app.output(this);app.transferValue(this)" />
+        <label>Cumulus height</label>
+        <input type="range" name="clouds.0.height" min="0" max="100" step="1" value="1" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
         <output name="clouds.0.height_o">1%</output>
       </div>
       <div class="input">
-        <label>Cloud layer 1: Density</label>
-        <input type="range" name="clouds.0.density" min="0" max="100" step="1" value="24" data-unit="%" oninput="app.output(this);app.transferValue(this)" />
+        <label>Cumulus density</label>
+        <input type="range" name="clouds.0.density" min="0" max="100" step="1" value="24" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
         <output name="clouds.0.density_o">24%</output>
       </div>
       <div class="input">
-        <label>Cloud layer 2: Height</label>
-        <input type="range" name="clouds.1.height" min="0" max="100" step="1" value="45" data-unit="%" oninput="app.output(this);app.transferValue(this)" />
+        <label>Cirrus height</label>
+        <input type="range" name="clouds.1.height" min="0" max="100" step="1" value="45" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
         <output name="clouds.1.height_o">45%</output>
       </div>
       <div class="input">
-        <label>Cloud layer 2: Density</label>
-        <input type="range" name="clouds.1.density" min="0" max="100" step="1" value="23" data-unit="%" oninput="app.output(this);app.transferValue(this)" />
+        <label>Cirrus density</label>
+        <input type="range" name="clouds.1.density" min="0" max="100" step="1" value="23" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
         <output name="clouds.1.density_o">23%</output>
       </div>
       <div class="input">
-        <label>Cloud layer 3: Height</label>
-        <input type="range" name="clouds.2.height" min="0" max="100" step="1" value="50" data-unit="%" oninput="app.output(this);app.transferValue(this)" />
+        <label>Cumulus med height</label>
+        <input type="range" name="clouds.2.height" min="0" max="100" step="1" value="50" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
         <output name="clouds.2.height_o">50%</output>
       </div>
       <div class="input">
-        <label>Cloud layer 3: Density</label>
-        <input type="range" name="clouds.2.density" min="0" max="100" step="1" value="71" data-unit="%" oninput="app.output(this);app.transferValue(this)" />
+        <label>Cumulus med density</label>
+        <input type="range" name="clouds.2.density" min="0" max="100" step="1" value="71" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
         <output name="clouds.2.density_o">71%</output>
       </div>
     </div>
@@ -175,8 +175,10 @@
     };
 
     const app = {
-      leForm: document.querySelector('form'),
+      elForm: document.querySelector('form'),
       aeroflyObject: metarToAerofly(),
+      configFile: aeroflyConfigFile(options.file),
+
       pad: function(number) {
         if (number < 10) {
           return '0' + number;
@@ -198,11 +200,10 @@
       },
 
       transferValue: function(el) {
-        // transfer value back to this.aeroflyObject();
         switch (el.name) {
           case 'time':
           case 'date':
-            app.aeroflyObject.setDate(new Date(app.leForm.date.value + 'T' + app.leForm.time.value + 'Z'));
+            app.aeroflyObject.setDate(new Date(app.elForm.date.value + 'T' + app.elForm.time.value + 'Z'));
             break;
           default:
             let value = Number(el.value);
@@ -215,43 +216,43 @@
       },
 
       fetch: function() {
-        let url = options.url.replace('XXXX', app.leForm.icao.value);
+        let url = options.url.replace('XXXX', app.elForm.icao.value);
 
-        app.leForm.metar.value = 'Loading...';
+        app.elForm.metar.value = 'Loading...';
         fetchMetarUrl(url, options.http_options, (response) => {
           console.log('Got response from URL ' + url + "\n", response.trim(), "\n");
-          app.leForm.metar.value = response;
-          app.parseMetar(app.leForm.metar);
+          app.elForm.metar.value = response;
+          app.parseMetar(app.elForm.metar);
           app.save();
         });
       },
 
       save: function() {
         let aeroflyObjectValues = app.aeroflyObject.get();
-        console.log(aeroflyObjectValues);
-        //const acf = aeroflyConfigFile(options.file);
-        //acf.setFromAeroflyObject(aeroflyObjectValues);
-        //return acf.save();
+        console.log('Saving...');
+        app.configFile.setFromAeroflyObject(aeroflyObjectValues);
+        return app.configFile.save();
       },
 
       parseMetar: function(el) {
         const metarObject = metarParser(el.value);
         const aeroflyObjectValues = app.aeroflyObject.convert(metarObject);
+        app.setMetar(aeroflyObjectValues,  metarObject.icao);
+      },
 
-        app.leForm.icao.value = metarObject.icao;
-        if (metarObject.observed) {
-          app.leForm.time.value = app.pad(metarObject.observed.getUTCHours()) + ':' + app.pad(metarObject.observed.getUTCMinutes());
-          app.leForm.date.value = metarObject.observed.getUTCFullYear() + '-' + app.pad(metarObject.observed.getUTCMonth() + 1) + '-' +app.pad(metarObject.observed.getUTCDate());
-        }
-        app.leForm['wind.direction_in_degree'].value = Math.round(aeroflyObjectValues.wind.direction_in_degree);
-        app.leForm['wind.strength'].value = app.percent(aeroflyObjectValues.wind.strength);
-        app.leForm['wind.turbulence'].value = app.percent(aeroflyObjectValues.wind.turbulence);
-        app.leForm.thermal_activity.value = app.percent(aeroflyObjectValues.thermal_activity);
-        app.leForm.visibility.value = app.percent(aeroflyObjectValues.visibility);
+      setMetar: function(aeroflyObjectValues, icao) {
+        app.elForm.icao.value = icao;
+        app.elForm.time.value = app.pad(aeroflyObjectValues.time.hour) + ':' +app.pad(aeroflyObjectValues.time.minute);
+        app.elForm.date.value = aeroflyObjectValues.time.year + '-' + app.pad(aeroflyObjectValues.time.month) + '-' +app.pad(aeroflyObjectValues.time.day);
+        app.elForm['wind.direction_in_degree'].value = Math.round(aeroflyObjectValues.wind.direction_in_degree);
+        app.elForm['wind.strength'].value = app.percent(aeroflyObjectValues.wind.strength);
+        app.elForm['wind.turbulence'].value = app.percent(aeroflyObjectValues.wind.turbulence);
+        app.elForm.thermal_activity.value = app.percent(aeroflyObjectValues.thermal_activity);
+        app.elForm.visibility.value = app.percent(aeroflyObjectValues.visibility);
 
         aeroflyObjectValues.clouds.forEach((cloud, index) => {
-          app.leForm['clouds.' + index + '.height'].value = app.percent(cloud.height);
-          app.leForm['clouds.' + index + '.density'].value = app.percent(cloud.density);
+          app.elForm['clouds.' + index + '.height'].value = app.percent(cloud.height);
+          app.elForm['clouds.' + index + '.density'].value = app.percent(cloud.density);
         });
         app.repaint();
       }

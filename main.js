@@ -5,13 +5,25 @@ const { app, BrowserWindow } = require('electron');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
+const develop = true;
 
 function createWindow() {
   // Create the browser window.
-  win = new BrowserWindow({ width: 1000, height: 750, icon: 'docs/favicon-192x192.png' });
+  win = new BrowserWindow({
+    width: develop ? 1600 : 1000,
+    height: 750,
+    icon: 'docs/favicon-192x192.png',
+    webPreferences: {
+      nodeIntegration: true
+    }
+  });
 
   // and load the index.html of the app.
   win.loadFile('lib/index.html');
+
+  if (develop) {
+    win.webContents.openDevTools();
+  }
 
   // Emitted when the window is closed.
   win.on('closed', () => {

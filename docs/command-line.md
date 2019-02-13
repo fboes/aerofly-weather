@@ -1,6 +1,44 @@
 ![](./favicon-64x64.png) Usage of Command Line Tools
 ====================================================
 
+The command line tools allow for automatization in fetching METAR data.
+
+Installation
+------------
+
+1. This tool requires Windows, Mac OSX or Linux.
+1. Install [Node.js](https://nodejs.org/) with at least version 10.
+1. Open the Command Prompt / Terminal application already installed on your computer.
+1. Type `npm install -g aerofly-weather` and hit `ENTER` to install Aerofly-Weather (AeroWX).
+1. Optional: Type `aerowx-make-batch` and hit `ENTER` to create the main batch file on your desktop.
+
+Usage of desktop batch file
+---------------------------
+
+![](aerofly-weather-desktop.png)
+
+You will need a copy of IPACS' Aerofly FS 2 which has run at least once. This creates a file called `main.mcf`, which contains all settings and the weather data in Aerofly FS 2. This file will be modified by the tools supplied with this package.
+
+Click on the desktop file called `aerowx-weather.bat` / `aerowx-weather.sh` and follow the on-screen instructions. Basically it offers you to:
+
+* Set weather data from a [METAR weather string](metar.md).
+* Fetch weather data by [ICAO airport code](https://en.wikipedia.org/wiki/ICAO_airport_code) via the [AVWX API](https://avwx.rest/) and set the weather accordingly.
+* Fetch weather data by [ICAO airport code](https://en.wikipedia.org/wiki/ICAO_airport_code) via the [CheckWX API](https://www.checkwx.com/) and set the weather accordingly. This method requires a CheckWX API key.
+
+Whenever you are asked for an ICAO code, you may supply `DEP` / `ARR` instead to get your last Aerofly FS 2 flightplan departure / arrival airport.
+
+The desktop batch file also contains some settings for the tools. If you want to edit the desktop batch file, just right click on it and select "Edit". 
+
+Update
+------
+
+1. To find out if your installation of Aerofly-Weather needs updating, run `npm outdated -g aerofly-weather`.
+2. Run `npm update -g aerofly-weather` to update your local Aerofly-Weather installation to the latest stable release.
+3. Optional: Use `aerowx-make-batch` to create a new batch file on your desktop.
+
+CLI commands
+------------
+
 The command line tools allow for a number of ways to get METAR information into IPACS' Aerofly FS 2, depending on your [source of METAR information](./metar.md):
 
 * [`aerowx-metar [METAR]`](../bin/aerowx-metar):  

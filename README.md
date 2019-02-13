@@ -3,7 +3,7 @@
 
 Copy [METAR weather information](docs/metar.md) into [IPCAS' Aerofly FS 2](https://www.aerofly.com/).
 
-The AeroWX command line tools will copy the following METAR weather information to your configuration file while Aerofly FS 2 is _not_ running:
+The AeroWX tools will copy the following METAR weather information to your configuration file while Aerofly FS 2 is _not_ running:
 
 * Time and day (will set the year and month to current year and month because they are not present in METAR information)
 * Wind & turbulences
@@ -17,42 +17,29 @@ AeroWX is capable of setting weather values which you cannot access in Aerofly F
 Installation
 ------------
 
-1. This tool requires Windows, Mac OSX or Linux.
-1. Install [Node.js](https://nodejs.org/) with at least version 10.
-1. Open the Command Prompt / Terminal application already installed on your computer.
-1. Type `npm install -g aerofly-weather` and hit `ENTER` to install Aerofly-Weather (AeroWX).
-1. Type `aerowx-make-batch` and hit `ENTER` to create the main batch file on your desktop.
+As of now there is only a compiled version for Windows 10.
 
-This package also comes with a load of [command line tools](docs/command-line.md). For basic usage the desktop batch file will suffice.
+1. Download the current release ZIP from https://github.com/fboes/aerofly-weather/releases
+2. Unpack the ZIP file to some sensible location
+3. Start the application by clicking on `aerofly-weather.exe`
 
-Usage of desktop batch file
----------------------------
+Usage of the desktop app
+------------------------
 
-![](docs/aerofly-weather-desktop.png)
+![](docs/aerofly-weather-app.png)
 
-You will need a copy of IPACS' Aerofly FS 2 which has run at least once. This creates a file called `main.mcf`, which contains all settings and the weather data in Aerofly FS 2. This file will be modified by the tools supplied with this package.
+You will need a copy of IPACS' Aerofly FS 2 which has run at least once. This creates a file called `main.mcf`, which contains all settings and the weather data in Aerofly FS 2. This file will be modified by the app.
 
-Click on the desktop file called `aerowx-weather.bat` / `aerowx-weather.sh` and follow the on-screen instructions. Basically it offers you to:
+By changing the settings in the app, these values will transferred to the `main.mcf` right away. It also allows for changing values which are not accessible from inside Aerofly FS 2.
 
-* Set weather data from a [METAR weather string](docs/metar.md).
-* Fetch weather data by [ICAO airport code](https://en.wikipedia.org/wiki/ICAO_airport_code) via the [AVWX API](https://avwx.rest/) and set the weather accordingly.
-* Fetch weather data by [ICAO airport code](https://en.wikipedia.org/wiki/ICAO_airport_code) via the [CheckWX API](https://www.checkwx.com/) and set the weather accordingly. This method requires a CheckWX API key.
+By entering a METAR code you can see the settings for Aerofly FS 2 being adjusted automatically. These settings will be saved to the `main.mcf` in an instant.
 
-Whenever you are asked for an ICAO code, you may supply `DEP` / `ARR` instead to get your last Aerofly FS 2 flightplan departure / arrival airport.
-
-The desktop batch file also contains some settings for the tools. If you want to edit the desktop batch file, just right click on it and select "Edit". There is a small [guide on how to work with the command line tools contained in the desktop batch file](docs/command-line.md).
+By pressing the "Fetch" button the app tries to fetch METAR data from a remote internet service for the given ICAO code. If it is successful, it will paste the METAR code and convert it into the corresponding Aerofly FS 2 values.
 
 Advanced usage
 --------------
 
 This package comes with a load of [command line tools](docs/command-line.md). These can be integrated into scripts or batch files.
-
-Update
-------
-
-1. To find out if your installation of Aerofly-Weather needs updating, run `npm outdated -g aerofly-weather`.
-2. Run `npm update -g aerofly-weather` to update your local Aerofly-Weather installation to the latest stable release.
-3. Optional: Use `aerowx-make-batch` to create a new batch file on your desktop.
 
 Status
 -------

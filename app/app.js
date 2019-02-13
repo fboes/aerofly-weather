@@ -68,8 +68,12 @@ const app = {
   },
 
   fetchMetar: function() {
-    let url = app.options.apiUrl.replace('XXXX', app.elForm.icao.value);
+    if (!app.elForm.icao.value) {
+      app.showMessage('Missing ICAO code');
+      return;
+    }
 
+    let url = app.options.apiUrl.replace('XXXX', app.elForm.icao.value);
     app.elForm.metar.value = 'Loading...';
     try {
       fetchMetarUrl(url, { response: app.options.apiResponse, apiKey: app.options.apiKey }, (response) => {

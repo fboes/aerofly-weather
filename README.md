@@ -34,13 +34,18 @@ Usage of the desktop app
 
 You will need a copy of IPACS' Aerofly FS 2 which has run at least once. This creates a file called `main.mcf`, which contains all settings and the weather data in Aerofly FS 2. This file will be modified by the app.
 
-On start-up the app will load the current settings from your `main.mcf`.
+Before starting the app be sure that Aerofly FS 2 is _not_ running. On start-up the app will load the current settings from your `main.mcf`.
 
 By changing the settings in the app, these values will transferred to the `main.mcf` right away. It also allows for changing values which are not accessible from inside Aerofly FS 2.
 
 By entering a METAR code you can see the settings for Aerofly FS 2 being adjusted automatically. These settings will be saved to the `main.mcf` in an instant.
 
 By pressing the "Fetch" button the app tries to fetch METAR data from a remote internet service for the given ICAO code. If it is successful, it will paste the METAR code and convert it into the corresponding Aerofly FS 2 values.
+
+Update
+------
+
+Just repeat all steps for a regular installation.
 
 Advanced usage
 --------------

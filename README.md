@@ -17,11 +17,15 @@ AeroWX is capable of setting weather values which you cannot access in Aerofly F
 Installation
 ------------
 
+If you are interested in the legacy tools, there are [very different installation instructions for the legacy CLI tools](docs/command-line.md).
+
+
 As of now there is only a compiled version for Windows 10.
 
-1. Download the current release ZIP from https://github.com/fboes/aerofly-weather/releases
-2. Unpack the ZIP file to some sensible location
-3. Start the application by clicking on `aerofly-weather.exe`
+1. Download the current release ZIP from https://github.com/fboes/aerofly-weather/releases.
+2. Unpack the ZIP file to some sensible location.
+3. Create a shortcut on your desktop by right-clicking `aerofly-weather.exe` > "Send to" > "Desktop (Create shortcut)".
+3. Start the application by clicking on the desktop link.
 
 Usage of the desktop app
 ------------------------
@@ -29,6 +33,8 @@ Usage of the desktop app
 ![](docs/aerofly-weather-app.png)
 
 You will need a copy of IPACS' Aerofly FS 2 which has run at least once. This creates a file called `main.mcf`, which contains all settings and the weather data in Aerofly FS 2. This file will be modified by the app.
+
+On start-up the app will load the current settings from your `main.mcf`.
 
 By changing the settings in the app, these values will transferred to the `main.mcf` right away. It also allows for changing values which are not accessible from inside Aerofly FS 2.
 

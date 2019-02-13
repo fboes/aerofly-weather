@@ -21,6 +21,7 @@ const tasks = {
       [
         '*.js',
         pkg.directories.bin + '/**/*',
+        pkg.directories.app + '/**/*.js',
         pkg.directories.lib + '/**/*.js',
         pkg.directories.test + '/**/*.js'
       ])
@@ -45,7 +46,9 @@ const tasks = {
     gulp.watch(['gulpfile.js', 'package.json'], process.exit);
     gulp.watch(
       [
-        '*.js', pkg.directories.bin + '/**/*',
+        '*.js',
+        pkg.directories.bin + '/**/*',
+        pkg.directories.app + '/**/*.js',
         pkg.directories.lib + '/**/*.js',
         pkg.directories.test + '/**/*.js'
       ],

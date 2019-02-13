@@ -1,10 +1,12 @@
+/* eslint-env node, browser */
+
 'use strict';
 
 const metarParser       = require('aewx-metar-parser');
 const metarToAerofly    = require('../lib/metar-to-aerofly');
 const aeroflyConfigFile = require('../lib/aerofly-config-file');
 const fetchMetarUrl     = require('../lib/fetch-url');
-
+//const pkg               = require('../package.json');
 
 const app = {
   elForm: document.querySelector('form'),
@@ -31,7 +33,7 @@ const app = {
   repaint: function() {
     document.querySelectorAll('input[type="range"]').forEach((el) => {
       app.output({target: el});
-    })
+    });
   },
 
   transferValue: function(event) {
@@ -91,8 +93,8 @@ const app = {
 
   setMetar: function(aeroflyObjectValues, icao) {
     app.elForm.icao.value = icao;
-    app.elForm.time.value = app.pad(aeroflyObjectValues.time.hour) + ':' +app.pad(aeroflyObjectValues.time.minute);
-    app.elForm.date.value = aeroflyObjectValues.time.year + '-' + app.pad(aeroflyObjectValues.time.month) + '-' +app.pad(aeroflyObjectValues.time.day);
+    app.elForm.time.value = app.pad(aeroflyObjectValues.time.hour) + ':' + app.pad(aeroflyObjectValues.time.minute);
+    app.elForm.date.value = aeroflyObjectValues.time.year + '-' + app.pad(aeroflyObjectValues.time.month) + '-' + app.pad(aeroflyObjectValues.time.day);
     app.elForm['wind.direction_in_degree'].value = Math.round(aeroflyObjectValues.wind.direction_in_degree);
     app.elForm['wind.strength'].value = app.percent(aeroflyObjectValues.wind.strength);
     app.elForm['wind.turbulence'].value = app.percent(aeroflyObjectValues.wind.turbulence);
@@ -130,10 +132,11 @@ const app = {
     try {
       console.log('Loading initial data...');
       const aeroflyObjectValues = app.configFile.getAeroflyObject();
-      console.log(aeroflyObjectValues);
       const curFlightplan = app.configFile.getFlightplan();
       const icao = curFlightplan ? (curFlightplan.destination.icao || curFlightplan.origin.icao) : '';
       app.setMetar(aeroflyObjectValues, icao);
+      app.aeroflyObject.set(aeroflyObjectValues);
+      console.log(app.aeroflyObject.get());
     } catch (e) {
       console.error(e);
       app.showMessage(e.message);

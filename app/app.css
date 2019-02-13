@@ -18,13 +18,22 @@ body {
   min-height: 100%;
   margin: 0.25rem 0;
 }
-h1 {
-  font-size: 1.15em;
+header, footer {
   border-bottom: 1px solid var(--color-blue-light);
   border-top: 1px solid var(--color-blue-light);
   padding: 0.25rem;
-  font-weight: normal;
   text-align: center;
+}
+h1 {
+  font-size: 1.15em;
+  font-weight: normal;
+}
+a {
+  color: var(--color-blue-light);
+}
+footer {
+  font-size: 0.8rem;
+  color: var(--color-blue-light);
 }
 form {
   margin: auto;
@@ -82,13 +91,13 @@ button:hover, .button:hover {
 
 #message {
   position: fixed;
-  top: -5em;
+  top: -6em;
   left: 40%;
   right: 40%;
   padding: 1em;
   background-color: #ff9090;
   display: inline-block;
-  transition: all 0.2s;
+  transition: all 0.5s;
 }
 #message.is-visible {
   top: 0;

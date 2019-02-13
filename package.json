@@ -5,6 +5,7 @@
   "main": "main.js",
   "directories": {
     "bin": "bin",
+    "app": "app",
     "test": "test",
     "lib": "lib"
   },

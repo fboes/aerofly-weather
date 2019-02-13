@@ -83,7 +83,8 @@ button:hover, .button:hover {
 #message {
   position: fixed;
   top: -5em;
-  left: 50%;
+  left: 40%;
+  right: 40%;
   padding: 1em;
   background-color: #ff9090;
   display: inline-block;

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>AEWX</title>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'" />
   <link rel="stylesheet" href="app.css" />
 </head>
 <body>
@@ -12,44 +12,44 @@
     <div class="input">
       <label>ICAO code</label>
       <input type="text" name="icao" autocomplete="on" />
-      <span class="button" onclick="app.fetch();">Fetch METAR data</span>
+      <span class="button metar-fetch">Fetch METAR data</span>
     </div>
     <div class="input">
       <label>METAR</label>
-      <textarea name="metar" onkeyup="app.parseMetar(this)" autofocus="autofocus"></textarea>
+      <textarea name="metar" autofocus="autofocus"></textarea>
     </div>
     <div class="twocol">
       <div class="input">
         <label>Time (UTC)</label>
-        <input type="time" name="time" onchange="app.transferValue(this)" />
+        <input type="time" name="time" />
       </div>
       <div class="input">
         <label>Date</label>
-        <input type="date" name="date" onchange="app.transferValue(this)" />
+        <input type="date" name="date" />
       </div>
       <div class="input">
         <label>Wind direction</label>
-        <input type="range" name="wind.direction_in_degree" min="0" max="360" step="1" data-unit="°" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
+        <input type="range" name="wind.direction_in_degree" min="0" max="360" step="1" data-unit="°" />
         <output name="wind.direction_in_degree_o">310°</output>
       </div>
       <div class="input">
         <label>Wind strength</label>
-        <input type="range" name="wind.strength" min="0" max="200" step="1" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
+        <input type="range" name="wind.strength" min="0" max="200" step="1" data-unit="%" />
         <output name="wind.strength_o">21%</output>
       </div>
       <div class="input">
         <label>Turbulence</label>
-        <input type="range" name="wind.turbulence" min="0" max="100" step="1" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
+        <input type="range" name="wind.turbulence" min="0" max="100" step="1" data-unit="%" />
         <output name="wind.turbulence_o">11%</output>
       </div>
       <div class="input">
         <label>Thermal activity</label>
-        <input type="range" name="thermal_activity" min="0" max="100" step="1" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
+        <input type="range" name="thermal_activity" min="0" max="100" step="1" data-unit="%" />
         <output name="thermal_activity_o">68%</output>
       </div>
       <div class="input">
         <label>Visibility</label>
-        <input type="range" name="visibility" min="0" max="100" step="1" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
+        <input type="range" name="visibility" min="0" max="100" step="1" data-unit="%" />
         <output name="visibility_o">100%</output>
       </div>
     </div>
@@ -57,32 +57,32 @@
 
       <div class="input">
         <label>Cumulus height</label>
-        <input type="range" name="clouds.0.height" min="0" max="100" step="1" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
+        <input type="range" name="clouds.0.height" min="0" max="100" step="1" data-unit="%" />
         <output name="clouds.0.height_o">1%</output>
       </div>
       <div class="input">
         <label>Cumulus density</label>
-        <input type="range" name="clouds.0.density" min="0" max="100" step="1" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
+        <input type="range" name="clouds.0.density" min="0" max="100" step="1" data-unit="%" />
         <output name="clouds.0.density_o">24%</output>
       </div>
       <div class="input">
         <label>Cirrus height</label>
-        <input type="range" name="clouds.1.height" min="0" max="100" step="1" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
+        <input type="range" name="clouds.1.height" min="0" max="100" step="1" data-unit="%" />
         <output name="clouds.1.height_o">45%</output>
       </div>
       <div class="input">
         <label>Cirrus density</label>
-        <input type="range" name="clouds.1.density" min="0" max="100" step="1" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
+        <input type="range" name="clouds.1.density" min="0" max="100" step="1" data-unit="%" />
         <output name="clouds.1.density_o">23%</output>
       </div>
       <div class="input">
         <label>Cumulus med height</label>
-        <input type="range" name="clouds.2.height" min="0" max="100" step="1" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
+        <input type="range" name="clouds.2.height" min="0" max="100" step="1" data-unit="%" />
         <output name="clouds.2.height_o">50%</output>
       </div>
       <div class="input">
         <label>Cumulus med density</label>
-        <input type="range" name="clouds.2.density" min="0" max="100" step="1" data-unit="%" oninput="app.output(this);app.transferValue(this)" onchange="app.save()" />
+        <input type="range" name="clouds.2.density" min="0" max="100" step="1" data-unit="%" />
         <output name="clouds.2.density_o">71%</output>
       </div>
     </div>

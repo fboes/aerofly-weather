@@ -6,19 +6,11 @@ const aeroflyConfigFile = require('../lib/aerofly-config-file');
 const fetchMetarUrl     = require('../lib/fetch-url');
 
 
-const options = {
-  file: '%userprofile%\\Documents\\Aerofly FS 2\\main.mcf',
-  url: 'http://avwx.rest/api/metar/XXXX?options=&format=json&onfail=cache',
-  //url: 'https://3960.org/metar/XXXX.txt',
-  http_options: {
-    response: 'json'
-  }
-};
-
 const app = {
   elForm: document.querySelector('form'),
   aeroflyObject: metarToAerofly(),
-  configFile: aeroflyConfigFile(options.file),
+  configFile: undefined,
+  options: {},
 
   pad: function(number) {
     if (number < 10) {
@@ -26,60 +18,40 @@ const app = {
     }
     return number;
   },
+
   percent: function(value) {
     return Math.round(Number(value) * 100);
   },
 
-  output: function(el) {
+  output: function(event) {
+    const el = event.target;
     document.querySelector('output[name="' + el.name + '_o"]').value = el.value + el.getAttribute('data-unit');
   },
 
   repaint: function() {
     document.querySelectorAll('input[type="range"]').forEach((el) => {
-      app.output(el);
+      app.output({target: el});
     })
   },
 
-  transferValue: function(el) {
+  transferValue: function(event) {
+    const el = event.target;
     switch (el.name) {
       case 'time':
       case 'date':
         app.aeroflyObject.setDate(new Date(app.elForm.date.value + 'T' + app.elForm.time.value + 'Z'));
         break;
       default:
-        let value = Number(el.value);
-        if (el.getAttribute('data-unit') === '%') {
-          value /= 100;
+        if (el.getAttribute['type'] && el.getAttribute['type'].match(/^(range|number)$/)) {
+          let value = Number(el.value);
+          if (el.getAttribute('data-unit') === '%') {
+            value /= 100;
+          }
+          app.aeroflyObject.setValue(el.name, value);
+        } else {
+          app.options[el.name] = el.value;
         }
-        app.aeroflyObject.setValue(el.name, value);
         break;
-    }
-  },
-
-  fetch: function() {
-    let url = options.url.replace('XXXX', app.elForm.icao.value);
-
-    app.elForm.metar.value = 'Loading...';
-    try {
-      fetchMetarUrl(url, options.http_options, (response) => {
-        console.log('Got response from URL ' + url + "\n", response.trim(), "\n");
-        app.elForm.metar.value = response;
-        app.parseMetar(app.elForm.metar);
-        app.save();
-      });
-    } catch (e) {
-      app.showMessage(e.message);
-    }
-  },
-
-  save: function() {
-    try {
-      let aeroflyObjectValues = app.aeroflyObject.get();
-      console.log('Saving...', aeroflyObjectValues);
-      app.configFile.setFromAeroflyObject(aeroflyObjectValues);
-      return app.configFile.save();
-    } catch (e) {
-      app.showMessage(e.message);
     }
   },
 
@@ -93,23 +65,28 @@ const app = {
     }, 5000);
   },
 
-  loadInitial: function() {
+  fetchMetar: function() {
+    let url = app.options.apiUrl.replace('XXXX', app.elForm.icao.value);
+
+    app.elForm.metar.value = 'Loading...';
     try {
-      console.log('Loading initial data...');
-      const aeroflyObjectValues = app.configFile.getAeroflyObject();
-      console.log(aeroflyObjectValues);
-      const curFlightplan = app.configFile.getFlightplan();
-      const icao = curFlightplan ? (curFlightplan.destination.icao || curFlightplan.origin.icao) : '';
-      app.setMetar(aeroflyObjectValues, icao);
+      fetchMetarUrl(url, { response: app.options.apiResponse, apiKey: app.options.apiKey }, (response) => {
+        console.log('Got response from URL ' + url + "\n", response.trim(), "\n");
+        app.elForm.metar.value = response;
+        app.parseMetar({target: app.elForm.metar});
+        app.saveConfigFile();
+      });
     } catch (e) {
+      console.error(e);
       app.showMessage(e.message);
     }
   },
 
-  parseMetar: function(el) {
+  parseMetar: function(event) {
+    const el = event.target;
     const metarObject = metarParser(el.value);
     const aeroflyObjectValues = app.aeroflyObject.convert(metarObject);
-    app.setMetar(aeroflyObjectValues,  metarObject.icao);
+    app.setMetar(aeroflyObjectValues, metarObject.icao);
   },
 
   setMetar: function(aeroflyObjectValues, icao) {
@@ -127,8 +104,57 @@ const app = {
       app.elForm['clouds.' + index + '.density'].value = app.percent(cloud.density);
     });
     app.repaint();
+  },
+
+  saveConfigFile: function() {
+    try {
+      let aeroflyObjectValues = app.aeroflyObject.get();
+      console.log('Saving...', aeroflyObjectValues);
+      app.configFile.setFromAeroflyObject(aeroflyObjectValues);
+      return app.configFile.save();
+    } catch (e) {
+      console.error(e);
+      app.showMessage(e.message);
+    }
+  },
+
+  init: function() {
+    app.options = {
+      mcfFilename: '%userprofile%\\Documents\\Aerofly FS 2\\main.mcf',
+      apiUrl: 'http://avwx.rest/api/metar/XXXX?options=&format=json&onfail=cache',
+      //apiUrl: 'https://3960.org/metar/XXXX.txt',
+      apiKey: '',
+      apiResponse: 'json'
+    };
+    app.configFile = aeroflyConfigFile(app.options.mcfFilename);
+    try {
+      console.log('Loading initial data...');
+      const aeroflyObjectValues = app.configFile.getAeroflyObject();
+      console.log(aeroflyObjectValues);
+      const curFlightplan = app.configFile.getFlightplan();
+      const icao = curFlightplan ? (curFlightplan.destination.icao || curFlightplan.origin.icao) : '';
+      app.setMetar(aeroflyObjectValues, icao);
+    } catch (e) {
+      console.error(e);
+      app.showMessage(e.message);
+    }
   }
 };
 
-//app.parseMetar(document.querySelector('[name="metar"]'));
-app.loadInitial();
+// -----------------------------------------------------------------------------
+// Startup & add event handlers
+app.init();
+
+document.querySelectorAll('input, select').forEach(function(el) {
+  el.addEventListener('input', app.transferValue);
+  el.addEventListener('change', function(event) {
+    // el = event.target;
+    app.transferValue(event);
+    app.saveConfigFile(event);
+  });
+});
+document.querySelectorAll('input[data-unit]').forEach(function(el) {
+  el.addEventListener('input', app.output);
+});
+document.querySelector('textarea').addEventListener('keyup', app.parseMetar);
+document.querySelector('.metar-fetch').addEventListener('click', app.fetchMetar);

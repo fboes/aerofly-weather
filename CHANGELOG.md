@@ -3,6 +3,11 @@ Change log
 
 For detailed information check [Aerofly Weather's releases on Github](https://github.com/fboes/aerofly-weather/releases).
 
+* 💊 Add icon to app
+
+1.0.0
+-----
+
 * 💊 Added Electron desktop app
 * 💊 Fixed thermal activity
 

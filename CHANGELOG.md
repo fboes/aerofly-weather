@@ -4,6 +4,7 @@ Change log
 For detailed information check [Aerofly Weather's releases on Github](https://github.com/fboes/aerofly-weather/releases).
 
 * 💊 Add icon to app
+* 💊 Add support for `aewx.json` for configuration
 
 1.0.0
 -----

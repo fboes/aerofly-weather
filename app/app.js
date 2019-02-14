@@ -6,6 +6,7 @@ const metarParser       = require('aewx-metar-parser');
 const metarToAerofly    = require('../lib/metar-to-aerofly');
 const aeroflyConfigFile = require('../lib/aerofly-config-file');
 const fetchMetarUrl     = require('../lib/fetch-url');
+const jsonFile          = require('../lib/json-file');
 //const pkg               = require('../package.json');
 
 const app = {
@@ -73,10 +74,10 @@ const app = {
       return;
     }
 
-    let url = app.options.apiUrl.replace('XXXX', app.elForm.icao.value);
+    let url = app.options.api[0].url.replace('XXXX', app.elForm.icao.value);
     app.elForm.metar.value = 'Loading...';
     try {
-      fetchMetarUrl(url, { response: app.options.apiResponse, apiKey: app.options.apiKey }, (response) => {
+      fetchMetarUrl(url, { response: app.options.api[0].response, apikey: app.options.api[0].key }, (response) => {
         console.log('Got response from URL ' + url + "\n", response.trim(), "\n");
         app.elForm.metar.value = response;
         app.parseMetar({target: app.elForm.metar});
@@ -125,13 +126,20 @@ const app = {
   },
 
   init: function() {
-    app.options = {
+    const optionsFile = jsonFile('%userprofile%\\Documents\\Aerofly FS 2\\aewx.json', {
       mcfFilename: '%userprofile%\\Documents\\Aerofly FS 2\\main.mcf',
-      apiUrl: 'http://avwx.rest/api/metar/XXXX?options=&format=json&onfail=cache',
-      //apiUrl: 'https://3960.org/metar/XXXX.txt',
-      apiKey: '',
-      apiResponse: 'json'
-    };
+      api: [
+        {
+          url: 'http://avwx.rest/api/metar/XXXX?options=&format=json&onfail=cache',
+          key: '',
+          response: 'json'
+        }
+      ]
+    });
+    optionsFile.load();
+    app.options = optionsFile.get();
+    console.log('Options', app.options);
+
     app.configFile = aeroflyConfigFile(app.options.mcfFilename);
     try {
       console.log('Loading initial data...');

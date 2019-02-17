@@ -14,7 +14,7 @@
     "watch": "gulp watch",
     "test": "eslint *.js bin/* lib/**/*.js test/**/*.js && mocha && npm outdated",
     "start": "electron .",
-    "build": "electron-packager . --out=tmp --asar --overwrite --icon=docs/favicon.ico"
+    "build": "electron-packager . --out=tmp --asar --icon=docs/favicon.ico"
   },
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   "homepage": "https://github.com/fboes/aerofly-weather#readme",
   "devDependencies": {
     "beeper": "^1.1.1",
-    "electron": "^4.0.4",
+    "electron": "^4.0.5",
     "electron-packager": "^13.0.1",
     "gulp": "^4.0.0",
     "gulp-eslint": "^5.0.0",

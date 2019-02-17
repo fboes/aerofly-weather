@@ -5,6 +5,7 @@ For detailed information check [Aerofly Weather's releases on Github](https://gi
 
 * 💊 Add icon to app
 * 💊 Add support for `aewx.json` for configuration
+* 💊 Add extra API configuration option
 
 1.0.0
 -----

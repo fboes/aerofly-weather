@@ -74,15 +74,22 @@ const app = {
       return;
     }
 
-    let url = app.options.api[0].url.replace('XXXX', app.elForm.icao.value);
+    let url = app.options.api[app.options.currentApi].url.replace('XXXX', app.elForm.icao.value);
     app.elForm.metar.value = 'Loading...';
     try {
-      fetchMetarUrl(url, { response: app.options.api[0].response, apikey: app.options.api[0].key }, (response) => {
-        console.log('Got response from URL ' + url + "\n", response.trim(), "\n");
-        app.elForm.metar.value = response;
-        app.parseMetar({target: app.elForm.metar});
-        app.saveConfigFile();
-      });
+      fetchMetarUrl(
+        url,
+        {
+          response: app.options.api[app.options.currentApi].response,
+          apikey: app.options.api[app.options.currentApi].key
+        },
+        (response) => {
+          console.log('Got response from URL ' + url + "\n", response.trim(), "\n");
+          app.elForm.metar.value = response;
+          app.parseMetar({target: app.elForm.metar});
+          app.saveConfigFile();
+        }
+      );
     } catch (e) {
       console.error(e);
       app.showMessage(e.message);
@@ -134,11 +141,23 @@ const app = {
           key: '',
           response: 'json'
         }
-      ]
+      ],
+      currentApi: 0
     });
+
     optionsFile.load();
     app.options = optionsFile.get();
+    app.options.currentApi = app.options.currentApi || 0;
     console.log('Options', app.options);
+
+    app.elForm.currentApi.innerHTML = app.options.api.map((apiOption, index) => {
+      const selected = (app.options.currentApi === index) ? ' selected="selected"' : '';
+      return '<option value="' + index + '"' + selected + '>' + apiOption.url + '</option>';
+    }).join("\n");
+
+    if (app.options.api.length > 1) {
+      app.elForm.currentApi.closest('.input').style.display = 'flex';
+    }
 
     app.configFile = aeroflyConfigFile(app.options.mcfFilename);
     try {
@@ -173,3 +192,5 @@ document.querySelectorAll('input[data-unit]').forEach(function(el) {
 });
 document.querySelector('textarea').addEventListener('keyup', app.parseMetar);
 document.querySelector('.metar-fetch').addEventListener('click', app.fetchMetar);
+
+

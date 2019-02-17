@@ -17,15 +17,14 @@ AeroWX is capable of setting weather values which you cannot access in Aerofly F
 Installation
 ------------
 
-If you are interested in the legacy tools, there are [very different installation instructions for the legacy CLI tools](docs/command-line.md).
-
-
 As of now there is only a compiled version for Windows 10.
 
 1. Download the current release ZIP from https://github.com/fboes/aerofly-weather/releases.
 2. Unpack the ZIP file to some sensible location.
 3. Create a shortcut on your desktop by right-clicking `aerofly-weather.exe` > "Send to" > "Desktop (Create shortcut)".
 3. Start the application by clicking on the desktop link.
+
+There are separate [installation instructions for the CLI tools](docs/command-line.md).
 
 Usage of the desktop app
 ------------------------
@@ -41,6 +40,8 @@ By changing the settings in the app, these values will transferred to the `main.
 By entering a METAR code you can see the settings for Aerofly FS 2 being adjusted automatically. These settings will be saved to the `main.mcf` in an instant.
 
 By pressing the "Fetch" button the app tries to fetch METAR data from a remote internet service for the given ICAO code. If it is successful, it will paste the METAR code and convert it into the corresponding Aerofly FS 2 values.
+
+**Important:** Be sure to quit the app before starting Aerofly FS 2 to no accidentally change values while AFS2 is running and to free up memory.
 
 Update
 ------

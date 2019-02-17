@@ -46,6 +46,9 @@ form {
 .input > * {
   padding: 1rem;
 }
+.input.options {
+  display: none;
+}
 .twocol {
   flex-flow: row wrap;
 }
@@ -66,12 +69,18 @@ label, button {
 output {
   flex-basis: 5em;
 }
-input, textarea, button {
+input, textarea, button, select {
   font: inherit;
   border: 1px solid var(--color-blue-light);
   background: transparent;
   color: inherit;
   flex-grow: 2;
+}
+option {
+  background: var(--color-blue-dark);
+}
+option:hover {
+  color: var(--color-blue-light);
 }
 input[type="range"] {
   padding-left: 0;

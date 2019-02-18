@@ -3,6 +3,11 @@ Change log
 
 For detailed information check [Aerofly Weather's releases on Github](https://github.com/fboes/aerofly-weather/releases).
 
+* 💊 Add version number to screen
+
+1.0.1
+-----
+
 * 💊 Add icon to app
 * 💊 Add support for `aewx.json` for configuration
 * 💊 Add extra API configuration option

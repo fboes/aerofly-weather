@@ -7,7 +7,7 @@ const metarToAerofly    = require('../lib/metar-to-aerofly');
 const aeroflyConfigFile = require('../lib/aerofly-config-file');
 const fetchMetarUrl     = require('../lib/fetch-url');
 const jsonFile          = require('../lib/json-file');
-//const pkg               = require('../package.json');
+const pkg               = require('../package.json');
 
 const app = {
   elForm: document.querySelector('form'),
@@ -193,4 +193,5 @@ document.querySelectorAll('input[data-unit]').forEach(function(el) {
 document.querySelector('textarea').addEventListener('keyup', app.parseMetar);
 document.querySelector('.metar-fetch').addEventListener('click', app.fetchMetar);
 
-
+// Package information
+document.getElementById('pkg-version').textContent = pkg.version;

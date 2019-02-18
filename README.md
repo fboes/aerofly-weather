@@ -43,6 +43,8 @@ By pressing the "Fetch" button the app tries to fetch METAR data from a remote i
 
 **Important:** Be sure to quit the app before starting Aerofly FS 2 to no accidentally change values while AFS2 is running and to free up memory.
 
+In case you want to modify the location of your MCF file or the API URL, put a [`aewx.json`](docs/aewx.json) file in your `%userprofile%\Documents\Aerofly FS 2\` directory.
+
 Update
 ------
 

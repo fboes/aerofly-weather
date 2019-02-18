@@ -1,0 +1,21 @@
+{
+  "mcfFilename": "%userprofile%\\Documents\\Aerofly FS 2\\main.mcf",
+  "api": [
+    {
+      "url": "http://avwx.rest/api/metar/XXXX?options=&format=json&onfail=cache",
+      "key": "",
+      "response": "json"
+    },
+    {
+      "url": "https://api.checkwx.com/metar/XXXX",
+      "key": "INSET KEY HERE",
+      "response": "json"
+    },
+    {
+      "url": "https://3960.org/metar/XXXX.txt",
+      "key": "",
+      "response": "text"
+    }
+  ],
+  "currentApi": 0
+}

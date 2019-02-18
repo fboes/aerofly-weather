@@ -8,7 +8,7 @@
     },
     {
       "url": "https://api.checkwx.com/metar/XXXX",
-      "key": "INSET KEY HERE",
+      "key": "INSERT KEY HERE",
       "response": "json"
     },
     {

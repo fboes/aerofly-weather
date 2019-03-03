@@ -3,6 +3,11 @@ Change log
 
 For detailed information check [Aerofly Weather's releases on Github](https://github.com/fboes/aerofly-weather/releases).
 
+* 💊 Update `aewx-metar-parser@0.10.1`
+
+1.0.2
+-----
+
 * 💊 Add version number to screen
 
 1.0.1

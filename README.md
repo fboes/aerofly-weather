@@ -1,6 +1,8 @@
 ![](docs/favicon-64x64.png) AeroWX - METAR weather importer for Aerofly FS 2
 ==================================================
 
+> **Deprecation notice**: Aerofly Weather (AeroWX) has been deprecated in favour of the [<i>Aerofly-Wettergerät</i>](https://github.com/fboes/aerofly-wettergeraet/).
+
 Copy [METAR weather information](docs/metar.md) into [IPCAS' Aerofly FS 2](https://www.aerofly.com/).
 
 The AeroWX tools will copy the following METAR weather information to your configuration file while Aerofly FS 2 is _not_ running:
@@ -66,7 +68,7 @@ Status
 Legal stuff
 -----------
 
-Author: [Frank Boës](http://3960.org)
+Author: [Frank Boës](https://3960.org)
 
 Copyright & license: See [LICENSE.txt](LICENSE.txt)
 

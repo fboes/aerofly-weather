@@ -40,8 +40,8 @@
   "homepage": "https://github.com/fboes/aerofly-weather#readme",
   "devDependencies": {
     "beeper": "^1.1.1",
-    "electron": "^4.0.6",
-    "electron-packager": "^13.1.0",
+    "electron": "^4.1.1",
+    "electron-packager": "^13.1.1",
     "gulp": "^4.0.0",
     "gulp-eslint": "^5.0.0",
     "gulp-mocha": "^6.0.0",
